@@ -1,6 +1,6 @@
 name: Bug
 description: Template para registrar bugs no projeto
-title: "`[QA]` - Título"
+title: "`[BUG]` - Título"
 labels:
   - "bug"
 # Validações do tipo 'required' apenas funcionam em repositórios públicos, talvez venham a funcionar futuramente em repositórios privados.
