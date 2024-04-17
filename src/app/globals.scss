@@ -1,13 +1,2 @@
-/*-------------------------------------------------------------------<COLORS>----------------------------------------------------------------------------------------------*/
-/*Chosen color palette was obtained from Color Hunt */
-/*darkest-color*/    $dark: #1E232C;
-/*dark-gray*/   $dark-gray: #31363F;
-/*teal*/ $teal: #279298;
-/*light-blue*/     $light-blue: #B2F0F4;
-/*aqua-green*/  $aqua-green: #02CCD8;
-/*white-gray*/  $white-gray: #F5F5F5;
-
-/*-------------------------------------------------------------------<FONTS>----------------------------------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
-/*font-family: 'Montserrat'*/           $m: 'Montserrat';
-/*font-family: 'Raleway'*/        $r: 'Raleway';
+@import './colors';
+@import './fonts';

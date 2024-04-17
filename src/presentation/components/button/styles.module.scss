@@ -1,0 +1,84 @@
+@import '@/app/globals.scss';
+
+.button {
+    background-color: $aqua-green;
+    background-image: linear-gradient(100deg, $aqua-green 0%, $dark-teal 100%);
+    border: none;
+    border-radius: 55px;
+    color: $gray;
+    cursor: pointer;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    width: 204px;
+    height: 54px;
+    font-size: 35px;
+
+    &::before {
+        background-color: $dark-teal;
+        background-image: linear-gradient(100deg, $dark-teal 0%, $aqua-green 100%);
+        bottom: 0;
+        border-radius: 55px;
+        color: $white-gray;
+        content: '';
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: opacity 0.3s linear;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    @media (max-width: 1440px) {
+        font-size: 30px;
+        height: 60px;
+        width: 500px;
+    }
+
+    @media (max-width: 1300px) {
+        font-size: 24px;
+        height: 60px;
+        width: 460px;
+    }
+
+    @media (max-width: 1100px) {
+        width: 400px;
+        height: 60px;
+        font-size: 25px;
+    }
+
+    @media (max-width: 850px) {
+        width: 300px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    @media (max-width: 768px) {
+        border-radius: 15px;
+        width: 580px;
+        height: 80px;
+        font-size: 36px;
+    }
+
+    @media (max-width: 620px) {
+        width: 450px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    @media (max-width: 480px) {
+        border-radius: 10px;
+        width: 330px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    @media (max-width: 375px) {
+        width: 290px;
+    }
+}
