@@ -1,11 +1,17 @@
 import styles from './styles.module.scss'
 
+interface ButtonProps {
+    text: string
+    type?: 'submit'
+}
 
-const Button = (): JSX.Element => {
+const Button = ({ text, type }: ButtonProps): JSX.Element => {
 
     return(
-        <div className={styles.button}>
-        </div>
+        <button className={styles.button}
+        type={type}>
+            {text}
+        </button>
     )
 }
 

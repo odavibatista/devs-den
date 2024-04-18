@@ -7,11 +7,13 @@
     border-radius: 55px;
     color: $gray;
     cursor: pointer;
-    font-weight: 700;
+    font-family: $r;
+    font-weight: 800;
     position: relative;
     z-index: 1;
     width: 204px;
     height: 54px;
+    transition: 0.4s;
     font-size: 35px;
 
     &::before {
@@ -19,7 +21,6 @@
         background-image: linear-gradient(100deg, $dark-teal 0%, $aqua-green 100%);
         bottom: 0;
         border-radius: 55px;
-        color: $white-gray;
         content: '';
         left: 0;
         opacity: 0;
@@ -32,6 +33,15 @@
 
     &:hover::before {
         opacity: 1;
+    }
+
+    &:hover::after  {
+        color: $white-gray;
+    }
+
+    &:hover {
+        color: $white-gray;
+
     }
 
     @media (max-width: 1440px) {
