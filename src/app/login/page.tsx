@@ -1,5 +1,6 @@
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
+import Input from "@/presentation/components/input"
 
 export default function LoginScreen() {
   return (
@@ -13,12 +14,12 @@ export default function LoginScreen() {
         </div>
         <div className={styles.rightLogin}>
                 <div className={styles.textField}>
-                    <label htmlFor="usuario">Usuario</label>
-                    <input type="text" name="Usuario" placeholder="Usuario" />
+                    <label htmlFor="email">Usuario</label>
+                    <Input type="email" placeholder="Digite seu e-mail." name="email" />
                 </div>
                 <div className={styles.textField}>
-                    <label htmlFor="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha" />
+                    <label htmlFor="password">Senha</label>
+                    <Input type="password" placeholder="Digite sua senha." name="password" />
                 </div>
                 <Button text="ENTRAR"  />
         </div>
