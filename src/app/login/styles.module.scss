@@ -48,6 +48,7 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    gap: 43px;
     justify-content: center;
     height: 580px;
     width: 731px;
@@ -84,8 +85,4 @@
 .textField > label{
     color:  #B2F0F4;
     margin-bottom: 10px;
-}
-
-.textField > input::placeholder{
-    color:  #B2F0F4;
 }

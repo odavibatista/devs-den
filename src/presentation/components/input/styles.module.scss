@@ -2,9 +2,15 @@
 
 .input  {
     background-color: $dark-gray;
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
+    font-family: $r;
     height: 60px;
     outline: none;
     width: 655px;
+
+    @media  (max-width: 1440px) {
+        height: 50px;
+        width: 530px;
+    }
 }

@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 interface LabelProps {
     text: string
     forName: string
-    uppercase: boolean
+    uppercase?: boolean
 }
 
 const Label = ({ text, forName, uppercase }: LabelProps): JSX.Element => {
