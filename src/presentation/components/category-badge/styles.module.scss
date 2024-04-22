@@ -1,0 +1,21 @@
+@import '@/app/globals.scss';
+
+.categoryBadge  {
+    align-items: center;
+    background-color: $dark-gray;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 275px;
+    justify-content: center;
+    text-align: center;
+    width: 275px;
+}
+
+.h4 {
+    color: $dark-teal;
+    font-family: $r;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
