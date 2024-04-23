@@ -1,0 +1,88 @@
+@import '@/app/globals.scss';
+
+.mainLogin  {
+    background: rgb(0,41,44);
+    background: linear-gradient(145deg, rgba(0,41,44,1) 0%, rgba(2,64,68,1) 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.ceoName    {
+    color: $white-gray;
+    font-family: $m;
+    font-size: 32px;
+}
+
+.ceoTestimony   {
+    color: $white-gray;
+    font-family: $m;
+    font-size: 20px;
+    text-align: center;
+    width: 384px;
+}
+
+.mainLogin {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.rightLogin{
+    align-items: center;
+    background-color: $dark;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+    justify-content: center;
+    height: 580px;
+    width: 731px;
+
+
+    @media(max-width: 1440px)   {
+        height: 480px;
+        width: 620px;
+    }
+}
+
+.cardLogin{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background:  #1E232C;
+    border-radius: 20px;
+}
+
+.cardLogin > h1 {
+    color: aquamarine;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textField  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.textField > label{
+    color:  #B2F0F4;
+    margin-bottom: 10px;
+}
