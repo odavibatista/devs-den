@@ -9,7 +9,8 @@ interface InputProps {
 const InputComponent = ({ placeholder, type }: InputProps): JSX.Element => {
 
     return(
-        <input className={styles.input}
+        <input 
+            className={styles.input}
             type={type}
             placeholder={placeholder}
         />

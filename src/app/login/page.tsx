@@ -2,8 +2,14 @@ import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
 import Label from "@/presentation/components/label"
+import userLogin from "@/api/routes/user/userLogin";
 
-export default function LoginScreen() {
+export default async function LoginScreen() {
+
+  const response = await userLogin({email: "davie@email.com", password: "abcd1234"})
+
+  console.log(await response)
+
   return (
     <section className={styles.mainLogin}>
         <div className={styles.leftLogin}>
