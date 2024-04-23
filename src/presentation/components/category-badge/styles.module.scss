@@ -4,12 +4,31 @@
     align-items: center;
     background-color: $dark-gray;
     border-radius: 50%;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
+    gap: 22px;
     height: 275px;
     justify-content: center;
     text-align: center;
+    transition: 0.33s;
     width: 275px;
+
+    *   {
+        transition: 0.33s;
+    }
+
+    &:hover  {
+        background-color: #fff;
+
+        .h4 {
+            color: $dark-gray;
+        }
+
+        img    {
+            filter: brightness(0);
+        }
+    }
 }
 
 .h4 {
@@ -17,5 +36,6 @@
     font-family: $r;
     font-size: 32px;
     font-weight: 700;
+    margin: 0;
     text-transform: uppercase;
 }
