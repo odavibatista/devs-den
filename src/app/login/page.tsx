@@ -47,12 +47,13 @@ export default function LoginScreen() {
 
   useEffect(() => {
     (async () => {
-      console.log(loginData)
         if (loginData !== undefined) {
           try {
             const login = await userLogin(loginData)
 
             console.log(login)
+
+            alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
           } catch(error: any){
             setError("Deu ruim")
           }
