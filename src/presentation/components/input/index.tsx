@@ -8,7 +8,7 @@ interface InputProps {
     register?: any
 }
 
-const InputComponent = ({ placeholder, type, name, maxLength }: InputProps): JSX.Element => {
+const InputComponent = ({ placeholder, type, name, maxLength, register }: InputProps): JSX.Element => {
 
     return(
         <input 
@@ -17,6 +17,7 @@ const InputComponent = ({ placeholder, type, name, maxLength }: InputProps): JSX
             placeholder={placeholder}
             name={name}
             maxLength={maxLength}
+            {...(register && register(name))}
         />
     )
 }
