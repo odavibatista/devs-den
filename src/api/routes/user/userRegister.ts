@@ -1,5 +1,7 @@
+/* Aqui, importamos a API criada anteriormente */
 import api from "../api";
 
+/* Passamos os atributos do registro de usuário CANDIDATO, para que seja chamado no endpoint devido da API. São vários os dados de cadastro e separamos eles em objetos menores*/
 interface userRegisterAttributes {
     name: string
     gender: "male" | "female"
@@ -20,13 +22,19 @@ interface userRegisterAttributes {
 
 }
 
+/* Aqui, declaramos a função userRegister() como o service que irá chamar no endpoint, passando um parâmetro do tipo criado acima */
 const userRegister = async (data: userRegisterAttributes) => {
 
+    /* Chamamos o endpoint '/user/register' enviando os dados do tipo declarado */
     const response = await api.post("/user/register", data).catch((err) => {
+
+        /* Caso haja um erro, retornamos ele */
         return err.response
     })
     
+    /* Retornamos a resposta contendo os dados se tudo der certo */
     return response.data
 }
 
+/* Exportamos a função para ser utilizada em seu devido lugar */
 export default userRegister
