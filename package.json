@@ -14,6 +14,7 @@
     "docker:logs": "docker compose logs -f"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@types/react-input-mask": "^3.0.5",
     "axios": "^1.6.8",
     "bun": "^1.1.4",
