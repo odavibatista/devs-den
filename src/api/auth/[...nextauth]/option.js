@@ -15,8 +15,8 @@ export const authOptions = {
             password: credentials?.password
           }     
 
-          const res = await fetch(String(process.env.NEXT_PUBLIC_API) + "/user/login",{
-            method: "POST",
+          const res = await fetch((process.env.NEXT_PUBLIC_API) + "/user/login",{
+            method: "GET",
             body: JSON.stringify(data),
             headers: {
               "Content-Type": "application/json"
@@ -47,8 +47,8 @@ export const authOptions = {
             confirmPassword: credentials?.confirmPassword
           }
 
-          const res = await fetch(String(process.env.NEXT_PUBLIC_API) + "/user/password/recovery", {
-            method: "POST",
+          const res = await fetch((process.env.NEXT_PUBLIC_API)  + "/user/password/recovery", {
+            method: "GET",
             body: JSON.stringify(data),
             headers: {
               "Content-Type": "application/json",

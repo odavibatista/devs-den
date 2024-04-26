@@ -11,7 +11,7 @@ interface userLoginAttributes   {
 const userLogin = async (data: userLoginAttributes) => {
     
     /* Chamamos o endpoint '/user/login' enviando os dados do tipo declarado */
-    const response = await api.post("/user/login", data).catch((err)    =>  {
+    const response = await api.post("user/login", data).catch((err)    =>  {
         /* Caso haja um erro, retornamos ele */
         return err.response
     })
