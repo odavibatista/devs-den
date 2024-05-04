@@ -1,46 +1,47 @@
+// @ts-ignore
 import styles from './styles.module.scss'
+import React from "react";
 
 interface User {
     name: string
 }
 
-interface Props {
-    title: string
-}
-
-const Item = ({title}: Props) => {
-    return (
-        <div className={styles.item}>
-            <h2>{title}</h2>
-        </div>
-    )
-}
-
-const Account = (user: User) => {
-    return (
+function LoginTab({name}: User) {
+    return name?
         <div className={styles.account}>
-            <div className={styles.login}>
-                <h2>{user ? user.name : "Logar"}</h2>
+            <div>
+                <a href="/candidaturas">CANDIDATURAS</a>
+            </div>
+            <div className={styles.user}>
+                <img src="user.svg" alt=""></img>
+                <a href="/conta">{name}</a>
             </div>
         </div>
-    )
+        :
+        <div className={styles.login}>
+            <div>
+                <a href="/login">LOGIN</a>
+            </div>
+            <div>
+                <a className={styles.register} href="/registrar">REGISTRE-SE</a>
+            </div>
+        </div>
+
 }
 
-export default function Header() {
+export default function Header2() {
 
     return(
         <div className={styles.header}>
-            <div className={styles.back}>
-                <div className={styles.left}/>
-                <div className={styles.right}/>
-            </div>
-
-            <div className={styles.block}>
-                <Item title={"H"} />
-                <Item title={"J"} />
-                <Item title={"C"} />
-                <Item title={"D"} />
-                <Account name={"Jeff"} />
+            <img className={styles.logo} src="logo.png" alt=""/>
+            <div className={styles.items}>
+                <div>
+                    <a href="/sobre">SOBRE</a>
+                </div>
+                <div>
+                    <a href="/vagas">VAGAS</a>
+                </div>
+                <LoginTab name=""/>
             </div>
         </div>
     )
