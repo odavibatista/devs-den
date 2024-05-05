@@ -30,16 +30,19 @@ function LoginTab({name}: User) {
 }
 
 export default function Header2() {
-
     return(
         <div className={styles.header}>
-            <img className={styles.logo} src="logo.png" alt=""/>
+            <div className={styles.logo}>
+                <img src="logo.png" alt=""/>
+            </div>
             <div className={styles.items}>
-                <div>
-                    <a href="/sobre">SOBRE</a>
-                </div>
-                <div>
-                    <a href="/vagas">VAGAS</a>
+                <div className={styles.about}>
+                    <div>
+                        <a href="/sobre">SOBRE</a>
+                    </div>
+                    <div>
+                        <a href="/vagas">VAGAS</a>
+                    </div>
                 </div>
                 <LoginTab name=""/>
             </div>
