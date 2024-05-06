@@ -1,0 +1,103 @@
+@import '@/app/globals.scss';
+
+$ice: #d9deec;
+$gray1: #1b202a;
+$gray2: #31363F;
+$aqua1: #037bbb;
+$aqua2: #02bfcb;
+$aqua3: #B2F0F4;
+
+.footer {
+    background: none;
+    box-sizing: border-box;
+    display: flex;
+    height: 6%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: auto;
+    color: $ice;
+    font-family: 'Raleway', serif;
+    font-size: smaller;
+    font-weight: bolder;
+
+    a {
+        text-decoration: none;
+        color: $ice;
+    }
+
+    .logo {
+        box-sizing: border-box;
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        align-content: center;
+        padding-left: 5%;
+
+        img {
+            margin-left: 15%;
+            height: fit-content;
+            width: fit-content;
+        }
+    }
+
+    .items {
+        box-sizing: border-box;
+        flex: 1.5;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: end;
+
+        div {
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            flex: 1;
+
+            a {
+                box-sizing: border-box;
+                width: fit-content;
+                text-align: center;
+                padding-right: 5%;
+            }
+        }
+
+        .item1 {
+            justify-content: start;
+            flex: 0.8;
+        }
+    }
+}
+
+@media(max-width: 770px) {
+    .footer {
+        height: 12%;
+        .items {
+            flex: 1;
+            padding-right: 5%;
+
+            div {
+                flex: 1;
+                height: 100%;
+                display: grid;
+                align-content: space-evenly;
+                justify-content: center;
+                justify-items: center;
+
+                a {
+                    width: fit-content;
+                    text-align: center;
+                    padding-right: 0;
+                }
+            }
+
+            .item1 {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    }
+}
