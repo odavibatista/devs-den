@@ -1,5 +1,4 @@
 @import '@/app/globals.scss';
-
 $ice: #d9deec;
 $gray1: #1b202a;
 $gray2: #31363F;
@@ -7,96 +6,96 @@ $aqua1: #037bbb;
 $aqua2: #02bfcb;
 $aqua3: #B2F0F4;
 
-.footer {
-    background: none;
+.back {
+    background: linear-gradient(90deg, $gray1 0%, $gray2 100%) 100%;
     box-sizing: border-box;
-    display: flex;
-    height: 6%;
+    height: 100%;
     width: 100%;
-    overflow: hidden;
-    position: absolute;
-    bottom: auto;
-    color: $ice;
-    font-family: 'Raleway', serif;
-    font-size: smaller;
-    font-weight: bolder;
+    padding-bottom: 7%;
 
-    a {
-        text-decoration: none;
-        color: $ice;
-    }
-
-    .logo {
+    .page {
         box-sizing: border-box;
-        flex: 1;
         height: 100%;
         width: 100%;
-        align-content: center;
-        padding-left: 5%;
+        display: grid;
 
-        img {
-            margin-left: 15%;
-            height: fit-content;
-            width: fit-content;
+        .shadow {
+            box-shadow: 0 0 15px rgba($aqua3, 0.3);
+            border-radius: 30px;
+            height: auto;
+            width: 88%;
+            top: 8%;
+            left: 6%;
+            bottom: -90%;
+            position: absolute;
+            align-self: stretch;
+            justify-self: stretch;
         }
-    }
 
-    .items {
-        box-sizing: border-box;
-        flex: 1.5;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: end;
-
-        div {
+        .policy {
             box-sizing: border-box;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: end;
-            flex: 1;
+            width: 100%;
+            padding: 100px 10%;
+            display: grid;
+            overflow: hidden;
 
-            a {
+            color: $ice;
+            font-family: 'Raleway', serif;
+            font-size: smaller;
+
+            .items {
                 box-sizing: border-box;
-                width: fit-content;
-                text-align: center;
-                padding-right: 5%;
-            }
-        }
-
-        .item1 {
-            justify-content: start;
-            flex: 0.8;
-        }
-    }
-}
-
-@media(max-width: 770px) {
-    .footer {
-        height: 12%;
-        .items {
-            flex: 1;
-            padding-right: 5%;
-
-            div {
-                flex: 1;
                 height: 100%;
+                width: 100%;
                 display: grid;
-                align-content: space-evenly;
-                justify-content: center;
-                justify-items: center;
 
-                a {
-                    width: fit-content;
-                    text-align: center;
-                    padding-right: 0;
+                .embed:last-of-type {
+                    padding-bottom: 0;
+                    border-bottom: none;
                 }
-            }
 
-            .item1 {
-                flex: 1;
-                justify-content: center;
+                .embed {
+                    box-sizing: border-box;
+                    height: 100%;
+                    width: 100%;
+                    border-bottom: {
+                        style: ridge;
+                        width: thin;
+                        color: rgba($ice, 0.5);
+                    }
+
+                    display: flex;
+                    flex-direction: column;
+                    align-content: space-between;
+                    padding-top: 3.5%;
+                    padding-bottom: 2%;
+
+                    div {
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-content: space-between;
+                        padding-top: 1%;
+                    }
+
+                    .title {
+                        padding-left: 0.5%;
+                    }
+
+                    .list > ul {
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        padding-left: 3.7%;
+
+                        li {
+                            padding-bottom: 1%;
+                        }
+                    }
+                }
             }
         }
     }
