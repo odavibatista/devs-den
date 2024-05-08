@@ -11,92 +11,121 @@ $aqua3: #B2F0F4;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    padding-bottom: 7%;
+    padding-bottom: 7vh;
 
     .page {
         box-sizing: border-box;
         height: 100%;
         width: 100%;
         display: grid;
+        padding: 5vh 2vh 0;
 
         .shadow {
+            box-sizing: border-box;
             box-shadow: 0 0 15px rgba($aqua3, 0.3);
             border-radius: 30px;
-            height: auto;
-            width: 88%;
-            top: 8%;
-            left: 6%;
-            bottom: -90%;
-            position: absolute;
-            align-self: stretch;
-            justify-self: stretch;
-        }
+            height: 96%;
+            width: 90%;
+            align-self: center;
+            justify-self: center;
+            padding: 6vh 7vh 12vh;
 
-        .policy {
-            box-sizing: border-box;
-            height: 100%;
-            width: 100%;
-            padding: 100px 10%;
-            display: grid;
-            overflow: hidden;
-
-            color: $ice;
-            font-family: 'Raleway', serif;
-            font-size: smaller;
-
-            .items {
+            .policy {
                 box-sizing: border-box;
                 height: 100%;
                 width: 100%;
                 display: grid;
 
-                .embed:last-of-type {
-                    padding-bottom: 0;
-                    border-bottom: none;
-                }
+                color: $ice;
+                font-family: 'Raleway', serif;
+                font-size: smaller;
 
-                .embed {
+                .items {
                     box-sizing: border-box;
                     height: 100%;
                     width: 100%;
-                    border-bottom: {
-                        style: ridge;
-                        width: thin;
-                        color: rgba($ice, 0.5);
+                    display: grid;
+
+                    .embed:last-of-type {
+                        padding-bottom: 0;
+                        border-bottom: none;
                     }
 
-                    display: flex;
-                    flex-direction: column;
-                    align-content: space-between;
-                    padding-top: 3.5%;
-                    padding-bottom: 2%;
-
-                    div {
+                    .embed {
+                        box-sizing: border-box;
                         height: 100%;
                         width: 100%;
+                        border-bottom: {
+                            style: ridge;
+                            width: thin;
+                            color: rgba($ice, 0.5);
+                        }
+
                         display: flex;
                         flex-direction: column;
                         align-content: space-between;
-                        padding-top: 1%;
-                    }
+                        padding-top: 3vh;
+                        padding-bottom: 1.6vh;
 
-                    .title {
-                        padding-left: 0.5%;
-                    }
+                        div {
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-content: space-between;
+                            padding-top: 1vh;
+                        }
 
-                    .list > ul {
-                        height: 100%;
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        padding-left: 3.7%;
+                        .title {
+                            padding-left: 0.5vw;
+                        }
 
-                        li {
-                            padding-bottom: 1%;
+                        .list > ul {
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            padding-left: 3vw;
+
+                            li {
+                                padding-bottom: 1vh;
+                            }
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+@media(max-width: 820px) {
+    .back {
+        .page {
+            padding: 12vh 1vh 0;
+
+            .shadow {
+                padding: 4vh 5vh 15vh;
+            }
+        }
+    }
+}
+
+@media(max-width: 770px) {
+    .back {
+        padding-bottom: 12vh;
+
+        .page {
+            .shadow {
+                padding: 4vh 5vh 15vh;
+            }
+        }
+    }
+}
+
+@media(max-width: 520px) {
+    .back {
+        .page {
+            padding-top: 16vh
         }
     }
 }

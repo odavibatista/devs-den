@@ -93,20 +93,21 @@ export default function PrivacePolicy() {
             title: "8. Alterações nesta política",
             content: "Podemos atualizar esta Política de tempos em tempos. Se fizermos alterações materiais, notificaremos você por e-mail ou publicando um aviso no Site.",
             list: []
-        },
+        }
     ]
 
     return(
         <div className={styles.back}>
             <Header />
             <div className={styles.page}>
-                {/*<div className={styles.shadow} />*/}
-                <div className={styles.policy}>
-                    <div className={styles.title}>
-                        <h1>POLÍTICA DE PRIVACIDADE</h1>
-                    </div>
-                    <div className={styles.items}>
-                        {embeds.map(({title, content, list}: embed) => <Embed title={title} content={content} list={list}/>)}
+                <div className={styles.shadow}>
+                    <div className={styles.policy}>
+                        <div className={styles.title}>
+                            <h1>POLÍTICA DE PRIVACIDADE</h1>
+                        </div>
+                        <div className={styles.items}>
+                            {embeds.map(({title, content, list}: embed) => <Embed title={title} content={content} list={list}/>)}
+                        </div>
                     </div>
                 </div>
             </div>
