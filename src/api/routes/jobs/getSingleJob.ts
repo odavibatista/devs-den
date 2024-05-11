@@ -10,7 +10,7 @@ export interface IGetJob {
     modality: string;
 }
 
-const getJobs = async(id: number): Promise<IGetJob | IAPIError> => {
+const getSingleJob = async(id: number): Promise<IGetJob | IAPIError> => {
     
     const response = await api.get(`job/${id}/find`).catch((err)    => {
         return err.response
@@ -19,4 +19,4 @@ const getJobs = async(id: number): Promise<IGetJob | IAPIError> => {
     return response.data
 } 
 
-export default getJobs
+export default getSingleJob

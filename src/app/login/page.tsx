@@ -49,11 +49,19 @@ export default function LoginScreen() {
     (async () => {
         if (loginData !== undefined) {
           try {
-            const login = await userLogin(loginData)
+            const login = await userLogin({
+              email: loginData.email,
+              inserted_password: loginData.password
+            })
 
-            console.log(login)
-
-            alert(`Bem-vindo! Seu token de acesso é ${login?.token}`)
+            if("statusCode" in login){
+              setError("DEU RUIM")
+              return
+            } else {
+              console.log(login)
+              alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
+            }
+            
           } catch(error: any){
             setError("Deu ruim")
           }
