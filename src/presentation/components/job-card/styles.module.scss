@@ -1,0 +1,25 @@
+@import '@/app/globals.scss';
+
+.job_card   {
+    align-items: center;
+    background-color: $gray;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    height: 170px;
+    justify-content: center;
+    width: 477px;
+}
+
+.h4, .h6, .p  {
+    color: $white-gray;
+    font-family: $m;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.em {
+    color: $aqua-green;
+    font-style: normal;
+}

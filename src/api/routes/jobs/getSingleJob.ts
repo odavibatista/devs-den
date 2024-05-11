@@ -7,7 +7,7 @@ export interface IGetJob {
     company_id: number;
     job_category_id: number;
     wage: number;
-    wage_type: string;
+    modality: string;
 }
 
 const getJobs = async(id: number): Promise<IGetJob | IAPIError> => {
