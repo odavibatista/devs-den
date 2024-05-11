@@ -1,4 +1,8 @@
 import axios from "axios";
+export interface IAPIError {
+    message: string
+    statusCode: number
+}
 
 /* Aqui, chamamos a url que inserimos no arquivo '.env' para ser utilizado pelo Axios em todas as nossas requisições */
 const NEXT_PUBLIC_API = process.env.NEXT_PUBLIC_API

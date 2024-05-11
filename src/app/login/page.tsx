@@ -53,7 +53,7 @@ export default function LoginScreen() {
 
             console.log(login)
 
-            alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
+            alert(`Bem-vindo! Seu token de acesso é ${login?.token}`)
           } catch(error: any){
             setError("Deu ruim")
           }
