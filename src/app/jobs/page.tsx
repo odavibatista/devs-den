@@ -11,18 +11,17 @@ export default function JobsScreen() {
 
 
     useEffect(() => {
-        (async () => {
-            const response = await getJobs()
-    
-            if ("statusCode" in response) {
-                console.log(response)
-            } 
-            else {
-              setJobs(response);
-              setJobsLoading(false);
-            }
-        })();
-      }, []);
+      (async () => {
+        const data = await getJobs()
+
+        if ("statusCode" in data) {
+          console.error(data)
+        } else {
+          setJobs(data)
+          setJobsLoading(false)
+        }
+      })()
+    }, [])
   
     return (
       <main className={styles.section}>
@@ -31,13 +30,11 @@ export default function JobsScreen() {
         </div>
         <section>
             {
-                jobs?.map((job) => {
-                    if(jobs.length === 0){
-                        return <h1>Não há vagas disponíveis no momento. Tente mais tarde.</h1>
-                    } else  {
-                        return <JobCard key={job.id} title={job.title} wage={job.wage} modality={job.modality}/>
-                    }
-                })
+              jobs && jobs?.map((job) => {
+                return (
+                  <JobCard key={job.id} title={job.title} wage={job.wage} modality={job.modality}/>
+                )
+              })
             }
         </section>
       </main>

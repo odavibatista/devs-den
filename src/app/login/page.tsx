@@ -71,7 +71,7 @@ export default function LoginScreen() {
   })
 
   return (
-    <section className={styles.mainLogin}>
+    <section className={styles.mainLogin + ' .green_gradient'}>
       <div className={styles.leftLogin}>
         <img src="/login/jeff-bezos.jpg" alt="jeff-bezos" className={styles.avatar} />
         <h1 className={styles.ceoName}>JEFFREY BEZOS</h1>

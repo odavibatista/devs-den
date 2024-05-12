@@ -1,1 +1,7 @@
 @import '@/app/globals.scss';
+
+.section    {
+    @include green_gradient;
+
+    height: 100vh;
+}

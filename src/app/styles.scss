@@ -1,7 +1,11 @@
+@import './globals.scss';
+
 body   {
+    @include dark_gradient;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
     
     *   {
         box-sizing: border-box;
