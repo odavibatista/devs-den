@@ -24,11 +24,11 @@ export default function JobsScreen() {
     }, [])
   
     return (
-      <main className={styles.section}>
+      <main className={styles.main}>
         <div>
-            <h1>VAGAS</h1>
+            <h1 className={styles.h1}>DESCOBRIR VAGAS</h1>
         </div>
-        <section>
+        <section className={styles.section}>
             {
               jobs && jobs?.map((job) => {
                 return (

@@ -1,7 +1,33 @@
 @import '@/app/globals.scss';
 
-.section    {
+.main    {
     @include green_gradient;
 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 77px;
     height: 100vh;
+    padding: 77px 142px;
+}
+
+.h1 {
+    color: $white-gray;
+    font-family: $m;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.section    {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    justify-content: center;
+}
+
+@media (max-width: 1440px)  {
+    .main    {
+        padding: 77px 72px;
+    }
 }
