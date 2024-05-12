@@ -1,0 +1,30 @@
+@import '@/app/globals.scss';
+$ice: #d9deec;
+$gray1: #1b202a;
+$gray2: #31363F;
+$aqua1: #037bbb;
+$aqua2: #02bfcb;
+$aqua3: #B2F0F4;
+
+.navbar {
+    @include spacing;
+}
+
+.right_nav  {
+    gap: 30px;
+}
+
+.nav_link   {
+    color: $white-gray;
+    font-family: $r;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@media(max-width: 767px) {
+    .header {
+        height: 10vh;
+    }
+}
