@@ -17,6 +17,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@types/react-input-mask": "^3.0.5",
     "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
     "bun": "^1.1.4",
     "next": "14.1.1",
     "next-auth": "^4.24.5",

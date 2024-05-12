@@ -12,3 +12,15 @@
     background: rgb(0,41,44);
     background: linear-gradient(145deg, #1E232C 0%, #31363F 100%);
 }
+
+@mixin spacing {
+    padding: 77px 142px;
+
+    @media (max-width: 1440px)  {
+        padding: 77px 72px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 10px 36px;
+    }
+}

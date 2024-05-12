@@ -5,8 +5,6 @@ import styles from './styles.module.scss'
 export default function Home() {
   return (
     <main>
-      <Button text="Login" />
-      <CategoryBadge imageUrl="/category-badges/frontend.svg" name="Teste" />
     </main>
   );
 }
