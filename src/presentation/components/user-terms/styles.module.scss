@@ -1,0 +1,131 @@
+@import '@/app/globals.scss';
+$ice: #d9deec;
+$gray1: #1b202a;
+$gray2: #31363F;
+$aqua1: #037bbb;
+$aqua2: #02bfcb;
+$aqua3: #B2F0F4;
+
+.back {
+    background: linear-gradient(90deg, $gray1 0%, $gray2 100%) 100%;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 7vh;
+
+    .page {
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        padding: 5vh 2vh 0;
+
+        .shadow {
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba($aqua3, 0.3);
+            border-radius: 30px;
+            height: 96%;
+            width: 90%;
+            align-self: center;
+            justify-self: center;
+            padding: 6vh 7vh 12vh;
+
+            .policy {
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+                display: grid;
+
+                color: $ice;
+                font-family: 'Raleway', serif;
+                font-size: smaller;
+
+                .items {
+                    box-sizing: border-box;
+                    height: 100%;
+                    width: 100%;
+                    display: grid;
+
+                    .embed:last-of-type {
+                        padding-bottom: 0;
+                        border-bottom: none;
+                    }
+
+                    .embed {
+                        box-sizing: border-box;
+                        height: 100%;
+                        width: 100%;
+                        border-bottom: {
+                            style: ridge;
+                            width: thin;
+                            color: rgba($ice, 0.5);
+                        }
+
+                        display: flex;
+                        flex-direction: column;
+                        align-content: space-between;
+                        padding-top: 3vh;
+                        padding-bottom: 1.6vh;
+
+                        div {
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-content: space-between;
+                            padding-top: 1vh;
+                        }
+
+                        .title {
+                            padding-left: 0.5vw;
+                        }
+
+                        .list > ul {
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            padding-left: 3vw;
+
+                            li {
+                                padding-bottom: 1vh;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 820px) {
+    .back {
+        .page {
+            padding: 12vh 1vh 0;
+
+            .shadow {
+                padding: 4vh 5vh 15vh;
+            }
+        }
+    }
+}
+
+@media(max-width: 770px) {
+    .back {
+        padding-bottom: 12vh;
+
+        .page {
+            .shadow {
+                padding: 4vh 5vh 15vh;
+            }
+        }
+    }
+}
+
+@media(max-width: 520px) {
+    .back {
+        .page {
+            padding-top: 16vh
+        }
+    }
+}

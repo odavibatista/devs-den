@@ -1,0 +1,80 @@
+@import '@/app/globals.scss';
+$ice: #d9deec;
+$gray1: #1b202a;
+$gray2: #31363F;
+$aqua1: #037bbb;
+$aqua2: #02bfcb;
+$aqua3: #B2F0F4;
+
+
+.header {
+    background: linear-gradient(0deg, $gray2 0%, $gray1 100%);
+    height: 6vh;
+    min-height: 50px;
+    min-width: 100vw;
+    filter: drop-shadow(0 10px 10px rgba($gray1, 0.6));
+
+    border-bottom-left-radius: 12%;
+    border-bottom-right-radius: 12%;
+
+    div {
+        //background-color: rgba(2, 204, 216, 0.1);
+    }
+
+    img {
+        //background-color: rgba(2, 204, 216, 0.1);
+    }
+
+    a {
+        //background-color: rgba(186, 251, 255, 0.1);
+        filter: drop-shadow(0 0 10px $gray1);
+        color: $ice;
+        font-family: 'Raleway', serif;
+        font-size: smaller;
+        font-weight: bolder;
+        text-decoration: none;
+    }
+
+    .logo {
+        width: 250px;
+    }
+
+    .user {
+        width: 25px;
+    }
+
+
+    .login {
+        padding: 8px 20%;
+        background: linear-gradient(90deg, $aqua1 15%, $aqua2);
+        border-radius: 100px;
+        transition: 0.5s;
+
+        &:hover {
+            background: linear-gradient(-90deg, $aqua1 10%, $aqua2);
+            color: $gray1;
+            scale: 110%;
+            font-size: 90%;
+        }
+    }
+
+    .register {
+        padding: 8px 10%;
+        border-radius: 100px;
+        background: linear-gradient(90deg, $aqua1 20%, $aqua2);
+        word-break: keep-all;
+        transition: 0.5s;
+
+        &:hover {
+            background: linear-gradient(-90deg, $aqua1 20%, $aqua2);
+            color: $gray1;
+            font-size: 90%;
+        }
+    }
+}
+
+@media(max-width: 767px) {
+    .header {
+        height: 10vh;
+    }
+}
