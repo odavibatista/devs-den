@@ -32,8 +32,17 @@ export default function Home() {
       </section>
       <section>
       </section>
-      <section>
-
+      <section className={styles.categories_section}>
+        <h1>ATUE NAS ÁREAS DE TI!</h1>
+        <div className={styles.categories}>
+            {
+              categories && categories?.map((category) => {
+                return (
+                  <CategoryBadge imageUrl={category.image_url} name={category.name} key={category.id_category} />
+                )
+              })
+            }
+        </div>
       </section>
     </main>
   );

@@ -24,3 +24,20 @@
 .hero_h4    {
     font-size: 32px;
 }
+
+.categories_section {
+    display: flex;
+    flex-direction: column;
+    gap: 86px;
+    text-align: center;
+}
+
+.categories {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 165px;
+    justify-content: center;
+    padding-bottom: 177px;
+}
