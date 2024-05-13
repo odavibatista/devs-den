@@ -9,7 +9,7 @@
     gap: 20px;
     justify-content: space-between;
     padding: 40px 142px;
-
+    width: 100vw;
 }
 
 .items  {
@@ -43,5 +43,22 @@
 
     .footer_image   {
         width: 220px;
+    }
+}
+
+@media (max-width: 1000px)  {
+    .nav_link   {
+        font-size: 15px;
+    }
+
+    .footer_image   {
+        width: 150px;
+    }
+}
+
+@media (max-width: 768px)  {
+    .footer {
+        flex-direction: column;
+        margin: 50px 0px;
     }
 }

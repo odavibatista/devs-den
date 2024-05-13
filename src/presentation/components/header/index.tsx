@@ -16,7 +16,7 @@ export default function Header() {
             <div className={" collapse navbar-collapse justify-content-end"} id="navbarSupportedContent">
                 <ul className={styles.right_nav + " navbar-nav"}>
                     <li className={styles.nav_item + " nav-item"}>
-                    <Link href="/jobs" className={styles.nav_link}>
+                    <Link href="/about" className={styles.nav_link}>
                         <p className={styles.nav_link}>Sobre</p>
                     </Link>
                     </li>
