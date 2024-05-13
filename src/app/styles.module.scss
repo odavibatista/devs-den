@@ -1,0 +1,26 @@
+@import './globals.scss';
+
+.main   {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero   {
+    align-items: center;
+    color: $white-gray;
+    display: flex;
+    flex-direction: column;
+    font-family: $r;
+    gap: 37px;
+    min-height: 100vh;
+    padding: 80px 0px;
+}
+
+.hero_h1    {
+    font-size: 72px;
+    font-weight: 800;
+}
+
+.hero_h4    {
+    font-size: 32px;
+}

@@ -7,15 +7,9 @@
 }
 
 body   {
-    @include dark_gradient;
     box-sizing: border-box;
     padding-top: 80px;
-}
-
-@media  (max-width: 1440px) {
-    body    {
-        padding-top: 70px;
-    }
+    @include dark_gradient;
 }
 
 #nav-button {
@@ -34,4 +28,10 @@ body   {
 ::-webkit-scrollbar-thumb {
     background: $teal;
     transition: 0.3s;
+}
+
+@media  (max-width: 1440px) {
+    body    {
+        padding-top: 70px;
+    }
 }
