@@ -88,7 +88,7 @@ export default function LoginScreen() {
           <Label forName="password" text="Senha" uppercase />
           <Input type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
         </div>
-        <Button text="ENTRAR" type="submit" />
+        <Button size="medium" text="ENTRAR" type="submit" />
       </form>
     </section>
   );

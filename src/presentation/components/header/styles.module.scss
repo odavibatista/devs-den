@@ -6,25 +6,65 @@ $aqua1: #037bbb;
 $aqua2: #02bfcb;
 $aqua3: #B2F0F4;
 
-.navbar {
-    @include spacing;
+.header {
+    background: rgb(30,35,44);
+    background: linear-gradient(180deg, rgba(30,35,44,1) 47%, rgba(30,35,44,1) 70%, rgba(34,39,49,0.9220063025210083) 87%, rgba(50,58,72,0.742734593837535) 100%);    
+    width: 100vh;
+}
+
+#header {
+    height: 80px;
+    padding: 0px 142px;
 }
 
 .right_nav  {
+    align-items: center;
+    justify-content: center;
     gap: 30px;
+    padding-left: 20px;
+}
+
+.nav_item   {
+    height: 35px;
+    margin: 0;
 }
 
 .nav_link   {
     color: $white-gray;
+    display: grid;
     font-family: $r;
     font-size: 20px;
     font-weight: bold;
+    place-content: center;
     text-transform: uppercase;
     text-decoration: none;
+    height: 35px;
+    margin: 0;
+
+}
+
+.header_image   {
+    width: 300px;
+}
+
+@media (max-width: 1440px)  {
+    #header {
+        height: 70px;
+
+        padding: 0px 72px;
+    }
+
+    .header_image   {
+        width: 220px;
+    }
 }
 
 @media(max-width: 767px) {
     .header {
         height: 10vh;
+    }
+
+    #header {
+        padding: 0px 36px;
     }
 }
