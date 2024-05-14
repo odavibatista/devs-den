@@ -9,9 +9,9 @@ interface XLinkProps {
 const XLink = ({ href, children }: XLinkProps): JSX.Element => {
 
     return(
-        <XLink href={href}>
+        <Link href={href} style={{textDecoration: 'none'}}>
             {children}
-        </XLink>
+        </Link>
     )
 }
 

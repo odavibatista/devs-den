@@ -65,6 +65,9 @@ export default function LoginScreen() {
             } else {
               console.log(login)
               alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
+
+              sessionStorage.setItem("session", login.token)
+              router.push("/jobs")
             }
             
           } catch(error: any){

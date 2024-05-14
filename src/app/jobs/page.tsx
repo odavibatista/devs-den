@@ -6,11 +6,13 @@ import getJobs from '@/api/routes/jobs/getJobs';
 import { IGetJob } from '@/api/routes/jobs/getSingleJob';
 import Link from 'next/link';
 import XLink from '@/presentation/components/xlink';
+import { useRouter } from 'next/router';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJob[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
 
+    const router = useRouter()
 
     useEffect(() => {
       (async () => {

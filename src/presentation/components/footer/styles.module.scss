@@ -29,6 +29,12 @@
     text-decoration: none;
     height: 35px;
     margin: 0;
+
+    transition: 0.3s;
+
+    &:hover {
+        color: $light-blue;
+    }
 }
 
 .footer_image   {

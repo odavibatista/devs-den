@@ -5,7 +5,9 @@ export default function Footer() {
 
     return(
         <div className={styles.footer}>
-            <img src="/header/logo.png" alt="" className={styles.footer_image} />
+            <XLink href="/" className={styles.nav_link}>
+                <img src="/header/logo.png" alt="" className={styles.footer_image} />
+            </XLink>
             <div className={styles.items}>
                 <XLink href="/about" className={styles.nav_link}>
                     <p className={styles.nav_link}>SOBRE</p>
