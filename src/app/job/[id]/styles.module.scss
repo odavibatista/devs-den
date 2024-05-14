@@ -1,5 +1,59 @@
 @import '@/app/globals.scss';
 
 .main   {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: $m;
+    gap: 21px;
     height: 100vh;
+    padding-top: 98px;
+}
+
+.job_title  {
+    color: $white-gray;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.job_category   {
+    color: $white-gray;
+    font-size: 32px;
+}
+
+.job_modality   {
+    color: $white-gray;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.splitter_small   {
+    background-color: $light-blue;
+    height: 5px;
+    width: 483px;
+}
+
+.job_company    {
+    color: $white-gray;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.job_wage   {
+    color: $white-gray;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.splitter_large   {
+    background-color: $light-blue;
+    height: 5px;
+    width: 576px;
+}
+
+.job_desc   {
+    color: $white-gray;
+    font-size: 20px;
+    text-align: center;
+    width: 576px;
 }
