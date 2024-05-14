@@ -28,7 +28,7 @@ export default function JobPage ({params}: DynamicRoute)   {
     if (isJobLoading === true) {
       return  (
         <>
-          <LoadingScreen />
+          <LoadingScreen gradient="green" />
         </>
       )
     }
@@ -44,7 +44,7 @@ export default function JobPage ({params}: DynamicRoute)   {
     else  {
       return  (
         <main className={styles.main}>
-          <JobCard title={job.title} modality={job.modality} wage={job.wage} key={job.id} />
+          <JobCard title={job.job.title} modality={job.job.modality} wage={job.job.wage} key={job.job.id_job} />
         </main>
       )
     }

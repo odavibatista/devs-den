@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
 import getJobs, { IGetJobs } from '@/api/routes/jobs/getJobs';
 import XLink from '@/presentation/components/xlink';
+import LoadingScreen from '@/presentation/components/loadingScreen';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJobs[]>([])
@@ -22,6 +23,22 @@ export default function JobsScreen() {
         }
       })()
     }, [])
+
+    if (isJobsLoading === true) {
+      return  (
+        <>
+          <LoadingScreen gradient='green' />
+        </>
+      )
+    }
+
+    if (!jobs) {
+      return  (
+        <>
+          <p>PIIIIIIIIIIIIIII</p>
+        </>
+      )
+    } 
   
     return (
       <main className={styles.main}>
