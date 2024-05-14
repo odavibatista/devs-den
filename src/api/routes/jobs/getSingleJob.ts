@@ -1,7 +1,7 @@
 import api, { IAPIError } from "../api";
 
 export interface IGetJob {
-    id: number;
+    id_job: number;
     title: string;
     description: string;
     company_id: number;

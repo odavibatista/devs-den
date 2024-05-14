@@ -44,6 +44,11 @@ export default function LoginScreen() {
     setErrorMessage(message)
   }
 
+  useEffect(() => {
+      if (sessionStorage.getItem("session")) {
+        router.push("/home")
+      }
+  }, [])
 
   useEffect(() => {
     (async () => {

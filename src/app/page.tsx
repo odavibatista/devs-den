@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import { useEffect, useState } from "react";
 import { IGetCategory } from "@/api/routes/job-categories/getCategory";
 import getCategories from "@/api/routes/job-categories/getCategories";
+import Emphasis from "@/presentation/components/emphasis";
 
 export default function Home() {
   const [categories, setCategories] = useState<IGetCategory[]>([])
@@ -33,7 +34,7 @@ export default function Home() {
       <section>
       </section>
       <section className={styles.categories_section}>
-        <h1>ATUE NAS ÁREAS DE TI!</h1>
+        <h1 className={styles.categories_h1}><Emphasis text="ATUE" color="light_blue" /> NAS ÁREAS DE TI!</h1>
         <div className={styles.categories}>
             {
               categories && categories?.map((category) => {

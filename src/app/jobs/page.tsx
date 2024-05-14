@@ -4,6 +4,8 @@ import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
 import getJobs from '@/api/routes/jobs/getJobs';
 import { IGetJob } from '@/api/routes/jobs/getSingleJob';
+import Link from 'next/link';
+import XLink from '@/presentation/components/xlink';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJob[]>([])
@@ -32,7 +34,9 @@ export default function JobsScreen() {
             {
               jobs && jobs?.map((job) => {
                 return (
-                  <JobCard key={job.id} title={job.title} wage={job.wage} modality={job.modality}/>
+                  <XLink href={`/job/${job.id_job}`}>
+                    <JobCard key={job.id_job} title={job.title} wage={job.wage} modality={job.modality}/>
+                  </XLink>
                 )
               })
             }
