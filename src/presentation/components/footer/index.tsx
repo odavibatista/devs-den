@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import styles from './styles.module.scss'
+import XLink from '../xlink'
 
 export default function Footer() {
 
@@ -7,18 +7,18 @@ export default function Footer() {
         <div className={styles.footer}>
             <img src="/header/logo.png" alt="" className={styles.footer_image} />
             <div className={styles.items}>
-                <Link href="/about" className={styles.nav_link}>
+                <XLink href="/about" className={styles.nav_link}>
                     <p className={styles.nav_link}>SOBRE</p>
-                </Link>
-                <Link href="/jobs" className={styles.nav_link}>
+                </XLink>
+                <XLink href="/jobs" className={styles.nav_link}>
                     <p className={styles.nav_link}>VAGAS</p>
-                </Link>
-                <Link href="/privacy-politics" className={styles.nav_link}>
+                </XLink>
+                <XLink href="/privacy-politics" className={styles.nav_link}>
                     <p className={styles.nav_link}>PRIVACIDADE</p>
-                </Link>
-                <Link href="/use-terms" className={styles.nav_link}>
+                </XLink>
+                <XLink href="/use-terms" className={styles.nav_link}>
                     <p className={styles.nav_link}>TERMOS DE USO</p>
-                </Link>
+                </XLink>
             </div>
         </div>
     )
