@@ -1,7 +1,16 @@
 import api, { IAPIError } from "../api";
-import { IGetJob } from "./getSingleJob";
 
-const getJobs = async(): Promise<IGetJob[] | IAPIError> => {
+export interface IGetJobs {
+    id_job: number;
+    title: string;
+    description: string;
+    company_id: number;
+    job_category_id: number;
+    wage: number;
+    modality: string;
+}
+
+const getJobs = async(): Promise<IGetJobs[] | IAPIError> => {
     
     const response = await api.get('/jobs/browse').catch((err)    => {
         return err.response

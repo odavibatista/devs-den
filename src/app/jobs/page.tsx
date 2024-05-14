@@ -2,17 +2,13 @@
 import JobCard from '@/presentation/components/job-card';
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
-import getJobs from '@/api/routes/jobs/getJobs';
-import { IGetJob } from '@/api/routes/jobs/getSingleJob';
-import Link from 'next/link';
+import getJobs, { IGetJobs } from '@/api/routes/jobs/getJobs';
 import XLink from '@/presentation/components/xlink';
-import { useRouter } from 'next/router';
 
 export default function JobsScreen() {
-    const [jobs, setJobs] = useState<IGetJob[]>([])
+    const [jobs, setJobs] = useState<IGetJobs[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
 
-    const router = useRouter()
 
     useEffect(() => {
       (async () => {

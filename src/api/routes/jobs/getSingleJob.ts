@@ -1,13 +1,24 @@
 import api, { IAPIError } from "../api";
 
 export interface IGetJob {
-    id_job: number;
-    title: string;
-    description: string;
-    company_id: number;
-    job_category_id: number;
-    wage: number;
-    modality: string;
+    job:    {
+        id_job: number;
+        title: string;
+        description: string;
+        wage: number;
+        modality: string;
+
+        job_category:   {
+            id_category: number;
+            name: string;
+            image_url: string
+        }
+    };
+    
+    company:    {
+        id_company: number;
+        name: string
+    }
 }
 
 const getSingleJob = async(id: number): Promise<IGetJob | IAPIError> => {
