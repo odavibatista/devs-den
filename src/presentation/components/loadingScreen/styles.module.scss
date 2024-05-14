@@ -1,0 +1,15 @@
+@import '@/app/globals.scss';
+
+#loading    {
+    display: grid;
+    place-content: center;
+    margin: 0;
+    width: 100%;
+    @include dark_gradient;
+}
+
+#spinner    {
+    color: $teal;
+    height: 200px;
+    width: 200px;
+}

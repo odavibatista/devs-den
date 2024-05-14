@@ -4,6 +4,8 @@ import JobCard from "@/presentation/components/job-card";
 import { DynamicRoute } from "@/server/utils/dynamic.route";
 import { useEffect, useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoadingScreen from "@/presentation/components/loadingScreen";
+import styles from './styles.module.scss'
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
@@ -26,9 +28,7 @@ export default function JobPage ({params}: DynamicRoute)   {
     if (isJobLoading === true) {
       return  (
         <>
-          <div className="spinner-border text-success" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <LoadingScreen />
         </>
       )
     }
@@ -43,7 +43,9 @@ export default function JobPage ({params}: DynamicRoute)   {
   
     else  {
       return  (
-        <JobCard title={job.title} modality={job.modality} wage={job.wage} key={job.id} />
+        <main className={styles.main}>
+          <JobCard title={job.title} modality={job.modality} wage={job.wage} key={job.id} />
+        </main>
       )
     }
 }
