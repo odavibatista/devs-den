@@ -44,6 +44,11 @@ export default function LoginScreen() {
     setErrorMessage(message)
   }
 
+  useEffect(() => {
+      if (sessionStorage.getItem("session")) {
+        router.push("/home")
+      }
+  }, [])
 
   useEffect(() => {
     (async () => {
@@ -60,6 +65,9 @@ export default function LoginScreen() {
             } else {
               console.log(login)
               alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
+
+              sessionStorage.setItem("session", login.token)
+              router.push("/jobs")
             }
             
           } catch(error: any){
@@ -88,7 +96,7 @@ export default function LoginScreen() {
           <Label forName="password" text="Senha" uppercase />
           <Input type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
         </div>
-        <Button text="ENTRAR" type="submit" />
+        <Button size="medium" text="ENTRAR" type="submit" />
       </form>
     </section>
   );

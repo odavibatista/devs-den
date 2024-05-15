@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styles from './styles.module.scss'
 
 interface CategoryBadgeProps {
@@ -10,7 +9,7 @@ const CategoryBadge = ({ name, imageUrl }: CategoryBadgeProps): JSX.Element => {
 
     return(
         <div className={styles.categoryBadge}>
-            <Image src={imageUrl} alt={name} width={135} height={135} />
+            <img src={imageUrl} alt={name} className={styles.img} />
             <h4 className={styles.h4}>
                 {name}
             </h4>

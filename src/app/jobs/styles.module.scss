@@ -1,11 +1,23 @@
 @import '@/app/globals.scss';
 
+.error  {
+    display: grid;
+    place-content: center;
+    height: 90vh;
+
+    h1  {
+        color: $white-gray;
+        font-family: $m;
+    }
+}
+
 .main    {
     @include green_gradient;
 
     align-items: center;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 77px;
     height: 100vh;
     padding: 77px 142px;
@@ -22,6 +34,7 @@
     align-items: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 72px;
     justify-content: center;
 }

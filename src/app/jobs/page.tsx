@@ -2,11 +2,12 @@
 import JobCard from '@/presentation/components/job-card';
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
-import getJobs from '@/api/routes/jobs/getJobs';
-import { IGetJob } from '@/api/routes/jobs/getSingleJob';
+import getJobs, { IGetJobs } from '@/api/routes/jobs/getJobs';
+import XLink from '@/presentation/components/xlink';
+import LoadingScreen from '@/presentation/components/loadingScreen';
 
 export default function JobsScreen() {
-    const [jobs, setJobs] = useState<IGetJob[]>([])
+    const [jobs, setJobs] = useState<IGetJobs[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
 
 
@@ -15,13 +16,31 @@ export default function JobsScreen() {
         const data = await getJobs()
 
         if ("statusCode" in data) {
-          console.error(data)
+          setJobsLoading(false)
         } else {
           setJobs(data)
           setJobsLoading(false)
         }
       })()
     }, [])
+
+    if (isJobsLoading === true) {
+      return  (
+        <>
+          <LoadingScreen gradient='green' />
+        </>
+      )
+    }
+
+    if (!jobs || jobs.length === 0) {
+      return  (
+        <>
+          <main className={styles.error}>
+            <h1>Parece que não há vagas abertas no momento. Tente novamente mais tarde.</h1>
+          </main>
+        </>
+      )
+    } 
   
     return (
       <main className={styles.main}>
@@ -32,7 +51,9 @@ export default function JobsScreen() {
             {
               jobs && jobs?.map((job) => {
                 return (
-                  <JobCard key={job.id} title={job.title} wage={job.wage} modality={job.modality}/>
+                  <XLink href={`/job/${job.id_job}`}>
+                    <JobCard key={job.id_job} title={job.title} wage={job.wage} modality={job.modality}/>
+                  </XLink>
                 )
               })
             }

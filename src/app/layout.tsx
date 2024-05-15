@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body id="body">
         <Header />
-        {children}
+          {children}
         <Footer />
       </body>
     </html>

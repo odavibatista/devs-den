@@ -10,7 +10,7 @@ interface ButtonProps {
 const Button = ({ text, type, size, onClick }: ButtonProps): JSX.Element => {
 
     return(
-        <button className={styles.button + ' nav-link ' + styles[size]}
+        <button className={styles.button + ' ' + styles[size]}
         type={type}
         onClick={onClick}
         >

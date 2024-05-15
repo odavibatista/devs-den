@@ -17,7 +17,7 @@ export interface ILoginResponse {
 }
 
 /* Aqui, declaramos a função userLogin() como o service que irá chamar no endpoint, passando um parâmetro do tipo criado acima */
-const userLogin = async (data: userLoginAttributes): Promise<ILoginResponse /* | IAPIError */ > => {
+const userLogin = async (data: userLoginAttributes): Promise<ILoginResponse  | IAPIError  > => {
     
     /* Chamamos o endpoint '/user/login' enviando os dados do tipo declarado */
     const response = await api.post("/user/login", data).catch((err)    =>  {
