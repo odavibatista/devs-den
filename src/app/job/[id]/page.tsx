@@ -24,7 +24,6 @@ export default function JobPage ({params}: DynamicRoute)   {
       (async () => {
         if (homeData && !isHomeDataLoading) {
           setUserRole(homeData?.role)
-
           console.log(userRole)
         }
       })()

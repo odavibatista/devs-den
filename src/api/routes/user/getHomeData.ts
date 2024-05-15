@@ -4,7 +4,7 @@ export interface IHomeData {
     user: {
         id: number;
         name: string;
-        role: 'candidate' | 'company';
+        role: string;
     }
 }
 
@@ -17,7 +17,7 @@ const getHomeData = async(token: string): Promise<IHomeData | IAPIError> => {
     ).catch((err)  => {
         return err.response
     })
-
+    
     return response.data
 }
 
