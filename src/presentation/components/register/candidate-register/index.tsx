@@ -1,12 +1,9 @@
-
 'use client'
 
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
 import Label from "@/presentation/components/label"
-
-import userLogin from "@/api/routes/user/userLogin";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
@@ -19,6 +16,7 @@ import refreshPage from "@/server/utils/refresh.function";
 const registerCandidateSchema = z.object({
   name: z.string().min(8, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
+  birth_date: z.string({ message: 'Campo obrigatório.' }),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
@@ -31,16 +29,14 @@ const registerCandidateSchema = z.object({
 
 type RegisterCandidateSchemaInterface = z.infer<typeof registerCandidateSchema>
 
-const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCandidateSchemaInterface>({
-    resolver: zodResolver(registerCandidateSchema),
-    mode: 'all',
-  })
-
-
-
-export default function LoginScreen() {
+export default function CandidateRegister() {
     const [errorMessage, setErrorMessage] = useState('')
     const [registerCandidateData, setRegisterData] = useState<RegisterCandidateSchemaInterface>()
+
+    const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCandidateSchemaInterface>({
+        resolver: zodResolver(registerCandidateSchema),
+        mode: 'all',
+      })
 
     const router = useRouter()
 
@@ -67,8 +63,8 @@ export default function LoginScreen() {
       })
   return (
     <section className={''}>
-      <form className={styles.rightLogin}>
-
+      <form className={styles.register_candidate_form}>
+        <p>Formulário para candidatos</p>
       </form>
     </section>
   );

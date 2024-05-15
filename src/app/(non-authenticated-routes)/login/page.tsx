@@ -12,7 +12,6 @@ import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useHome } from "@/providers/home-data-provider";
 import refreshPage from "@/server/utils/refresh.function";
 
 const loginSchema = z.object({
@@ -25,8 +24,6 @@ type LoginSchemaInterface = z.infer<typeof loginSchema>
 export default function LoginScreen() {
   const [errorMessage, setErrorMessage] = useState('')
   const [loginData, setLoginData] = useState<LoginSchemaInterface>()
-
-  const { homeData, isHomeDataLoading } = useHome();
 
   /* Configurações do Zod */
   const { register, handleSubmit, formState: { errors }, getValues } = useForm<LoginSchemaInterface>({
