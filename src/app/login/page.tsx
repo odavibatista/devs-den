@@ -12,6 +12,7 @@ import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useHome } from "@/providers/home-data-provider";
 
 const loginSchema = z.object({
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -24,6 +25,7 @@ export default function LoginScreen() {
   const [errorMessage, setErrorMessage] = useState('')
   const [loginData, setLoginData] = useState<LoginSchemaInterface>()
 
+  const { homeData, isHomeDataLoading } = useHome();
 
   /* Configurações do Zod */
   const { register, handleSubmit, formState: { errors }, getValues } = useForm<LoginSchemaInterface>({
@@ -44,14 +46,13 @@ export default function LoginScreen() {
     setErrorMessage(message)
   }
 
-  useEffect(() => {
-      if (sessionStorage.getItem("session")) {
-        router.push("/home")
-      }
-  }, [])
 
   useEffect(() => {
     (async () => {
+        if (homeData && !isHomeDataLoading) {
+          router.push("/")
+        }
+
         if (loginData !== undefined) {
           try {
             const login = await userLogin({
@@ -63,9 +64,6 @@ export default function LoginScreen() {
               setError("DEU RUIM")
               return
             } else {
-              console.log(login)
-              alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
-
               sessionStorage.setItem("session", login.token)
               router.push("/jobs")
             }
