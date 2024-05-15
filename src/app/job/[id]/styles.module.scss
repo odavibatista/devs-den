@@ -20,6 +20,7 @@
     height: 95vh;
     place-content: center;
 
+    @include spacing;
     @include green_gradient;
 }
 

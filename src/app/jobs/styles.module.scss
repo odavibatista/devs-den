@@ -13,6 +13,7 @@
 
 .main    {
     @include green_gradient;
+    @include spacing;
 
     align-items: center;
     display: flex;
@@ -20,7 +21,6 @@
     flex-wrap: wrap;
     gap: 77px;
     height: 100vh;
-    padding: 77px 142px;
 }
 
 .h1 {
@@ -37,10 +37,4 @@
     flex-wrap: wrap;
     gap: 72px;
     justify-content: center;
-}
-
-@media (max-width: 1440px)  {
-    .main    {
-        padding: 77px 72px;
-    }
 }
