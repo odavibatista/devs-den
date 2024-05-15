@@ -13,6 +13,7 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useHome } from "@/providers/home-data-provider";
+import refreshPage from "@/server/utils/refresh.function";
 
 const loginSchema = z.object({
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -49,10 +50,6 @@ export default function LoginScreen() {
 
   useEffect(() => {
     (async () => {
-        if (homeData && !isHomeDataLoading) {
-          router.push("/")
-        }
-
         if (loginData !== undefined) {
           try {
             const login = await userLogin({
@@ -69,7 +66,7 @@ export default function LoginScreen() {
             sessionStorage.setItem("session", login.token)
             router.push("/jobs")
             
-            
+            await refreshPage()
           } catch(error: any){
             setError("Deu ruim")
           }

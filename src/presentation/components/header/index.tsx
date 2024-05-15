@@ -7,6 +7,7 @@ import Button from '../button';
 import XLink from '../xlink';
 import { useHome } from '@/providers/home-data-provider';
 import { useRouter } from 'next/navigation';
+import refreshPage from '@/server/utils/refresh.function';
 
 
 /* WE NEED TO UPDATE THE USER'S NAME AUTOMATICALLY, A PAGE REFRESH MIGHT SOLVE IT */
@@ -27,11 +28,12 @@ export default function Header() {
         })()
     })
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         setIsLoggedin(false)
         setUserName(null)
         sessionStorage.clear()
-        router.push('/')
+        await refreshPage()
+        router.push("/")
     }
 
     return (
