@@ -4,6 +4,7 @@ interface ButtonProps {
     text: string
     type?: 'submit' | 'button'
     size: 'small' | 'medium' | 'large'
+    className?: string
     onClick?: () => void
 }
 

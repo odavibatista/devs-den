@@ -1,10 +1,39 @@
+'use client'
+
 import styles from './styles.module.scss'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from '../button';
 import XLink from '../xlink';
+import { useHome } from '@/providers/home-data-provider';
+import { useRouter } from 'next/navigation';
 
+
+/* WE NEED TO UPDATE THE USER'S NAME AUTOMATICALLY, A PAGE REFRESH MIGHT SOLVE IT */
 export default function Header() {
+    const { homeData, isHomeDataLoading } = useHome();
+    const [isLoggedin, setIsLoggedin] = useState<boolean>(false);
+    const [userName, setUserName] = useState<string | null>(null);
+
+    const router = useRouter()
+
+    useEffect(() => {
+        (async () => {
+          if (homeData && !isHomeDataLoading) {
+            setIsLoggedin(true)
+            setUserName(homeData?.name)
+            console.log(userName)
+          }
+        })()
+    })
+
+    const handleLogout = () => {
+        setIsLoggedin(false)
+        setUserName(null)
+        sessionStorage.clear()
+        router.push('/')
+    }
+
     return (
         <nav className={"navbar navbar-expand-lg container-fluid fixed-top navigation " + styles.header} id={styles.header}>
             <XLink className="navbar-brand" href={'/'}>
@@ -25,16 +54,35 @@ export default function Header() {
                             <p className={styles.nav_link}>Vagas</p>
                         </XLink>
                     </li>
-                    <li className={styles.nav_item + " nav-item"}>
-                        <XLink href="/login" className={styles.nav_link}>
-                            <Button text="LOGIN" size='small'/>
-                        </XLink>
-                    </li>
-                    <li className={styles.nav_item + " nav-item"}>
-                        <XLink href="/register" className={styles.nav_link}>
-                            <Button text="REGISTRE-SE" size='medium' />
-                        </XLink>
-                    </li>
+                    {
+                        isLoggedin && userName ? 
+                        <>
+                            <li className={styles.nav_item + " nav-item"}>
+                                <XLink href="/profile" className={styles.nav_link}>
+                                    <p className={styles.nav_link}>{userName}</p>
+                                </XLink>
+                            </li>
+                            <li className={styles.nav_item + " nav-item"}>
+                                <Button text="SAIR" size='small' className={styles.nav_link} onClick={handleLogout} />
+                            </li>
+                        </>
+                        
+                        :
+
+                        <>
+                            <li className={styles.nav_item + " nav-item"}>
+                                <XLink href="/login" className={styles.nav_link}>
+                                    <Button text="LOGIN" size='small'/>
+                                </XLink>
+                            </li>
+                            <li className={styles.nav_item + " nav-item"}>
+                                <XLink href="/register" className={styles.nav_link}>
+                                    <Button text="REGISTRE-SE" size='medium' />
+                                </XLink>
+                            </li>
+                        </>
+
+                    }
                 </ul>
             </div>
         </nav>
