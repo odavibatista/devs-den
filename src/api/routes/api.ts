@@ -1,7 +1,7 @@
 import axios from "axios";
 export interface IAPIError {
     message: string
-    statusCode: number
+    status: number
 }
 
 /* Aqui, chamamos a url que inserimos no arquivo '.env' para ser utilizado pelo Axios em todas as nossas requisições */

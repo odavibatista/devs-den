@@ -3,16 +3,21 @@
 import getHomeData, { IHomeData } from "@/api/routes/user/getHomeData";
 import { ReactNode, createContext, useContext, useLayoutEffect, useState } from "react"
 
-
 interface HomeContextData {
-    homeData: IHomeData | null
+    homeData: User | null
     isHomeDataLoading: boolean
+}
+
+interface User  {
+    id: number;
+    name: string;
+    role: 'candidate' | 'company';
 }
 
 export const HomeContext = createContext<HomeContextData>({} as HomeContextData)
 
 export const HomeProvider = ({ children }: { children: ReactNode }) => {
-    const [homeData, setHomeData] = useState<IHomeData | null>(null)
+    const [homeData, setHomeData] = useState<User | null>(null)
     const [isHomeDataLoading, setIsHomeDataLoading] = useState<boolean>(true);
     const [token, setToken] = useState<string | null>(null);
 
@@ -25,10 +30,12 @@ export const HomeProvider = ({ children }: { children: ReactNode }) => {
                     if (!token) return
                     const response = await getHomeData(token);
     
-                    if ("statusCode" in response) {
+                    if ("status" in response) {
                         return;
                     }   else    {
-                        setHomeData(response);
+                        setHomeData(response.user);
+                        console.log("HOME DATA SETTADA:")
+                        console.log(homeData)
                         setIsHomeDataLoading(false);
                         return
                     }
