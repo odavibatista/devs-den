@@ -16,7 +16,7 @@ export default function JobsScreen() {
         const data = await getJobs()
 
         if ("statusCode" in data) {
-          console.error(data)
+          setJobsLoading(false)
         } else {
           setJobs(data)
           setJobsLoading(false)
@@ -32,10 +32,12 @@ export default function JobsScreen() {
       )
     }
 
-    if (!jobs) {
+    if (!jobs || jobs.length === 0) {
       return  (
         <>
-          <p>PIIIIIIIIIIIIIII</p>
+          <main className={styles.error}>
+            <h1>Parece que não há vagas abertas no momento. Tente novamente mais tarde.</h1>
+          </main>
         </>
       )
     } 

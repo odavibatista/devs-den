@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingScreen from "@/presentation/components/loadingScreen";
 import styles from './styles.module.scss'
 import { jobModalityParser } from "@/server/utils/job-modality.parser";
+import XLink from "@/presentation/components/xlink";
+import Emphasis from "@/presentation/components/emphasis";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
@@ -17,7 +19,7 @@ export default function JobPage ({params}: DynamicRoute)   {
           const data = await getSingleJob(Number(params.id))
     
           if ("statusCode" in data) {
-            console.log(data)
+            setJobLoading(false)
           } else {
             setJob(data)
             setJobLoading(false)
@@ -36,7 +38,9 @@ export default function JobPage ({params}: DynamicRoute)   {
     if (!job) {
       return  (
         <>
-          <p>PIIIIIIIIIIIIIII</p>
+          <main className={styles.error}>
+            <h1>A vaga que você encontrou não existe. Que tal buscar <XLink href="/jobs"><Emphasis color="light_blue" text="outras" /></XLink>?</h1>
+          </main>
         </>
       )
     } 
@@ -53,7 +57,7 @@ export default function JobPage ({params}: DynamicRoute)   {
             {job.job.job_category.name}
           </h4>
           <h6 className={styles.job_modality}>
-            {job.job.modality}
+            {job.job.modality} - {job.job.contract}
           </h6>
 
           <div className={styles.splitter_small}></div>

@@ -7,7 +7,8 @@ export interface IGetJob {
         description: string;
         wage: number;
         modality: string;
-
+        contract: string
+        
         job_category:   {
             id_category: number;
             name: string;

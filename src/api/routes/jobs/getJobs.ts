@@ -8,6 +8,7 @@ export interface IGetJobs {
     job_category_id: number;
     wage: number;
     modality: string;
+    contract: string
 }
 
 const getJobs = async(): Promise<IGetJobs[] | IAPIError> => {

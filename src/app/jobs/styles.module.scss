@@ -1,5 +1,16 @@
 @import '@/app/globals.scss';
 
+.error  {
+    display: grid;
+    place-content: center;
+    height: 90vh;
+
+    h1  {
+        color: $white-gray;
+        font-family: $m;
+    }
+}
+
 .main    {
     @include green_gradient;
 

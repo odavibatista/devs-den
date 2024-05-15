@@ -1,13 +1,26 @@
 @import '@/app/globals.scss';
 
+.error  {
+    display: grid;
+    place-content: center;
+    height: 90vh;
+
+    h1  {
+        color: $white-gray;
+        font-family: $m;
+    }
+}
+
 .main   {
     align-items: center;
     display: flex;
     flex-direction: column;
     font-family: $m;
     gap: 21px;
-    height: 100vh;
-    padding-top: 98px;
+    height: 95vh;
+    place-content: center;
+
+    @include green_gradient;
 }
 
 .job_title  {
