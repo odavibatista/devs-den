@@ -10,12 +10,11 @@ export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJobs[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
 
-
     useEffect(() => {
       (async () => {
         const data = await getJobs()
 
-        if ("statusCode" in data) {
+        if ("status" in data) {
           setJobsLoading(false)
         } else {
           setJobs(data)

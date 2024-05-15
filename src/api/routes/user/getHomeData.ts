@@ -1,9 +1,11 @@
 import api, { IAPIError } from "../api";
 
 export interface IHomeData {
-    id: number;
-    name: string;
-    role: 'candidate' | 'company';
+    user: {
+        id: number;
+        name: string;
+        role: 'candidate' | 'company';
+    }
 }
 
 const getHomeData = async(token: string): Promise<IHomeData | IAPIError> => {

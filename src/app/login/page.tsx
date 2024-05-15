@@ -60,13 +60,15 @@ export default function LoginScreen() {
               inserted_password: loginData.password
             })
 
-            if("statusCode" in login){
-              setError("DEU RUIM")
+            if("status" in login){
+              setError(login.message)
+              alert(errorMessage)
               return
-            } else {
-              sessionStorage.setItem("session", login.token)
-              router.push("/jobs")
             }
+
+            sessionStorage.setItem("session", login.token)
+            router.push("/jobs")
+            
             
           } catch(error: any){
             setError("Deu ruim")
