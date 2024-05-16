@@ -1,1 +1,64 @@
 @import '@/app/globals.scss';
+
+.main   {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    @include spacing;
+    @include green_gradient;
+}
+
+.form_section   {
+    align-items: center;
+    background-color: $dark-gray;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    @include margin_spacing;
+    padding: 79px 72px;
+    width: 100%;
+}
+
+.form_h1    {
+    color: $white-gray;
+    font-family: $m;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.active {
+    background-color: $light-blue;
+    color: $gray;
+}
+
+.unactive   {
+    background-color: $gray;
+    color: $light-blue;
+}
+
+.controllers    {
+    display: flex;
+}
+
+.controller {
+    cursor: pointer;
+    display: grid;
+    font-family: $m;
+    font-size: 24px;
+    font-weight: 800;
+    height: 55px;
+    padding: 13px;
+    place-content: center;
+    text-align: center;
+    transition: 0.2s;
+    width: 238px;
+}
+
+#candidate  {
+    border-radius: 50px 0 0 50px ;
+}
+
+#company   {
+    border-radius: 0 50px 50px 0;
+}

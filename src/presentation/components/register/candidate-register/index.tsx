@@ -9,14 +9,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useHome } from "@/providers/home-data-provider";
 import refreshPage from "@/server/utils/refresh.function";
 
 const registerCandidateSchema = z.object({
   name: z.string().min(8, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
-  birth_date: z.string({ message: 'Campo obrigatório.' }),
+  birth_date: z.string().min(20, { message: 'Campo obrigatório.' }),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
@@ -37,8 +35,6 @@ export default function CandidateRegister() {
         resolver: zodResolver(registerCandidateSchema),
         mode: 'all',
       })
-
-    const router = useRouter()
 
     async function onSubmit (data: RegisterCandidateSchemaInterface) {
         setRegisterData(data)

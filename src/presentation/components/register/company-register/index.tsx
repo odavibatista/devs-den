@@ -9,8 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useHome } from "@/providers/home-data-provider";
 import refreshPage from "@/server/utils/refresh.function";
 
 const registerCompanySchema = z.object({
@@ -38,7 +36,6 @@ export default function CompanyRegister() {
         mode: 'all',
       })
       
-    const router = useRouter()
 
     async function onSubmit (data: RegisterCompanySchemaInterface) {
         setRegisterData(data)
@@ -62,10 +59,10 @@ export default function CompanyRegister() {
         })()
       })
   return (
-    <section className={''}>
+    <div className={''}>
       <form className={styles.register_company_form}>
           <p>Formulário para empresas</p>
       </form>
-    </section>
+    </div>
   );
 }

@@ -24,3 +24,15 @@
         padding: 10px 36px;
     }
 }
+
+@mixin margin_spacing {
+    margin: 33px 142px;
+
+    @media (max-width: 1440px)  {
+        margin: 33px 72px;
+    }
+
+    @media (max-width: 768px) {
+        margin: 10px 36px;
+    }
+}
