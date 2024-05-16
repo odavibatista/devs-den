@@ -1,4 +1,5 @@
 /* Aqui, importamos a API criada anteriormente */
+import IUserResponse from "@/server/utils/user.response";
 import api, { IAPIError } from "../api";
 
 /* Passamos os atributos do login, por hora e provavelmente somente e-mail e senha, para que seja tipado para a função*/
@@ -7,14 +8,7 @@ interface userLoginAttributes   {
     inserted_password: string
 }
 
-export interface ILoginResponse {
-    user: {
-        id: number
-        name: string
-        role: string
-    }
-    token: string
-}
+export interface ILoginResponse extends IUserResponse {}
 
 /* Aqui, declaramos a função userLogin() como o service que irá chamar no endpoint, passando um parâmetro do tipo criado acima */
 const userLogin = async (data: userLoginAttributes): Promise<ILoginResponse  | IAPIError  > => {
