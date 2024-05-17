@@ -3,7 +3,6 @@
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
-import Label from "@/presentation/components/label"
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
@@ -61,20 +60,11 @@ export default function CompanyRegister() {
   return (
       <form className={styles.register_company_form}>
         <div>
-          <span>
-            <Label text="Razão Social" uppercase forName="company_name" />
-            <Input type="text" register={register} name="name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
-          </span>
-          
-          <span>
-            <Label text="Email Corporativo" uppercase forName="email" />
-            <Input type="email"register={register} name="email" maxLength={50} placeholder="Ex: contato@acme.com.br" />
-          </span>
-          
-          <span>
-            <Label text="CNPJ" uppercase forName="cnpj" />
-            <Input type="text" register={register} name="cnpj" maxLength={16} placeholder="Ex: 00.000.000/0001-00" />
-          </span>
+            <Input text="Razão Social" uppercase forName="company_name" type="text" register={register} name="company_name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
+
+            <Input forName="email" text="EMAIL CORPORATIVO" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: contato@acme.com.br" />
+
+            <Input forName="cnpj" text="CNPJ" uppercase type="text" register={register} name="cnpj" maxLength={16} placeholder="Ex: 00.000.000/0001-00" />
         </div>
         <div>
           <span>
