@@ -1,5 +1,5 @@
 import api, { IAPIError } from "../api";
-import { IGetSkill } from "./getSingleSkill";
+import { IGetSkill } from "./getSingleSkill.endpoint";
 
 const getSkills = async(): Promise<IGetSkill | IAPIError> => {
     

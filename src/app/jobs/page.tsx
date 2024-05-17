@@ -2,7 +2,7 @@
 import JobCard from '@/presentation/components/job-card';
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
-import getJobs, { IGetJob } from '@/api/endpoints/jobs/getJobs';
+import getJobs, { IGetJob } from '@/api/endpoints/jobs/getJobs.endpoint';
 import XLink from '@/presentation/components/xlink';
 import LoadingScreen from '@/presentation/components/loadingScreen';
 

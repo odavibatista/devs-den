@@ -1,5 +1,4 @@
 'use client'
-import getSingleJob, { IGetJob } from "@/api/endpoints/jobs/getSingleJob"
 import { DynamicRoute } from "@/server/utils/dynamic.route";
 import { useEffect, useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +9,7 @@ import XLink from "@/presentation/components/xlink";
 import Emphasis from "@/presentation/components/emphasis";
 import { useHome } from "@/providers/home-data-provider";
 import Button from "@/presentation/components/button";
+import getSingleJob, { IGetJob } from "@/api/endpoints/jobs/getSingleJob.endpoint";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()

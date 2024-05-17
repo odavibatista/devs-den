@@ -3,7 +3,7 @@ import IUserResponse from "@/server/utils/user.response";
 import api, { IAPIError } from "../api";
 
 /* Passamos os atributos do registro de usuário CANDIDATO, para que seja chamado no endpoint devido da API. São vários os dados de cadastro e separamos eles em objetos menores*/
-interface userRegisterAttributes {
+interface IUserRegisterAttributes {
     name: string
     gender: "male" | "female"
     birth_date: Date
@@ -25,7 +25,7 @@ interface userRegisterAttributes {
 export interface ICandidateRegister extends IUserResponse {}
 
 /* Aqui, declaramos a função userRegister() como o service que irá chamar no endpoint, passando um parâmetro do tipo criado acima */
-const userRegister = async (data: userRegisterAttributes): Promise<ICandidateRegister | IAPIError> => {
+const userRegister = async (data: IUserRegisterAttributes): Promise<ICandidateRegister | IAPIError> => {
 
     /* Chamamos o endpoint '/user/register' enviando os dados do tipo declarado */
     const response = await api.post("/user/register", data).catch((err) => {

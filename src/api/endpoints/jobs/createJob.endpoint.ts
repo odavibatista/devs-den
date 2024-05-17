@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import api, { IAPIError } from "../api";
-import { IGetJob } from "./getJobs";
+import { IGetJob } from "./getJobs.endpoint";
 
 export interface ICreateJob {
     title: string

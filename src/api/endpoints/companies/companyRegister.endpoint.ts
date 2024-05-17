@@ -23,7 +23,7 @@ export interface ICompanyRegister {
 
 export interface ICompanyRegisterResponse extends IUserResponse {}
 
-const companyRegister = async(data: ICompanyRegister): Promise<ICompanyRegister | IAPIError> => {
+const companyRegister = async(data: ICompanyRegister): Promise<ICompanyRegisterResponse | IAPIError> => {
     
     const response = await api.post("/company/register").catch((err)    => {
         return err.response
