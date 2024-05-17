@@ -2,13 +2,14 @@ import styles from './styles.module.scss'
 
 interface InputProps {
     placeholder?: string
-    type: 'submit' | 'password' | 'date' | 'email' | 'text'
+    type: 'submit' | 'password' | 'date' | 'email' | 'text' | 'select'
     name: string
     maxLength?: number
     register?: any
     text: string
     forName: string
     uppercase?: boolean
+    options?: string[]
 }
 
 const InputComponent = ({ placeholder, type, name, maxLength, register, forName, uppercase, text }: InputProps): JSX.Element => {

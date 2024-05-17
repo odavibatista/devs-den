@@ -59,32 +59,32 @@ export default function CompanyRegister() {
       })
   return (
       <form className={styles.register_company_form}>
-        <div>
-            <Input text="Razão Social" uppercase forName="company_name" type="text" register={register} name="company_name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
+        <div className={styles.form_rows}>
+          <Input text="Razão Social" uppercase forName="company_name" type="text" register={register} name="company_name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
 
-            <Input forName="email" text="EMAIL CORPORATIVO" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: contato@acme.com.br" />
+          <Input forName="email" text="EMAIL CORPORATIVO" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: contato@acme.com.br" />
 
-            <Input forName="cnpj" text="CNPJ" uppercase type="text" register={register} name="cnpj" maxLength={16} placeholder="Ex: 00.000.000/0001-00" />
+          <Input forName="cnpj" text="CNPJ" uppercase type="text" register={register} name="cnpj" maxLength={16} placeholder="Ex: 00.000.000/0001-00" />
         </div>
-        <div>
-          <span>
-          
-          </span>
-          
-          <span>
-            
-          </span>
-          
-          <span>
-            
-          </span>
-          
-          <span>
-            
-          </span>
-        </div>
-        <div>
 
+        <div className={styles.form_rows}>
+          <Input forName="cep" text="CEP" uppercase type="text" register={register} name="cep" maxLength={8} placeholder="Ex: 00000-000" />
+
+          <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
+
+          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={["Teste 1", "Teste 2"]} />
+
+          <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
+        </div>
+
+        <div className={styles.form_rows}>
+          <Input forName="number" text="Número" uppercase type="text" register={register} name="number" maxLength={8} placeholder="Ex: 100" />
+
+          <Input forName="complement" text="Complemento" uppercase type="text" register={register} name="complement" maxLength={60} placeholder="Ex: Casa" />
+
+          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={2} placeholder="" />
+
+          <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
       </form>
   );

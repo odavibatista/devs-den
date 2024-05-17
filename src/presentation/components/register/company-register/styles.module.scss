@@ -1,0 +1,11 @@
+@import '@/app/globals.scss';
+
+.register_company_form  {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_rows  {
+    display: flex;
+    flex-direction: row;
+}
