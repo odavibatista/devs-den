@@ -10,6 +10,8 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
 import companyRegister from "@/api/endpoints/companies/companyRegister.endpoint";
+import getUfs, { IGetUF } from "@/api/endpoints/ufs/getUfs.endpoint";
+import { useRouter } from "next/navigation";
 
 const registerCompanySchema = z.object({
   company_name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
@@ -30,12 +32,39 @@ type RegisterCompanySchemaInterface = z.infer<typeof registerCompanySchema>
 export default function CompanyRegister() {
     const [errorMessage, setErrorMessage] = useState('')
     const [registerCandidateData, setRegisterData] = useState<RegisterCompanySchemaInterface>()
+    const [ufs, setUfs] = useState<IGetUF[]>([])
+    const [isUFsLoading, setIsUFsLoading] = useState(true)
+
+    const ufList = ufs.map(uf => {
+      return {
+          name: uf.acronym,
+          value: uf.id_uf
+      }
+    })
+
+    useEffect(() => {
+      (async () => {
+        setIsUFsLoading(true)
+          const response = await getUfs()
+          if ('status' in response) {
+            setErrorMessage(response.message)
+            return
+          } else  {
+            setUfs(response)
+          }
+
+          setIsUFsLoading(false)
+      })()
+    }, [])
+
+
+    const router = useRouter()
 
     const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCompanySchemaInterface>({
         resolver: zodResolver(registerCompanySchema),
         mode: 'all',
       })
-      
+    
 
     async function onSubmit (data: RegisterCompanySchemaInterface) {
         setRegisterData(data)
@@ -44,13 +73,40 @@ export default function CompanyRegister() {
     function setError(message: string) {
         setErrorMessage(message)
       }
-
     
       useEffect(() => {
         (async () => {
             if (registerCandidateData !== undefined) {
               try {
-                // Adapt the code here for registering the candidate
+                const registerCompany = await companyRegister({
+                  cnpj: registerCandidateData.cnpj,
+                  company_name: registerCandidateData.company_name,
+                  credentials: {
+                    email: registerCandidateData.email,
+                    password: registerCandidateData.password,
+                    role: "company"
+                  },
+                  address: {
+                    // FIX THIS
+                    uf: registerCandidateData.uf as any,
+                    city: registerCandidateData.city,
+                    cep: registerCandidateData.cep,
+                    street: registerCandidateData.street,
+                    number: registerCandidateData.number,
+                    complement: registerCandidateData.complement
+                  }
+                })
+
+                if ("status" in registerCompany) {
+                  setError(registerCompany.message)
+                  alert(errorMessage)
+                  return
+                }
+
+                sessionStorage.setItem("session", registerCompany.token)
+                router.push("/jobs")
+                
+                await refreshPage()
               } catch(error: any){
                 setError("Deu ruim")
               }
@@ -58,6 +114,7 @@ export default function CompanyRegister() {
             setRegisterData(undefined)
         })()
       })
+
   return (
       <form className={styles.register_company_form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form_rows}>
@@ -73,7 +130,7 @@ export default function CompanyRegister() {
 
           <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
 
-          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={["Teste 1", "Teste 2"]} />
+          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={ufList} />
 
           <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
         </div>
@@ -87,6 +144,8 @@ export default function CompanyRegister() {
 
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
+
+        <Button size="medium" text="REGISTRAR" type="submit" />
       </form>
   );
 }

@@ -85,6 +85,8 @@ export default function CandidateRegister() {
 
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
+
+        <Button size="medium" text="REGISTRAR" type="submit" />
       </form>
   );
 }

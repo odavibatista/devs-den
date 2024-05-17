@@ -9,7 +9,7 @@ interface InputProps {
     text: string
     forName: string
     uppercase?: boolean
-    options?: string[]
+    options?: any[]
 }
 
 const InputComponent = ({ placeholder, type, name, maxLength, register, forName, uppercase, text }: InputProps): JSX.Element => {

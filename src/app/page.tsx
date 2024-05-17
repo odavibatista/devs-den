@@ -3,8 +3,8 @@ import Button from "@/presentation/components/button";
 import CategoryBadge from "@/presentation/components/category-badge";
 import styles from './styles.module.scss'
 import { useEffect, useState } from "react";
-import { IGetCategory } from "@/api/endpoints/job-categories/getCategory";
-import getCategories from "@/api/endpoints/job-categories/getCategories";
+import { IGetCategory } from "@/api/endpoints/job-categories/getCategory.endpoint";
+import getCategories from "@/api/endpoints/job-categories/getCategories.endpoint";
 import Emphasis from "@/presentation/components/emphasis";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     (async () => {
       const data = await getCategories()
 
-      if ("statusCode" in data) {
+      if ("status" in data) {
         console.error(data)
       } else {
         setCategories(data)

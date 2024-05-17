@@ -7,7 +7,7 @@ export interface ICompanyRegister {
     cnpj: string;
         credentials: {
             email: string;
-            passeord: string;
+            password: string;
             role: "company";
         }
     
