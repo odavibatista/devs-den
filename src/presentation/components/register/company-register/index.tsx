@@ -59,10 +59,43 @@ export default function CompanyRegister() {
         })()
       })
   return (
-    <div className={''}>
       <form className={styles.register_company_form}>
-          <p>Formulário para empresas</p>
+        <div>
+          <span>
+            <Label text="Razão Social" uppercase forName="company_name" />
+            <Input type="text" register={register} name="name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
+          </span>
+          
+          <span>
+            <Label text="Email Corporativo" uppercase forName="email" />
+            <Input type="email"register={register} name="email" maxLength={50} placeholder="Ex: contato@acme.com.br" />
+          </span>
+          
+          <span>
+            <Label text="CNPJ" uppercase forName="cnpj" />
+            <Input type="text" register={register} name="cnpj" maxLength={16} placeholder="Ex: 00.000.000/0001-00" />
+          </span>
+        </div>
+        <div>
+          <span>
+          
+          </span>
+          
+          <span>
+            
+          </span>
+          
+          <span>
+            
+          </span>
+          
+          <span>
+            
+          </span>
+        </div>
+        <div>
+
+        </div>
       </form>
-    </div>
   );
 }

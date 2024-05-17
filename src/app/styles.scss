@@ -12,6 +12,11 @@ body   {
     @include dark_gradient;
 }
 
+span    {
+    display: flex;
+    flex-direction: column
+}
+
 #nav-button {
     background-color: $teal;
     color: $dark;
