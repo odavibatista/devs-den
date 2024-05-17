@@ -1,0 +1,31 @@
+@import '@/app/globals.scss';
+
+.span  {
+    display: flex;
+    flex-direction: column;
+}
+
+.label  {
+    color: $light-blue;
+    font-family: $m;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.select  {
+    background-color: $dark-gray;
+    border-radius: 10px;
+    border: none;
+    color: $white-gray;
+    font-family: $m;
+    font-size: 18px;
+    height: 60px;
+    padding: 10px;
+    outline: none;
+    width: 655px;
+
+    @media  (max-width: 1440px) {
+        height: 50px;
+        width: 530px;
+    }
+}

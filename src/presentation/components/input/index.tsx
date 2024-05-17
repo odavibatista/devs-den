@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 
 interface InputProps {
     placeholder?: string
-    type: 'submit' | 'password' | 'date' | 'email' | 'text' | 'select'
+    type: 'submit' | 'password' | 'date' | 'email' | 'text'
     name: string
     maxLength?: number
     register?: any

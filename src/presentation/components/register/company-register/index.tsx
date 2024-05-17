@@ -12,6 +12,7 @@ import refreshPage from "@/server/utils/refresh.function";
 import companyRegister from "@/api/endpoints/companies/companyRegister.endpoint";
 import getUfs, { IGetUF } from "@/api/endpoints/ufs/getUfs.endpoint";
 import { useRouter } from "next/navigation";
+import Select from "../../select";
 
 const registerCompanySchema = z.object({
   company_name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
@@ -88,7 +89,7 @@ export default function CompanyRegister() {
                   },
                   address: {
                     // FIX THIS
-                    uf: registerCandidateData.uf as any,
+                    uf: +registerCandidateData.uf,
                     city: registerCandidateData.city,
                     cep: registerCandidateData.cep,
                     street: registerCandidateData.street,
@@ -130,7 +131,7 @@ export default function CompanyRegister() {
 
           <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
 
-          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={ufList} />
+          <Select forName="uf" text="Estado" uppercase register={register} name="uf" options={ufList} />
 
           <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
         </div>
