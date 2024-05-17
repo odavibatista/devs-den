@@ -4,10 +4,35 @@ import styles from './styles.module.scss'
 import { useEffect, useState } from "react";
 import CandidateRegister from "@/presentation/components/register/candidate-register";
 import CompanyRegister from "@/presentation/components/register/company-register";
+import getUfs, { IGetUF } from '@/api/endpoints/ufs/getUfs.endpoint';
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
   const [errorMessage, setErrorMessage] = useState('')
   const [registerType, setRegisterType] = useState<'candidate' | 'company'>('candidate')
+  const [ufs, setUfs] = useState<IGetUF[]>([])
+  const [isUFsLoading, setIsUFsLoading] = useState(true)
+
+  const ufList = ufs.map(uf => {
+    return {
+        name: uf.acronym,
+        value: uf.id_uf
+    }
+  })
+
+  useEffect(() => {
+    (async () => {
+      setIsUFsLoading(true)
+        const response = await getUfs()
+        if ('status' in response) {
+          setErrorMessage(response.message)
+          return
+        } else  {
+          setUfs(response)
+        }
+
+        setIsUFsLoading(false)
+    })()
+  }, [])
 
   const registerTypeHandle = (type: 'candidate' | 'company') => {
     setRegisterType(type)
@@ -28,9 +53,9 @@ export default function LoginScreen() {
         </div>
       {
           registerType === 'candidate' ? 
-          <CandidateRegister />
+          <CandidateRegister listOfUFs={ufList} />
           :
-          <CompanyRegister />
+          <CompanyRegister listOfUFs={ufList} />
         }
       </section>
     </main>

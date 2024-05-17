@@ -30,33 +30,9 @@ const registerCompanySchema = z.object({
 
 type RegisterCompanySchemaInterface = z.infer<typeof registerCompanySchema>
 
-export default function CompanyRegister() {
+export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, value: number}[]}) {
     const [errorMessage, setErrorMessage] = useState('')
     const [registerCandidateData, setRegisterData] = useState<RegisterCompanySchemaInterface>()
-    const [ufs, setUfs] = useState<IGetUF[]>([])
-    const [isUFsLoading, setIsUFsLoading] = useState(true)
-
-    const ufList = ufs.map(uf => {
-      return {
-          name: uf.acronym,
-          value: uf.id_uf
-      }
-    })
-
-    useEffect(() => {
-      (async () => {
-        setIsUFsLoading(true)
-          const response = await getUfs()
-          if ('status' in response) {
-            setErrorMessage(response.message)
-            return
-          } else  {
-            setUfs(response)
-          }
-
-          setIsUFsLoading(false)
-      })()
-    }, [])
 
 
     const router = useRouter()
@@ -131,7 +107,7 @@ export default function CompanyRegister() {
 
           <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
 
-          <Select forName="uf" text="Estado" uppercase register={register} name="uf" options={ufList} />
+          <Select forName="uf" text="Estado" uppercase register={register} name="uf" options={listOfUFs} />
 
           <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
         </div>
@@ -146,7 +122,7 @@ export default function CompanyRegister() {
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
 
-        <Button size="medium" text="REGISTRAR" type="submit" />
+        <Button size="large" text="REGISTRAR" type="submit" />
       </form>
   );
 }

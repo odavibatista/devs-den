@@ -1,12 +1,15 @@
 @import '@/app/globals.scss';
 
 .register_candidate_form  {
+    align-items: center;
     display: flex;
     flex-direction: column;
+    gap: 30px;
 }
 
 .form_rows  {
     display: flex;
     flex-direction: row;
     gap: 72px;
+    width: 100%;
 }

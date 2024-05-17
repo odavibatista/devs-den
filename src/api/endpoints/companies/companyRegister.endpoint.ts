@@ -17,7 +17,7 @@ export interface ICompanyRegister {
             cep: string
             street: string
             number: string
-            complement: string
+            complement?: string
        }
 }
 

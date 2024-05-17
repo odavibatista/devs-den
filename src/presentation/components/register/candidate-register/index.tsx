@@ -9,6 +9,8 @@ import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
+import getUfs, { IGetUF } from "@/api/endpoints/ufs/getUfs.endpoint";
+import Select from "../../select";
 
 const registerCandidateSchema = z.object({
   name: z.string().min(8, { message: 'Campo obrigatório.' }),
@@ -26,7 +28,7 @@ const registerCandidateSchema = z.object({
 
 type RegisterCandidateSchemaInterface = z.infer<typeof registerCandidateSchema>
 
-export default function CandidateRegister() {
+export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string, value: number}[]}) {
     const [errorMessage, setErrorMessage] = useState('')
     const [registerCandidateData, setRegisterData] = useState<RegisterCandidateSchemaInterface>()
 
@@ -71,7 +73,7 @@ export default function CandidateRegister() {
 
           <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
 
-          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={["Teste 1", "Teste 2"]} />
+          <Select forName="uf" text="Estado" uppercase register={register} name="uf" options={listOfUFs} />
 
           <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
         </div>
@@ -86,7 +88,7 @@ export default function CandidateRegister() {
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
 
-        <Button size="medium" text="REGISTRAR" type="submit" />
+        <Button size="large" text="REGISTRAR" type="submit" />
       </form>
   );
 }
