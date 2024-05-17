@@ -58,7 +58,7 @@ export default function CompanyRegister() {
         })()
       })
   return (
-      <form className={styles.register_company_form}>
+      <form className={styles.register_company_form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form_rows}>
           <Input text="Razão Social" uppercase forName="company_name" type="text" register={register} name="company_name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
 

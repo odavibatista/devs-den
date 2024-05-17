@@ -3,7 +3,6 @@
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
-import Label from "@/presentation/components/label"
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
@@ -58,10 +57,34 @@ export default function CandidateRegister() {
         })()
       })
   return (
-    <section className={''}>
-      <form className={styles.register_candidate_form}>
-        <p>Formulário para candidatos</p>
+      <form className={styles.register_candidate_form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.form_rows}>
+          <Input text="Nome Completo" uppercase forName="name" type="text" register={register} name="name" maxLength={60} placeholder="Ex: João da Silva" />  
+
+          <Input forName="email" text="E-mail" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: joão@dev.com" />
+
+          <Input forName="birth" text="Data de Nasc." uppercase type="date" register={register} name="birth" maxLength={16} placeholder="Ex: 01/01/2000" />
+        </div>
+
+        <div className={styles.form_rows}>
+          <Input forName="cep" text="CEP" uppercase type="text" register={register} name="cep" maxLength={8} placeholder="Ex: 00000-000" />
+
+          <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
+
+          <Input forName="uf" text="Estado" uppercase type="select" register={register} name="uf" maxLength={2} placeholder="Selecione..." options={["Teste 1", "Teste 2"]} />
+
+          <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
+        </div>
+
+        <div className={styles.form_rows}>
+          <Input forName="number" text="Número" uppercase type="text" register={register} name="number" maxLength={8} placeholder="Ex: 100" />
+
+          <Input forName="complement" text="Complemento" uppercase type="text" register={register} name="complement" maxLength={60} placeholder="Ex: Casa" />
+
+          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={2} placeholder="" />
+
+          <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
+        </div>
       </form>
-    </section>
   );
 }

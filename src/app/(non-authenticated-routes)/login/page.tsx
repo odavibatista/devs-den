@@ -3,7 +3,6 @@
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
-import Label from "@/presentation/components/label"
 
 import userLogin from "@/api/routes/user/userLogin";
 
@@ -83,12 +82,10 @@ export default function LoginScreen() {
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.rightLogin}>
         <div className={styles.textField}>
-          <Label forName="email" text="E-mail" uppercase />
-          <Input type="email" placeholder="Digite seu e-mail." name="email" maxLength={50} register={register} />
+          <Input forName="email" text="E-mail" uppercase type="email" placeholder="Digite seu e-mail." name="email" maxLength={50} register={register} />
         </div>
         <div className={styles.textField}>
-          <Label forName="password" text="Senha" uppercase />
-          <Input type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
+          <Input forName="password" text="Senha" uppercase type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
         </div>
         <Button size="medium" text="ENTRAR" type="submit" />
       </form>
