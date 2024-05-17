@@ -1,6 +1,6 @@
 import IUserResponse from "@/server/utils/user.response";
 import api, { IAPIError } from "../api";
-import { IGetUser } from "../user/getUser";
+import { IGetUser } from "../user/getUser.endpoint";
 
 export interface ICompanyRegister {
     company_name: string;

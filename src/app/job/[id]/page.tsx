@@ -1,5 +1,5 @@
 'use client'
-import getSingleJob, { IGetJob } from "@/api/routes/jobs/getSingleJob"
+import getSingleJob, { IGetJob } from "@/api/endpoints/jobs/getSingleJob"
 import { DynamicRoute } from "@/server/utils/dynamic.route";
 import { useEffect, useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';

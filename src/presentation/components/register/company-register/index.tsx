@@ -9,6 +9,7 @@ import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
+import companyRegister from "@/api/endpoints/companies/companyRegister.endpoint";
 
 const registerCompanySchema = z.object({
   company_name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),

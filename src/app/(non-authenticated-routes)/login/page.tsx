@@ -4,7 +4,7 @@ import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
 
-import userLogin from "@/api/routes/user/userLogin";
+import userLogin from "@/api/endpoints/user/userLogin.endpoint";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";

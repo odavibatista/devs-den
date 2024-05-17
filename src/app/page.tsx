@@ -3,8 +3,8 @@ import Button from "@/presentation/components/button";
 import CategoryBadge from "@/presentation/components/category-badge";
 import styles from './styles.module.scss'
 import { useEffect, useState } from "react";
-import { IGetCategory } from "@/api/routes/job-categories/getCategory";
-import getCategories from "@/api/routes/job-categories/getCategories";
+import { IGetCategory } from "@/api/endpoints/job-categories/getCategory";
+import getCategories from "@/api/endpoints/job-categories/getCategories";
 import Emphasis from "@/presentation/components/emphasis";
 
 export default function Home() {

@@ -1,6 +1,6 @@
 'use client'
 
-import getHomeData, { IHomeData } from "@/api/routes/user/getHomeData";
+import getHomeData, { IHomeData } from "@/api/endpoints/user/getHomeData";
 import { ReactNode, createContext, useContext, useLayoutEffect, useState } from "react"
 
 interface HomeContextData {
