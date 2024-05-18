@@ -114,7 +114,7 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
         </div>
 
         <div className={styles.form_rows}>
-          <Input forName="cep" text="CEP" type="text" register={register} name="cep" useMask="00000-000" placeholder="00000-000" uppercase  />
+          <Input forName="cep" text="CEP" type="text" register={register} name="cep" placeholder="00000-000" uppercase maxLength={8}  />
 
           <Input forName="street" text="Rua" type="text" register={register} name="street" maxLength={60} placeholder="Rua A" uppercase />
 
