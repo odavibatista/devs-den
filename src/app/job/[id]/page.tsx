@@ -93,11 +93,25 @@ export default function JobPage ({params}: DynamicRoute)   {
           </p>
 
           {
-            userRole === "candidate" ? <Button size="medium" text="CANDIDATAR-SE" /> : null
+            userRole === "candidate" ? 
+            <div className={styles.apply_button_div}>
+              <Button text="CANDIDATAR-SE" />
+            </div> 
+            
+            : 
+            
+            null
           }
 
           {
-            userRole === "company" && homeData?.id === job.company.id_company ? <Button size="small" text="EDITAR VAGA" /> : null
+            userRole === "company" && homeData?.id === job.company.id_company ?
+            <div className={styles.edit_button_div}>
+              <Button text="EDITAR VAGA" />
+            </div> 
+            
+            : 
+            
+            null
           }
 
         </main>

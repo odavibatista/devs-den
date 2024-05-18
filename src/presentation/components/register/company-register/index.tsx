@@ -120,7 +120,7 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
         </div>
 
         <div className={styles.button_div}>
-          <Button size="large" text="REGISTRAR" type="submit" />
+          <Button text="REGISTRAR" type="submit" />
         </div>
       </form>
   );

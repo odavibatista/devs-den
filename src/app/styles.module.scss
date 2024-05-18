@@ -15,6 +15,7 @@
     min-height: 100vh;
     padding: 80px 0px;
     place-content: center;
+    text-align: center;
 
     button  {
         margin-top: 100px;
@@ -28,6 +29,12 @@
 
 .hero_h4    {
     font-size: 32px;
+}
+
+.button_div {
+    font-size: 24px;
+    height: 54px;
+    width: 233px;
 }
 
 .categories_section {

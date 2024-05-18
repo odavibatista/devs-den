@@ -29,7 +29,9 @@ export default function Home() {
       <section className={styles.hero}>
         <h1 className={styles.hero_h1}>Sua carreira de TI começa aqui.</h1>
         <h4 className={styles.hero_h4}>Empresas de todo o país buscam profissionais pelo DEV'S DEN.</h4>
-        <Button text="FAÇA PARTE" size="large" type="button" />
+        <div className={styles.button_div}>
+          <Button text="FAÇA PARTE" type="button" />
+        </div>
       </section>
       <section>
       </section>

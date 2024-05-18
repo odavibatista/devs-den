@@ -65,7 +65,9 @@ export default function Header() {
                                 </XLink>
                             </li>
                             <li className={styles.nav_item + " nav-item"}>
-                                <Button text="SAIR" size='small' className={styles.nav_link} onClick={handleLogout} />
+                                <div className={styles.logout_div}>
+                                    <Button text="SAIR" className={styles.nav_link} onClick={handleLogout} />
+                                </div>
                             </li>
                         </>
                         
@@ -74,12 +76,16 @@ export default function Header() {
                         <>
                             <li className={styles.nav_item + " nav-item"}>
                                 <XLink href="/login" className={styles.nav_link}>
-                                    <Button text="LOGIN" size='small'/>
+                                    <div className={styles.login_div}>
+                                        <Button text="LOGIN" />
+                                    </div>
                                 </XLink>
                             </li>
                             <li className={styles.nav_item + " nav-item"}>
                                 <XLink href="/register" className={styles.nav_link}>
-                                    <Button text="REGISTRE-SE" size='medium' />
+                                    <div className={styles.register_div}>
+                                        <Button text="REGISTRE-SE" />
+                                    </div>
                                 </XLink>
                             </li>
                         </>
