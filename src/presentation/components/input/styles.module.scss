@@ -26,10 +26,5 @@
     height: 50px;
     padding: 10px;
     outline: none;
-    width: 305px;
-
-    @media  (max-width: 1440px) {
-        height: 50px;
-        width: 530px;
-    }
+    width: inherit;
 }

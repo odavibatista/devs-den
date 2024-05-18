@@ -1,7 +1,7 @@
 'use client'
 
 import Button from "@/presentation/components/button";
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
 import Input from "@/presentation/components/input"
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -51,7 +51,6 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
     
       useEffect(() => {
         (async () => {
-            console.log(registerCompanyData)
             if (registerCompanyData !== undefined) {
               try {
                 const registerCompany = await companyRegister({
@@ -91,7 +90,7 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
       })
 
   return (
-      <form className={styles.register_company_form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.register_form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form_rows}>
           <Input text="Razão Social" uppercase forName="company_name" type="text" register={register} name="company_name" maxLength={60} placeholder="Ex: Acme S/A do Brasil" />  
 
@@ -120,7 +119,9 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>
 
-        <Button size="large" text="REGISTRAR" type="submit" />
+        <div className={styles.button_div}>
+          <Button size="large" text="REGISTRAR" type="submit" />
+        </div>
       </form>
   );
 }
