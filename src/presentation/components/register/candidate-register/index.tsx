@@ -9,7 +9,6 @@ import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
-import getUfs, { IGetUF } from "@/api/endpoints/ufs/getUfs.endpoint";
 import Select from "../../select";
 
 const registerCandidateSchema = z.object({

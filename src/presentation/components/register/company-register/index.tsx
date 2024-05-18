@@ -10,30 +10,28 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
 import companyRegister from "@/api/endpoints/companies/companyRegister.endpoint";
-import getUfs, { IGetUF } from "@/api/endpoints/ufs/getUfs.endpoint";
 import { useRouter } from "next/navigation";
 import Select from "../../select";
 
 const registerCompanySchema = z.object({
   company_name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
-  cnpj: z.string().min(16).max(16, { message: 'Campo obrigatório.' }),
+  cnpj: z.string().min(14).max(14, { message: 'Campo obrigatório.' }),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
   street: z.string().min(1).max(100, { message: 'Campo obrigatório.' }),
-  uf: z.string().min(2).max(2, { message: 'Campo obrigatório.' }),
+  uf: z.string().min(1, { message: 'Campo obrigatório.' }),
   city: z.string().min(3).max(50, { message: 'Campo obrigatório.' }),
   number: z.string().min(1).max(10, { message: 'Campo obrigatório.' }),
-  complement: z.string().min(0).max(50, { message: 'Campo obrigatório.' }),
+  complement: z.string().min(0).max(50, { message: 'Campo obrigatório.' }).optional(),
 })
 
 type RegisterCompanySchemaInterface = z.infer<typeof registerCompanySchema>
 
 export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, value: number}[]}) {
     const [errorMessage, setErrorMessage] = useState('')
-    const [registerCandidateData, setRegisterData] = useState<RegisterCompanySchemaInterface>()
-
+    const [registerCompanyData, setRegisterData] = useState<RegisterCompanySchemaInterface>()
 
     const router = useRouter()
 
@@ -53,24 +51,24 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
     
       useEffect(() => {
         (async () => {
-            if (registerCandidateData !== undefined) {
+            console.log(registerCompanyData)
+            if (registerCompanyData !== undefined) {
               try {
                 const registerCompany = await companyRegister({
-                  cnpj: registerCandidateData.cnpj,
-                  company_name: registerCandidateData.company_name,
+                  cnpj: registerCompanyData.cnpj,
+                  company_name: registerCompanyData.company_name,
                   credentials: {
-                    email: registerCandidateData.email,
-                    password: registerCandidateData.password,
+                    email: registerCompanyData.email,
+                    password: registerCompanyData.password,
                     role: "company"
                   },
                   address: {
-                    // FIX THIS
-                    uf: +registerCandidateData.uf,
-                    city: registerCandidateData.city,
-                    cep: registerCandidateData.cep,
-                    street: registerCandidateData.street,
-                    number: registerCandidateData.number,
-                    complement: registerCandidateData.complement
+                    uf: +registerCompanyData.uf,
+                    city: registerCompanyData.city,
+                    cep: registerCompanyData.cep,
+                    street: registerCompanyData.street,
+                    number: registerCompanyData.number,
+                    complement: registerCompanyData?.complement
                   }
                 })
 
@@ -78,12 +76,12 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
                   setError(registerCompany.message)
                   alert(errorMessage)
                   return
-                }
+                } else  {
+                  sessionStorage.setItem("session", registerCompany.token)
 
-                sessionStorage.setItem("session", registerCompany.token)
-                router.push("/jobs")
-                
-                await refreshPage()
+                  await refreshPage()
+                  router.push("/jobs")
+                }
               } catch(error: any){
                 setError("Deu ruim")
               }
@@ -117,7 +115,7 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
 
           <Input forName="complement" text="Complemento" uppercase type="text" register={register} name="complement" maxLength={60} placeholder="Ex: Casa" />
 
-          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={2} placeholder="" />
+          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={100} placeholder="" />
 
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>

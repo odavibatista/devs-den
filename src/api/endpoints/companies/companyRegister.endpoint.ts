@@ -1,6 +1,5 @@
 import IUserResponse from "@/server/utils/user.response";
 import api, { IAPIError } from "../api";
-import { IGetUser } from "../user/getUser.endpoint";
 
 export interface ICompanyRegister {
     company_name: string;
@@ -25,7 +24,7 @@ export interface ICompanyRegisterResponse extends IUserResponse {}
 
 const companyRegister = async(data: ICompanyRegister): Promise<ICompanyRegisterResponse | IAPIError> => {
     
-    const response = await api.post("/company/register").catch((err)    => {
+    const response = await api.post("/company/register", data).catch((err)    => {
         return err.response
     })
 
