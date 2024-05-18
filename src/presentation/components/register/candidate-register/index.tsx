@@ -10,20 +10,22 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import refreshPage from "@/server/utils/refresh.function";
 import Select from "../../select";
+import candidateRegister from "@/api/endpoints/candidates/candidateRegister.endpoint";
+import { useRouter } from "next/navigation";
 
 const registerCandidateSchema = z.object({
-  name: z.string().min(8, { message: 'Campo obrigatório.' }),
+  name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
   birth_date: z.string().min(20, { message: 'Campo obrigatório.' }),
-  gender: z.string().min(1, { message: 'Campo obrigatório.' }),
+  // gender: z.enum(['male', 'female']),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
   street: z.string().min(1).max(100, { message: 'Campo obrigatório.' }),
-  uf: z.string().min(2).max(2, { message: 'Campo obrigatório.' }),
+  uf: z.string().min(1, { message: 'Campo obrigatório.' }),
   city: z.string().min(3).max(50, { message: 'Campo obrigatório.' }),
   number: z.string().min(1).max(10, { message: 'Campo obrigatório.' }),
-  complement: z.string().min(0).max(50, { message: 'Campo obrigatório.' }),
+  complement: z.string().min(0).max(50, { message: 'Campo obrigatório.' }).optional(),
 })
 
 type RegisterCandidateSchemaInterface = z.infer<typeof registerCandidateSchema>
@@ -32,6 +34,8 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
     const [errorMessage, setErrorMessage] = useState('')
     const [registerCandidateData, setRegisterData] = useState<RegisterCandidateSchemaInterface>()
 
+    const router = useRouter()
+    
     const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCandidateSchemaInterface>({
         resolver: zodResolver(registerCandidateSchema),
         mode: 'all',
@@ -48,9 +52,37 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
     
       useEffect(() => {
         (async () => {
+          console.log(registerCandidateData)
             if (registerCandidateData !== undefined) {
               try {
-                // Adapt the code here for registering the candidate
+                const registerUser = await candidateRegister({
+                  name: registerCandidateData.name,
+                  birth_date: "28/12/2001",
+                  gender: "male",
+                  credentials: {
+                    email: registerCandidateData.email,
+                    password: registerCandidateData.password,
+                    role: 'candidate'
+                  },
+                  address: {
+                    uf: +registerCandidateData.uf,
+                    city: registerCandidateData.city,
+                    cep: registerCandidateData.cep,
+                    street: registerCandidateData.street,
+                    number: registerCandidateData.number,
+                    complement: registerCandidateData?.complement
+                  }
+                })
+                if ("status" in registerUser) {
+                  setError(registerUser.message)
+                  alert(errorMessage)
+                  return
+                } else  {
+                  sessionStorage.setItem("session", registerUser.token)
+
+                  await refreshPage()
+                  router.push("/jobs")
+                }
               } catch(error: any){
                 setError("Deu ruim")
               }
@@ -89,7 +121,7 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
 
           <Input forName="complement" text="Complemento" uppercase type="text" register={register} name="complement" maxLength={60} placeholder="Ex: Casa" />
 
-          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={2} placeholder="" />
+          <Input forName="password" text="Senha" uppercase type="password" register={register} name="password" maxLength={100} placeholder="" />
 
           <Input forName="confirm_password" text="Confirmar Senha" uppercase type="password" register={register} name="confirm_password" maxLength={100} placeholder="" />
         </div>

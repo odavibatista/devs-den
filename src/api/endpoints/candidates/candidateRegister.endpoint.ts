@@ -16,7 +16,7 @@ export interface ICandidateRegister {
         cep: string
         street: string
         number: string
-        complement: string          
+        complement?: string          
     }
 }
 
