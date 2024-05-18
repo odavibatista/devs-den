@@ -15,6 +15,7 @@ const registerCandidateSchema = z.object({
   name: z.string().min(8, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
   birth_date: z.string().min(20, { message: 'Campo obrigatório.' }),
+  gender: z.string().min(1, { message: 'Campo obrigatório.' }),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
@@ -65,6 +66,12 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
           <Input forName="email" text="E-mail" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: joão@dev.com" />
 
           <Input forName="birth" text="Data de Nasc." uppercase type="date" register={register} name="birth" maxLength={16} placeholder="Ex: 01/01/2000" />
+
+          <Select forName="gender" text="Gênero" uppercase register={register} name="gender" options={[{
+            name: "Masculino",
+            value: 1
+          }, {name: "Feminino",
+          value: 2}]} />
         </div>
 
         <div className={styles.form_rows}>
