@@ -16,8 +16,8 @@ import { useRouter } from "next/navigation";
 const registerCandidateSchema = z.object({
   name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
-  birth_date: z.string().min(20, { message: 'Campo obrigatório.' }),
-  // gender: z.enum(['male', 'female']),
+  birth_date: z.string().min(9, { message: 'Campo obrigatório.' }),
+  gender: z.string().min(4, { message: 'Campo obrigatório.' }),
   password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   confirm_password: z.string().min(8).max(100, { message: 'Campo obrigatório.' }),
   cep: z.string().min(8).max(8, { message: 'Campo obrigatório.' }),
@@ -57,8 +57,8 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
               try {
                 const registerUser = await candidateRegister({
                   name: registerCandidateData.name,
-                  birth_date: "28/12/2001",
-                  gender: "male",
+                  birth_date: registerCandidateData.birth_date,
+                  gender: registerCandidateData.gender as "male" | "female",
                   credentials: {
                     email: registerCandidateData.email,
                     password: registerCandidateData.password,
@@ -80,8 +80,9 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                 } else  {
                   sessionStorage.setItem("session", registerUser.token)
 
-                  await refreshPage()
-                  router.push("/jobs")
+
+                  //await refreshPage()
+                  //router.push("/jobs")
                 }
               } catch(error: any){
                 setError("Deu ruim")
@@ -97,13 +98,13 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
 
           <Input forName="email" text="E-mail" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: joão@dev.com" />
 
-          <Input forName="birth" text="Data de Nasc." uppercase type="date" register={register} name="birth" maxLength={16} placeholder="Ex: 01/01/2000" />
+          <Input forName="birth_date" text="Data de Nasc." uppercase type="text" register={register} name="birth_date" maxLength={16} placeholder="Ex: 01/01/2000" />
 
-          <Select forName="gender" text="Gênero" uppercase register={register} name="gender" options={[{
+          {/* <Select forName="gender" text="Gênero" uppercase register={register} name="gender" options={[{
             name: "Masculino",
             value: 1
           }, {name: "Feminino",
-          value: 2}]} />
+          value: 2}]} /> */}
         </div>
 
         <div className={styles.form_rows}>
