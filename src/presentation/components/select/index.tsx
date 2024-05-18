@@ -7,7 +7,7 @@ interface SelectProps {
     text: string
     forName: string
     uppercase?: boolean
-    options?: {name: string, value: number}[]
+    options?: {name: string, value: number | string}[]
 }
 
 const Select = ({ name, register, forName, uppercase, text, options }: SelectProps): JSX.Element => {

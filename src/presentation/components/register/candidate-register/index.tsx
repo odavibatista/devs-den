@@ -52,7 +52,6 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
     
       useEffect(() => {
         (async () => {
-          console.log(registerCandidateData)
             if (registerCandidateData !== undefined) {
               try {
                 const registerUser = await candidateRegister({
@@ -81,8 +80,8 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                   sessionStorage.setItem("session", registerUser.token)
 
 
-                  //await refreshPage()
-                  //router.push("/jobs")
+                  await refreshPage()
+                  router.push("/jobs")
                 }
               } catch(error: any){
                 setError("Deu ruim")
@@ -98,23 +97,30 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
 
           <Input forName="email" text="E-mail" uppercase type="email"register={register} name="email" maxLength={50} placeholder="Ex: joão@dev.com" />
 
-          <Input forName="birth_date" text="Data de Nasc." uppercase type="text" register={register} name="birth_date" maxLength={16} placeholder="Ex: 01/01/2000" />
+          <Input forName="birth_date" text="Data de Nasc." uppercase type="text" register={register} name="birth_date" />
 
-          {/* <Select forName="gender" text="Gênero" uppercase register={register} name="gender" options={[{
+          <Select forName="gender" text="Gênero" uppercase register={register} name="gender" options={[
+          {
             name: "Masculino",
-            value: 1
-          }, {name: "Feminino",
-          value: 2}]} /> */}
+            value: 'male'
+          }, 
+          
+          {
+            name: "Feminino",
+            value: 'female'
+          }
+          
+          ]} />
         </div>
 
         <div className={styles.form_rows}>
-          <Input forName="cep" text="CEP" uppercase type="text" register={register} name="cep" maxLength={8} placeholder="Ex: 00000-000" />
+          <Input forName="cep" text="CEP" type="text" register={register} name="cep" useMask="00000-000" placeholder="00000-000" uppercase  />
 
-          <Input forName="street" text="Rua" uppercase type="text" register={register} name="street" maxLength={60} placeholder="Rua A" />
+          <Input forName="street" text="Rua" type="text" register={register} name="street" maxLength={60} placeholder="Rua A" uppercase />
 
-          <Select forName="uf" text="Estado" uppercase register={register} name="uf" options={listOfUFs} />
+          <Select forName="uf" text="Estado" register={register} name="uf" options={listOfUFs} uppercase />
 
-          <Input forName="city" text="Cidade" uppercase type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" />
+          <Input forName="city" text="Cidade" type="text" register={register} name="city" maxLength={50} placeholder="Ex: São Paulo" uppercase  />
         </div>
 
         <div className={styles.form_rows}>
