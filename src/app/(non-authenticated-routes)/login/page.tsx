@@ -87,7 +87,9 @@ export default function LoginScreen() {
         <div className={styles.textField}>
           <Input forName="password" text="Senha" uppercase type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
         </div>
-        <Button size="medium" text="ENTRAR" type="submit" />
+        <div className={styles.button_div}>
+          <Button text="ENTRAR" type="submit" />
+        </div>
       </form>
     </section>
   );
