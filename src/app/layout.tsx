@@ -3,6 +3,7 @@ import "./globals.scss";
 import "./styles.scss"
 import Header from "@/presentation/components/header";
 import Footer from "@/presentation/components/footer";
+import { HomeProvider } from "@/providers/home-data-provider";
 
 
 export const metadata: Metadata = {
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body id="body">
-        <Header />
-          {children}
-        <Footer />
+        <HomeProvider>
+          <Header />
+            {children}
+          <Footer />
+        </HomeProvider>
       </body>
     </html>
   );

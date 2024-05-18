@@ -16,7 +16,7 @@
     text-transform: uppercase;
 }
 
-.input  {
+.select  {
     background-color: $dark-gray;
     border-radius: 10px;
     border: none;
@@ -26,7 +26,6 @@
     height: 50px;
     padding: 10px;
     outline: none;
-    width: inherit;
 }
 
 @media (max-width: 1440px)  {
@@ -34,7 +33,7 @@
         font-size: 18px;
     }
 
-    .input  {
+    .select  {
         font-size: 16px;
         height: 45px;
     }
@@ -45,7 +44,7 @@
         font-size: 16px;
     }
 
-    .input  {
+    .select  {
         font-size: 14px;
         height: 40px;
     }
@@ -56,7 +55,7 @@
         font-size: 14px;
     }
 
-    .input  {
+    .select  {
         font-size: 12px;
         height: 35px;
     }

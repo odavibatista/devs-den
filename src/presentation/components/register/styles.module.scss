@@ -1,0 +1,101 @@
+@import '@/app/globals.scss';
+
+.register_form  {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    text-align: left;
+}
+
+.form_rows  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 56px;
+    width: 100%;
+}
+
+.button_div {
+    font-size: 24px;
+    height: 54px;
+    margin-top: 40px;
+    width: 233px;
+}
+
+@media (max-width: 1440px)  {
+    .register_form  {
+        gap: 40px;
+    }
+
+    .form_rows  {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 1024px)  {
+    .register_form, .form_rows, .button_div  {
+        gap: 32px;
+    }
+
+    .button_div {
+        font-size: 20px;
+        height: 44px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px)  {
+    .register_form, .form_rows, .button_div  {
+        gap: 24px;
+    }
+    
+    .form_rows  {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 425px)  {
+    .register_form, .form_rows, .button_div {
+        gap: 16px;
+    }
+
+    .form_rows  {
+        gap: 16px;
+    }
+
+    .button_div {
+        font-size: 14px;
+        height: 34px;
+        margin-top: 16px;
+        width: 140px;
+    }
+}
+
+@media (max-width: 375px)  {
+    .register_form  {
+        gap: 8px;
+    }
+
+    .form_rows  {
+        gap: 8px;
+    }
+
+    .button_div {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 320px)  {
+    .register_form  {
+        gap: 4px;
+    }
+
+    .form_rows  {
+        gap: 4px;
+    }
+
+    .button_div {
+        margin-top: 4px;
+    }
+}

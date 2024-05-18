@@ -1,4 +1,4 @@
-import { IGetJob } from "@/api/routes/jobs/getSingleJob";
+import { IGetJob } from "@/api/endpoints/jobs/getSingleJob";
 
 export function jobModalityParser (job: IGetJob) {
     if (job.job.modality === 'remote') job.job.modality = 'Remoto'

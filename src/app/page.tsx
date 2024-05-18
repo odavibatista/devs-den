@@ -3,8 +3,8 @@ import Button from "@/presentation/components/button";
 import CategoryBadge from "@/presentation/components/category-badge";
 import styles from './styles.module.scss'
 import { useEffect, useState } from "react";
-import { IGetCategory } from "@/api/routes/job-categories/getCategory";
-import getCategories from "@/api/routes/job-categories/getCategories";
+import { IGetCategory } from "@/api/endpoints/job-categories/getCategory.endpoint";
+import getCategories from "@/api/endpoints/job-categories/getCategories.endpoint";
 import Emphasis from "@/presentation/components/emphasis";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     (async () => {
       const data = await getCategories()
 
-      if ("statusCode" in data) {
+      if ("status" in data) {
         console.error(data)
       } else {
         setCategories(data)
@@ -29,7 +29,9 @@ export default function Home() {
       <section className={styles.hero}>
         <h1 className={styles.hero_h1}>Sua carreira de TI começa aqui.</h1>
         <h4 className={styles.hero_h4}>Empresas de todo o país buscam profissionais pelo DEV'S DEN.</h4>
-        <Button text="FAÇA PARTE" size="large" type="button" />
+        <div className={styles.button_div}>
+          <Button text="FAÇA PARTE" type="button" />
+        </div>
       </section>
       <section>
       </section>

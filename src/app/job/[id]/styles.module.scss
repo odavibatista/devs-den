@@ -20,6 +20,7 @@
     height: 95vh;
     place-content: center;
 
+    @include spacing;
     @include green_gradient;
 }
 
@@ -69,4 +70,9 @@
     font-size: 20px;
     text-align: center;
     width: 576px;
+}
+
+.apply_button_div   {
+    height: 54px;
+    width: 233px;
 }

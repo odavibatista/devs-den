@@ -3,15 +3,15 @@
 import Button from "@/presentation/components/button";
 import styles from './styles.module.scss'
 import Input from "@/presentation/components/input"
-import Label from "@/presentation/components/label"
 
-import userLogin from "@/api/routes/user/userLogin";
+import userLogin from "@/api/endpoints/user/userLogin.endpoint";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import refreshPage from "@/server/utils/refresh.function";
 
 const loginSchema = z.object({
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -23,7 +23,6 @@ type LoginSchemaInterface = z.infer<typeof loginSchema>
 export default function LoginScreen() {
   const [errorMessage, setErrorMessage] = useState('')
   const [loginData, setLoginData] = useState<LoginSchemaInterface>()
-
 
   /* Configurações do Zod */
   const { register, handleSubmit, formState: { errors }, getValues } = useForm<LoginSchemaInterface>({
@@ -44,11 +43,6 @@ export default function LoginScreen() {
     setErrorMessage(message)
   }
 
-  useEffect(() => {
-      if (sessionStorage.getItem("session")) {
-        router.push("/home")
-      }
-  }, [])
 
   useEffect(() => {
     (async () => {
@@ -59,17 +53,16 @@ export default function LoginScreen() {
               inserted_password: loginData.password
             })
 
-            if("statusCode" in login){
-              setError("DEU RUIM")
+            if("status" in login){
+              setError(login.message)
+              alert(errorMessage)
               return
-            } else {
-              console.log(login)
-              alert(`Bem-vindo! Seu token de acesso é ${login.token}`)
-
-              sessionStorage.setItem("session", login.token)
-              router.push("/jobs")
             }
+
+            sessionStorage.setItem("session", login.token)
+            router.push("/jobs")
             
+            await refreshPage()
           } catch(error: any){
             setError("Deu ruim")
           }
@@ -89,14 +82,14 @@ export default function LoginScreen() {
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.rightLogin}>
         <div className={styles.textField}>
-          <Label forName="email" text="E-mail" uppercase />
-          <Input type="email" placeholder="Digite seu e-mail." name="email" maxLength={50} register={register} />
+          <Input forName="email" text="E-mail" uppercase type="email" placeholder="Digite seu e-mail." name="email" maxLength={50} register={register} />
         </div>
         <div className={styles.textField}>
-          <Label forName="password" text="Senha" uppercase />
-          <Input type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
+          <Input forName="password" text="Senha" uppercase type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
         </div>
-        <Button size="medium" text="ENTRAR" type="submit" />
+        <div className={styles.button_div}>
+          <Button text="ENTRAR" type="submit" />
+        </div>
       </form>
     </section>
   );

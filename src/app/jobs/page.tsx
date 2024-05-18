@@ -2,20 +2,19 @@
 import JobCard from '@/presentation/components/job-card';
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
-import getJobs, { IGetJobs } from '@/api/routes/jobs/getJobs';
+import getJobs, { IGetJob } from '@/api/endpoints/jobs/getJobs.endpoint';
 import XLink from '@/presentation/components/xlink';
 import LoadingScreen from '@/presentation/components/loadingScreen';
 
 export default function JobsScreen() {
-    const [jobs, setJobs] = useState<IGetJobs[]>([])
+    const [jobs, setJobs] = useState<IGetJob[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
-
 
     useEffect(() => {
       (async () => {
         const data = await getJobs()
 
-        if ("statusCode" in data) {
+        if ("status" in data) {
           setJobsLoading(false)
         } else {
           setJobs(data)
