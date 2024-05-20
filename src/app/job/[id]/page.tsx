@@ -32,7 +32,6 @@ export default function JobPage ({params}: DynamicRoute)   {
     useEffect(() => {
         (async () => {
 
-
           const data = await getSingleJob(jobId)
     
           if ("status" in data) {

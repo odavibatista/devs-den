@@ -1,14 +1,18 @@
 'use client'
+
 import JobCard from '@/presentation/components/job-card';
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react';
 import getJobs, { IGetJob } from '@/api/endpoints/jobs/getJobs.endpoint';
 import XLink from '@/presentation/components/xlink';
 import LoadingScreen from '@/presentation/components/loadingScreen';
+import { useHome } from '@/providers/home-data-provider';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJob[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
+
+    const { homeData, isHomeDataLoading } = useHome();
 
     useEffect(() => {
       (async () => {
@@ -35,7 +39,17 @@ export default function JobsScreen() {
       return  (
         <>
           <main className={styles.error}>
-            <h1>Parece que não há vagas abertas no momento. Tente novamente mais tarde.</h1>
+            <h1>Parece que não há vagas abertas no momento.</h1>
+              {
+                homeData && homeData.role === 'candidate' ?
+                <h1>
+                  Tente novamente mais tarde.
+                </h1>
+                :
+                <XLink href='/jobs/new-job'>
+                  <h1 className={styles.register_text}>Seja o primeiro a cadastrar uma!</h1>
+                </XLink>
+              }
           </main>
         </>
       )

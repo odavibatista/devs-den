@@ -1,14 +1,12 @@
 @import '@/app/globals.scss';
 
 .error  {
+    color: $white-gray;
     display: grid;
-    place-content: center;
+    font-family: $m;
     height: 90vh;
-
-    h1  {
-        color: $white-gray;
-        font-family: $m;
-    }
+    place-content: center;
+    text-align: center;
 }
 
 .main    {
@@ -22,6 +20,8 @@
     gap: 77px;
     height: 100vh;
 }
+
+
 
 .h1 {
     color: $white-gray;
@@ -37,4 +37,8 @@
     flex-wrap: wrap;
     gap: 72px;
     justify-content: center;
+}
+
+.register_text  {
+    color: $aqua-green;
 }
