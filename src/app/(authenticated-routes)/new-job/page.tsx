@@ -8,6 +8,20 @@ import { IGetCategory } from '@/api/endpoints/job-categories/getCategory.endpoin
 import getCategories from '@/api/endpoints/job-categories/getCategories.endpoint';
 import { useRouter } from 'next/navigation';
 import createJob from '@/api/endpoints/jobs/createJob.endpoint';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const createJobSchema = z.object({
+  title: z.string().min(14, { message: 'Campo obrigatório.' }),
+  description: z.string().min(50, { message: 'Campo obrigatório.' }),
+  job_category_id: z.string().min(1, { message: 'Campo obrigatório.' }),
+  wage: z.number().min(4, { message: 'Campo obrigatório.' }),
+  modality: z.string().min(4, { message: 'Campo obrigatório.' }),
+  contract: z.string().min(3, { message: 'Campo obrigatório.' })
+})
+
+type CreateJobSchemaInterface = z.infer<typeof createJobSchema>
 
 export default function NewJobScreen() {
     const [categories, setCategories] = useState<IGetCategory[]>([])
@@ -15,8 +29,23 @@ export default function NewJobScreen() {
     const [companyId, setCompanyId] = useState<number>()
     const [isCompanyIdLoading, setCompanyIdLoading] = useState<boolean>(true);
     const [userRole, setUserRole] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState('')
+    const [createJobData, setCreateJobData] = useState<CreateJobSchemaInterface>()
 
     const { homeData, isHomeDataLoading } = useHome();
+
+    const { register, handleSubmit, formState: { errors }, getValues } = useForm<CreateJobSchemaInterface>({
+      resolver: zodResolver(createJobSchema),
+      mode: 'all',
+    })
+
+    async function onSubmit (data: CreateJobSchemaInterface) {
+      setCreateJobData(data)
+    }
+
+    function setError(message: string) {
+        setErrorMessage(message)
+    }
 
     const router = useRouter()
   
@@ -46,6 +75,19 @@ export default function NewJobScreen() {
         }
       })()
     }, [])
+
+    useEffect(() => {
+      (async () => {
+          if (createJobData !== undefined) {
+            try {
+              
+            } catch(error: any){
+              setError("Deu ruim")
+            }
+          }
+          setCreateJobData(undefined)
+      })()
+    })
 
     if (isCategoriesLoading === true || isCompanyIdLoading === true) {
       return  (

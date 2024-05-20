@@ -47,7 +47,7 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
 
     function setError(message: string) {
         setErrorMessage(message)
-      }
+    }
 
     
       useEffect(() => {
