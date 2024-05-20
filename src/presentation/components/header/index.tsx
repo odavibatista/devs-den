@@ -66,7 +66,7 @@ export default function Header() {
                             </li>
                             <li className={styles.nav_item + " nav-item"}>
                                 <div className={styles.logout_div}>
-                                    <Button text="SAIR" className={styles.nav_link} onClick={handleLogout} />
+                                    <Button text="SAIR" onClick={handleLogout} />
                                 </div>
                             </li>
                         </>
