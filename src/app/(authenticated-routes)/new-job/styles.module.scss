@@ -19,6 +19,7 @@
     flex-wrap: wrap;
     gap: 77px;
     height: 100vh;
+    text-align: center;
 }
 
 .h1 {
@@ -28,15 +29,8 @@
     font-weight: 800;
 }
 
-.section    {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 72px;
-    justify-content: center;
-}
-
-.register_text  {
-    color: $aqua-green;
+.h4 {
+    color: $light-blue;
+    font-family: $m;
+    font-size: 20px;
 }
