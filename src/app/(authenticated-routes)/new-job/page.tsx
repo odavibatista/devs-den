@@ -83,6 +83,7 @@ export default function NewJobScreen() {
               
             } catch(error: any){
               setError("Deu ruim")
+              alert(errorMessage)
             }
           }
           setCreateJobData(undefined)

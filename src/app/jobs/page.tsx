@@ -7,6 +7,7 @@ import getJobs, { IGetJob } from '@/api/endpoints/jobs/getJobs.endpoint';
 import XLink from '@/presentation/components/xlink';
 import LoadingScreen from '@/presentation/components/loadingScreen';
 import { useHome } from '@/providers/home-data-provider';
+import Button from '@/presentation/components/button';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJob[]>([])
@@ -46,7 +47,7 @@ export default function JobsScreen() {
                   Tente novamente mais tarde.
                 </h1>
                 :
-                <XLink href='/jobs/new-job'>
+                <XLink href='/new-job'>
                   <h1 className={styles.register_text}>Seja o primeiro a cadastrar uma!</h1>
                 </XLink>
               }
@@ -59,6 +60,17 @@ export default function JobsScreen() {
       <main className={styles.main}>
         <div>
             <h1 className={styles.h1}>DESCOBRIR VAGAS</h1>
+            {
+              homeData?.role === "company" ?
+
+              <XLink className={styles.company_open_job} href='/new-job'>
+                <Button text='ABRIR VAGA'  />
+              </XLink>
+
+              :
+
+              <></>
+            }
         </div>
         <section className={styles.section}>
             {
