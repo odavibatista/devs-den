@@ -14,12 +14,12 @@ export default function RootLayout({
     const router = useRouter()
     
     useEffect(() => {
-        (async () => {
-            if (!homeData && !isHomeDataLoading) {
-                router.push("/")
-            }
-        })()
-      })
+      (async () => {
+        if (!homeData && !isHomeDataLoading) {
+            router.push("/")
+        }
+      })()
+    })
 
 
   return (

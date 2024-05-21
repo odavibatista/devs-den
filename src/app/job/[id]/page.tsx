@@ -102,7 +102,7 @@ export default function JobPage ({params}: DynamicRoute)   {
             null
           }
 
-          {
+          {/* {
             userRole === "company" && homeData?.id === job.company.id_company ?
             <div className={styles.edit_button_div}>
               <Button text="EDITAR VAGA" />
@@ -111,7 +111,7 @@ export default function JobPage ({params}: DynamicRoute)   {
             : 
             
             null
-          }
+          } */}
 
         </main>
       )

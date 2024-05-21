@@ -16,12 +16,15 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     gap: 77px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-
+.header_main    {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
 .h1 {
     color: $white-gray;
@@ -41,4 +44,10 @@
 
 .register_text  {
     color: $aqua-green;
+}
+
+.company_open_job   {
+    height: 40px;
+    margin-top: 50px;
+    width: 170px;
 }
