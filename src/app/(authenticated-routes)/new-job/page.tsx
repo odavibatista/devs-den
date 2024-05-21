@@ -17,9 +17,9 @@ import Button from '@/presentation/components/button';
 
 const createJobSchema = z.object({
   title: z.string().min(14, { message: 'Campo obrigatório.' }),
-  description: z.string().min(50, { message: 'Campo obrigatório.' }),
+  description: z.string().min(10, { message: 'Campo obrigatório.' }),
   job_category_id: z.string().min(1, { message: 'Campo obrigatório.' }),
-  wage: z.number().min(4, { message: 'Campo obrigatório.' }),
+  wage: z.string().min(4, { message: 'Campo obrigatório.' }),
   modality: z.string().min(4, { message: 'Campo obrigatório.' }),
   contract: z.string().min(3, { message: 'Campo obrigatório.' })
 })
@@ -124,7 +124,27 @@ export default function NewJobScreen() {
       (async () => {
           if (createJobData !== undefined) {
             try {
-              
+              const token = sessionStorage.getItem("session")
+
+              if (!token ) return
+
+              const newJobData = await createJob(token, {
+                title: createJobData.title,
+                description: createJobData.description,
+                job_category_id: +createJobData.job_category_id,
+                wage: +createJobData.wage,
+                modality: createJobData.modality as "presential" | "hybrid" | "remote",
+                contract: createJobData.contract as "clt" | "pj" | "intern",
+              })
+
+              if ("status" in newJobData) {
+                setError(newJobData.message)
+                alert(errorMessage)
+                return
+              } else  {
+                alert("Vaga criada com sucesso!")
+                router.push(`/job/${newJobData.id_job}`)
+              }
             } catch(error: any){
               setError("Deu ruim")
               alert(errorMessage)
@@ -152,7 +172,7 @@ export default function NewJobScreen() {
         )
     } 
 
-    if (!userRole || userRole !== "company")  {
+    if (userRole !== "company")  {
       return  (
         <>
           <main className={styles.error}>
@@ -179,7 +199,7 @@ export default function NewJobScreen() {
               </div>
 
               <div className={styles.description_row}>
-                <Input text="Descrição" uppercase forName="description" type="text" register={register} name="description" maxLength={60} placeholder="Descreva a sua vaga." />  
+                <Input text="Descrição" uppercase forName="description" type="text" register={register} name="description" maxLength={500} placeholder="Descreva a sua vaga." />  
               </div>
 
               <div className={styles.button_div}>

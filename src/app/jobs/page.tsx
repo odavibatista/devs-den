@@ -58,13 +58,15 @@ export default function JobsScreen() {
   
     return (
       <main className={styles.main}>
-        <div>
+        <div className={styles.header_main}>
             <h1 className={styles.h1}>DESCOBRIR VAGAS</h1>
             {
               homeData?.role === "company" ?
 
-              <XLink className={styles.company_open_job} href='/new-job'>
-                <Button text='ABRIR VAGA'  />
+              <XLink href='/new-job'>
+                <div className={styles.company_open_job}>
+                  <Button text='ABRIR VAGA'  />
+                </div>
               </XLink>
 
               :
