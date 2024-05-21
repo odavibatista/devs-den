@@ -11,6 +11,9 @@ import createJob from '@/api/endpoints/jobs/createJob.endpoint';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Select from '@/presentation/components/select';
+import Input from "@/presentation/components/input"
+import Button from '@/presentation/components/button';
 
 const createJobSchema = z.object({
   title: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -31,6 +34,47 @@ export default function NewJobScreen() {
     const [userRole, setUserRole] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState('')
     const [createJobData, setCreateJobData] = useState<CreateJobSchemaInterface>()
+
+    const categoriesList = categories.map(category => {
+      return {
+          name: category.name,
+          value: category.id_category
+      }
+    })
+
+    const contractsList = [
+      {
+        name: "CLT",
+        value: "clt"
+      },
+
+      {
+        name: "PJ",
+        value: "pj"
+      },
+
+      {
+        name: "Estágio",
+        value: "intern"
+      }
+    ]
+
+    const modalitiesList = [
+      {
+        name: "Presencial",
+        value: "presential"
+      },
+
+      {
+        name: "Híbrido",
+        value: 'hybrid'
+      },
+
+      {
+        name: "Remoto",
+        value: "remote"
+      }
+    ]
 
     const { homeData, isHomeDataLoading } = useHome();
 
@@ -120,11 +164,28 @@ export default function NewJobScreen() {
 
     return (
         <main className={styles.main}>
-          <div>
-              <h1 className={styles.h1}>ABRIR VAGA</h1>
-              <h4 className={styles.h4}>Preencha o formulário abaixo para abrir a vaga desejada.</h4>
-          </div>
-          <section className={styles.section}>
+          <section className={styles.form_section}>
+            <form className={styles.new_job_form} onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.form_rows}>
+                <Input text="Título" uppercase forName="title" type="text" register={register} name="title" maxLength={60} placeholder="Ex: Desenvolvedor Java Pleno" />  
+                
+                <Select forName="job_category_id" text="Categoria" uppercase register={register} name="job_category_id" options={categoriesList} />
+
+                <Select forName="modality" text="Modalidade" uppercase register={register} name="modality" options={modalitiesList} />
+
+                <Select forName="contract" text="Contrato" uppercase register={register} name="contract" options={contractsList} />
+
+                <Input text="Salário" uppercase forName="wage" type="text" register={register} name="wage" maxLength={60} placeholder="Inserir números." />  
+              </div>
+
+              <div className={styles.description_row}>
+                <Input text="Descrição" uppercase forName="description" type="text" register={register} name="description" maxLength={60} placeholder="Descreva a sua vaga." />  
+              </div>
+
+              <div className={styles.button_div}>
+                <Button text="REGISTRAR" type="submit" />
+              </div>
+            </form>
           </section>
         </main>
       );

@@ -9,6 +9,34 @@
     text-align: center;
 }
 
+.main   {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @include spacing;
+    @include green_gradient;
+}
+
+.form_section   {
+    align-items: center;
+    background-color: $dark;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    padding: 79px 72px;
+    width: 100%;
+}
+
+.new_job_form  {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    text-align: left;
+}
+
 .main    {
     @include green_gradient;
     @include spacing;
@@ -33,4 +61,19 @@
     color: $light-blue;
     font-family: $m;
     font-size: 20px;
+}
+
+.form_rows  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 56px;
+    width: 100%;
+}
+
+.button_div {
+    font-size: 24px;
+    height: 54px;
+    margin-top: 40px;
+    width: 233px;
 }
