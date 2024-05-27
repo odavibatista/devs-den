@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import api, { IAPIError } from "../api";
 import { IGetJob } from "./getJobs.endpoint";
 
