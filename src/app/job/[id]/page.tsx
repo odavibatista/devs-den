@@ -19,6 +19,7 @@ export default function JobPage ({params}: DynamicRoute)   {
     const [isJobLoading, setJobLoading] = useState<boolean>(true);
     const [userRole, setUserRole] = useState<string | null>(null);
     const [confirmMessage, setConfirmMessage] = useState<string>('')
+    const [isApplied, setIsApplied] = useState<boolean>()
 
     const { homeData, isHomeDataLoading } = useHome();
 
@@ -31,9 +32,7 @@ export default function JobPage ({params}: DynamicRoute)   {
 
       if (!token) return
 
-      const response = await removeJob(token, jobId)
-
-      setModal({ message: "Vaga removida com sucesso.", type: 'success'})
+      await removeJob(token, jobId)
     }
 
     useEffect(() => {

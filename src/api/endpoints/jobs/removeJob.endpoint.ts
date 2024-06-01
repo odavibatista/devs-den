@@ -1,6 +1,6 @@
-import api, { IAPIError } from "../api";
+import api, { IAPIError, IAPIResponse } from "../api";
 
-const removeJob = async(token: string, jobId: number): Promise<void | IAPIError> => {
+const removeJob = async(token: string, jobId: number): Promise<IAPIResponse | IAPIError> => {
     
     const response = await api.delete(`job/${jobId}/remove`, {
         headers: {
