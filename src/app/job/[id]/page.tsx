@@ -10,18 +10,30 @@ import Emphasis from "@/presentation/components/emphasis";
 import { useHome } from "@/providers/home-data-provider";
 import Button from "@/presentation/components/button";
 import getSingleJob, { IGetJob } from "@/api/endpoints/jobs/getSingleJob.endpoint";
+import { useModal } from '@/presentation/hooks/useModal';
+import removeJob from "@/api/endpoints/jobs/removeJob.endpoint";
+import { IAPIError } from "@/api/endpoints/api";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
     const [isJobLoading, setJobLoading] = useState<boolean>(true);
     const [userRole, setUserRole] = useState<string | null>(null);
+    const [confirmMessage, setConfirmMessage] = useState<string>('')
 
     const { homeData, isHomeDataLoading } = useHome();
 
     const jobId = Number(params.id)
 
+    const { modal, setModal, openCloseModal } = useModal()
+
     const handleRemoveJob = async () => {
-      
+      const token = sessionStorage.getItem("session")
+
+      if (!token) return
+
+      const response = await removeJob(token, jobId)
+
+      setModal({ message: "Vaga removida com sucesso.", type: 'success'})
     }
 
     useEffect(() => {
@@ -113,7 +125,7 @@ export default function JobPage ({params}: DynamicRoute)   {
                 <Button text="EDITAR VAGA" />
               </div>  */}
               <div className={styles.edit_button_div}>
-                <Button text="REMOVER VAGA" />
+                <Button text="REMOVER VAGA" onClick={handleRemoveJob} />
               </div> 
             </section>
 

@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 
 export interface IModalData {
     message: string,
+    buttonText?: string,
     type: 'success' | 'error' | 'warning'
 }
 
@@ -24,7 +25,7 @@ const Modal = ({modal, openCloseModal}: ModalProps) => {
                 <p className={styles.message}>{message}</p>
             </div>
             <div className={styles.button}>
-                <Button text='Ok' onClick={handleClick} type="button" className={styles.button}/>
+                <Button text={modal.buttonText ? modal.buttonText : "Ok"} onClick={handleClick} type="button" className={styles.button}/>
             </div>
         </div>
     )
