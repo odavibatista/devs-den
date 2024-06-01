@@ -3,3 +3,6 @@ Dev's Den é um site de empregos de T.I. fictício desenvolvido como atividade A
 
 ### Colaboradores
 - Davi Batista (RA: 823212382)
+- Rafael Bolsarini Favaretto (RA: 823210205)
+- Yago (RA: 823115101)
+- Gabriel (RA: 822135326)
