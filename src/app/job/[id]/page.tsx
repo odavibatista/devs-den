@@ -1,7 +1,6 @@
 'use client'
 import { DynamicRoute } from "@/server/utils/dynamic.route";
 import { useEffect, useState } from "react"
-import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingScreen from "@/presentation/components/loadingScreen";
 import styles from './styles.module.scss'
 import { jobModalityParser } from "@/server/utils/job-modality.parser";
@@ -12,7 +11,9 @@ import Button from "@/presentation/components/button";
 import getSingleJob, { IGetJob } from "@/api/endpoints/jobs/getSingleJob.endpoint";
 import { useModal } from '@/presentation/hooks/useModal';
 import removeJob from "@/api/endpoints/jobs/removeJob.endpoint";
-import { IAPIError } from "@/api/endpoints/api";
+import candidateGetJobStatus from "@/api/endpoints/candidates/candidateGetJobStatus.endpoint";
+import applyToJob from "@/api/endpoints/candidates/applyToJob.endpoint";
+import { useRouter } from "next/navigation";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
@@ -27,26 +28,18 @@ export default function JobPage ({params}: DynamicRoute)   {
 
     const { modal, setModal, openCloseModal } = useModal()
 
-    const handleRemoveJob = async () => {
-      const token = sessionStorage.getItem("session")
-
-      if (!token) return
-
-      await removeJob(token, jobId)
-    }
+    const router = useRouter()
 
     useEffect(() => {
       (async () => {
         if (homeData && !isHomeDataLoading) {
           setUserRole(homeData?.role)
-          console.log(userRole)
         }
       })()
     })
 
     useEffect(() => {
         (async () => {
-
           const data = await getSingleJob(jobId)
     
           if ("status" in data) {
@@ -57,6 +50,42 @@ export default function JobPage ({params}: DynamicRoute)   {
           }
         })()
       }, [jobId])
+
+    useEffect(() => {
+        (async () => {
+          if (homeData && !isHomeDataLoading) {
+            const token = sessionStorage.getItem("session")
+
+            if (!token) return
+
+            const data = await candidateGetJobStatus(token, jobId)
+
+            if ("status" in data) {
+              console.error(data)
+            } else {
+              setIsApplied(data.has_applied)
+            }
+          }
+        })()
+      },)
+
+      const handleRemoveJob = async () => {
+        const token = sessionStorage.getItem("session")
+  
+        if (!token) return
+  
+        await removeJob(token, jobId)
+        
+        router.push('/jobs')
+      }
+
+      const handleApplyToJob = async () => {
+        const token = sessionStorage.getItem("session")
+  
+        if (!token) return
+  
+        await applyToJob(token, jobId)
+      }
 
     if (isJobLoading === true) {
       return  (
@@ -107,9 +136,9 @@ export default function JobPage ({params}: DynamicRoute)   {
           </p>
 
           {
-            userRole === "candidate" ? 
+            userRole === "candidate" && isApplied === false ? 
             <div className={styles.apply_button_div}>
-              <Button text="CANDIDATAR-SE" />
+              <Button text="CANDIDATAR-SE" onClick={handleApplyToJob} />
             </div> 
             
             : 
