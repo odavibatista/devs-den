@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import CandidateRegister from "@/presentation/components/register/candidate-register";
 import CompanyRegister from "@/presentation/components/register/company-register";
 import getUfs, { IGetUF } from '@/api/endpoints/ufs/getUfs.endpoint';
+import { useModal } from '@/presentation/hooks/useModal';
 
 export default function RegisterScreen() {
   const [errorMessage, setErrorMessage] = useState('')
   const [registerType, setRegisterType] = useState<'candidate' | 'company'>('candidate')
   const [ufs, setUfs] = useState<IGetUF[]>([])
   const [isUFsLoading, setIsUFsLoading] = useState(true)
+
+  const { modal, setModal, openCloseModal } = useModal()
 
   const ufList = ufs.map(uf => {
     return {
@@ -25,6 +28,8 @@ export default function RegisterScreen() {
         const response = await getUfs()
         if ('status' in response) {
           setErrorMessage(response.message)
+          
+          setModal({ message: errorMessage, type: 'error'})
           return
         } else  {
           setUfs(response)

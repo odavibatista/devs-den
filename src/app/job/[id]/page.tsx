@@ -20,6 +20,10 @@ export default function JobPage ({params}: DynamicRoute)   {
 
     const jobId = Number(params.id)
 
+    const handleRemoveJob = async () => {
+
+    }
+
     useEffect(() => {
       (async () => {
         if (homeData && !isHomeDataLoading) {
@@ -102,16 +106,21 @@ export default function JobPage ({params}: DynamicRoute)   {
             null
           }
 
-          {/* {
+          {
             userRole === "company" && homeData?.id === job.company.id_company ?
-            <div className={styles.edit_button_div}>
-              <Button text="EDITAR VAGA" />
-            </div> 
-            
+            <section className={styles.company_div}>
+              {/* <div className={styles.edit_button_div}>
+                <Button text="EDITAR VAGA" />
+              </div>  */}
+              <div className={styles.edit_button_div}>
+                <Button text="REMOVER VAGA" />
+              </div> 
+            </section>
+
             : 
             
             null
-          } */}
+          }
 
         </main>
       )

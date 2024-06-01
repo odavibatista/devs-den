@@ -77,7 +77,19 @@
     width: 233px;
 }
 
+.company_div    {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .edit_button_div    {
+    font-size: 20px;
+    height: 54px;
+    width: 233px;
+}
+
+.remove_button_div    {
     font-size: 20px;
     height: 54px;
     width: 233px;
