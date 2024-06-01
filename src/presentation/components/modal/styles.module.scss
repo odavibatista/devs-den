@@ -1,0 +1,22 @@
+@import '@/app/globals.scss';
+
+.modal_open   {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    overflow: auto;
+    z-index: 9999;
+}
+
+.modal_closed {
+    display: none;
+}
+
+.button {
+    height: 40px;
+    width: 100px;
+}

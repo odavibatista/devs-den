@@ -1,8 +1,8 @@
 import api, { IAPIError } from "../api";
 
-const applyToJob = async (token: string, jobId: number): Promise<void | IAPIError> => {
+const applyToJob = async (token: string, jobId: number): Promise<any | IAPIError> => {
     
-    const response = await api.post(`/job/${jobId}/apply`,  {
+    const response = await api.post(`/job/${jobId}/apply`, null,  {
         headers: {
             Authorization: `Bearer ${token}`
         }

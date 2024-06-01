@@ -12,6 +12,7 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import refreshPage from "@/server/utils/refresh.function";
+import { useModal } from "@/presentation/hooks/useModal";
 
 const loginSchema = z.object({
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -32,6 +33,9 @@ export default function LoginScreen() {
 
   /* Chamamos o router para utilizá-lo para os redirects necessários */
   const router = useRouter()
+
+  const { modal, setModal, openCloseModal } = useModal()
+
 
   /* Vai ser chamado quando o formulário receber submit */
   async function onSubmit (data: LoginSchemaInterface) {
@@ -55,7 +59,7 @@ export default function LoginScreen() {
 
             if("status" in login){
               setError(login.message)
-              alert(errorMessage)
+              setModal({ message: errorMessage, type: 'error'})
               return
             }
 

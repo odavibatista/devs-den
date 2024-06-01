@@ -23,7 +23,6 @@ export default function Header() {
           if (homeData && !isHomeDataLoading) {
             setIsLoggedin(true)
             setUserName(homeData?.name)
-            console.log(userName)
           }
         })()
     })

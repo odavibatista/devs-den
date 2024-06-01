@@ -4,6 +4,12 @@ export interface IAPIError {
     status: number
 }
 
+export interface IAPIResponse {
+    message: string
+    status: number
+    data?: any
+}
+
 /* Aqui, chamamos a url que inserimos no arquivo '.env' para ser utilizado pelo Axios em todas as nossas requisições */
 const NEXT_PUBLIC_API = process.env.NEXT_PUBLIC_API
 

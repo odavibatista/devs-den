@@ -21,7 +21,7 @@ export interface IGetJobStatusResponse {
     applications: IApplication[]
 }
 
-const getJobStatus = async (token: string, jobId: number): Promise<IGetJobStatusResponse | IAPIError> => {
+const companyGetJobStatus = async (token: string, jobId: number): Promise<IGetJobStatusResponse | IAPIError> => {
 
     const response = await api.get(`/job/${jobId}/status`,  {
         headers: {
@@ -36,4 +36,4 @@ const getJobStatus = async (token: string, jobId: number): Promise<IGetJobStatus
     return response.data
 }
 
-export default getJobStatus
+export default companyGetJobStatus
