@@ -21,7 +21,7 @@ export default function JobPage ({params}: DynamicRoute)   {
     const jobId = Number(params.id)
 
     const handleRemoveJob = async () => {
-
+      
     }
 
     useEffect(() => {
