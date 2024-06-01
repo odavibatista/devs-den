@@ -14,6 +14,7 @@ import removeJob from "@/api/endpoints/jobs/removeJob.endpoint";
 import candidateGetJobStatus from "@/api/endpoints/candidates/candidateGetJobStatus.endpoint";
 import applyToJob from "@/api/endpoints/candidates/applyToJob.endpoint";
 import { useRouter } from "next/navigation";
+import removeApplication from "@/api/endpoints/candidates/removeApplication.endpoint";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
@@ -85,6 +86,18 @@ export default function JobPage ({params}: DynamicRoute)   {
         if (!token) return
   
         await applyToJob(token, jobId)
+
+        router.refresh()
+      }
+
+      const handleRemoveApplication = async () => {
+        const token = sessionStorage.getItem("session")
+  
+        if (!token) return
+  
+        await removeApplication(token, jobId)
+        
+        router.refresh()
       }
 
     if (isJobLoading === true) {
@@ -143,7 +156,9 @@ export default function JobPage ({params}: DynamicRoute)   {
             
             : 
             
-            null
+            <div className={styles.apply_button_div}>
+              <Button text="DESISTIR" onClick={handleRemoveApplication} />
+            </div> 
           }
 
           {
