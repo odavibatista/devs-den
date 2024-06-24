@@ -2,7 +2,7 @@
 
 import { useHome } from "@/providers/home-data-provider";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 export default function RootLayout({
   children,
@@ -13,13 +13,13 @@ export default function RootLayout({
 
     const router = useRouter()
     
-    useEffect(() => {
+    useLayoutEffect(() => {
       (async () => {
         if (!homeData && !isHomeDataLoading) {
             router.push("/")
         }
       })()
-    })
+    }, [homeData])
 
 
   return (
