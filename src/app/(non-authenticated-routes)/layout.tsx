@@ -12,6 +12,7 @@ export default function RootLayout({
     const { homeData, isHomeDataLoading } = useHome();
 
     const router = useRouter()
+    
     useLayoutEffect(() => {
         (async () => {
             if (homeData && !isHomeDataLoading) {

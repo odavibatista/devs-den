@@ -25,7 +25,7 @@ const Modal = ({modal, openCloseModal}: ModalProps) => {
                 <p className={styles.message}>{message}</p>
             </div>
             <div className={styles.button}>
-                <Button text={modal.buttonText ? modal.buttonText : "Ok"} onClick={handleClick} type="button" className={styles.button}/>
+                <Button text={modal.buttonText ? modal.buttonText : "Ok"} onClick={handleClick} type="button" />
             </div>
         </div>
     )
