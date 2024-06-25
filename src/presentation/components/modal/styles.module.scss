@@ -1,19 +1,15 @@
 @import '@/app/globals.scss';
 
 .modal_open   {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
+    height: 100vh;
+    left: 0;
     overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100vw;
     z-index: 9999;
-}
-
-.modal_closed {
-    display: none;
 }
 
 .button {
@@ -22,8 +18,8 @@
 }
 
 .modal {
-    background-color: $dark-gray;
     align-items: center;
+    background-color: $dark-gray;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -33,8 +29,8 @@
     margin-bottom: 5%;
     margin-top: 50vh;
     padding: 10px 20px;
-    translate: 0 -50%;
     text-align: center;
+    translate: 0 -50%;
     width: 320px;
 }
 

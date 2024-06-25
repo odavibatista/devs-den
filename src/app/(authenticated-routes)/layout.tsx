@@ -9,17 +9,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const { homeData, isHomeDataLoading } = useHome();
+    const { homeData } = useHome();
 
     const router = useRouter()
     
     useLayoutEffect(() => {
       (async () => {
-        if (!homeData && !isHomeDataLoading) {
+        if (!homeData) {
             router.push("/")
         }
       })()
-    })
+    }, [homeData])
 
 
   return (
