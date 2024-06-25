@@ -8,12 +8,27 @@ import XLink from '@/presentation/components/xlink';
 import LoadingScreen from '@/presentation/components/loadingScreen';
 import { useHome } from '@/providers/home-data-provider';
 import Button from '@/presentation/components/button';
+import { useModal } from '@/presentation/hooks/useModal';
+import { useRouter } from 'next/navigation';
+import Modal from '@/presentation/components/modal';
 
 export default function JobsScreen() {
     const [jobs, setJobs] = useState<IGetJob[]>([])
     const [isJobsLoading, setJobsLoading] = useState<boolean>(true);
 
-    const { homeData, isHomeDataLoading } = useHome();
+    const { homeData } = useHome();
+
+    const { modal, openCloseModal, setModal } = useModal()
+
+    const router = useRouter()
+
+    function handleClickUnlogged (id: number) {
+      if (homeData?.role === 'candidate' || homeData?.role === 'company') {
+        router.push(`/job/${id}`)
+      } else  {
+        setModal({message: 'Você precisa estar logado para ver detalhes de vagas.', type: 'error'})
+      }
+    }
 
     useEffect(() => {
       (async () => {
@@ -78,13 +93,18 @@ export default function JobsScreen() {
             {
               jobs && jobs?.map((job) => {
                 return (
-                  <XLink href={`/job/${job.id_job}`}>
+                  <div onClick={()  =>  handleClickUnlogged(job.id_job)}>
                     <JobCard key={job.id_job} title={job.title} wage={job.wage} modality={job.modality}/>
-                  </XLink>
+                  </div>
                 )
               })
             }
         </section>
+        {
+          modal?.message !== '' && (
+            <Modal modal={modal} openCloseModal={openCloseModal} />
+          )
+        }
       </main>
     );
   }

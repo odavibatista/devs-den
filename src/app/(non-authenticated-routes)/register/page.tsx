@@ -56,7 +56,7 @@ export default function RegisterScreen() {
             EMPRESA
           </span>
         </div>
-      {
+        {
           registerType === 'candidate' ? 
           <CandidateRegister listOfUFs={ufList} />
           :
