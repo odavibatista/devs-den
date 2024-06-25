@@ -89,7 +89,8 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                   router.push("/jobs")
                 }
               } catch(error: any){
-                setError("Deu ruim")
+                setError("Ocorreu um erro inesperado. Tente novamente mais tarde.")
+                setModal({ message: errorMessage, type: 'error'})
               }
             }
         })()

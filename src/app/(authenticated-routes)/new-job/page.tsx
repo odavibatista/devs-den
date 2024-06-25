@@ -15,6 +15,7 @@ import Select from '@/presentation/components/select';
 import Input from "@/presentation/components/input"
 import Button from '@/presentation/components/button';
 import { useModal } from '@/presentation/hooks/useModal';
+import Modal from '@/presentation/components/modal';
 
 const createJobSchema = z.object({
   title: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -215,6 +216,11 @@ export default function NewJobScreen() {
                 <Button text="REGISTRAR" type="submit" />
               </div>
             </form>
+            {
+              modal?.message !== '' && (
+                <Modal modal={modal} openCloseModal={openCloseModal} />
+              )
+            }
           </section>
         </main>
       );
