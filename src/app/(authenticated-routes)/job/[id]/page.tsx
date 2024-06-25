@@ -15,6 +15,7 @@ import candidateGetJobStatus from "@/api/endpoints/candidates/candidateGetJobSta
 import applyToJob from "@/api/endpoints/candidates/applyToJob.endpoint";
 import { useRouter } from "next/navigation";
 import removeApplication from "@/api/endpoints/candidates/removeApplication.endpoint";
+import Modal from "@/presentation/components/modal";
 
 export default function JobPage ({params}: DynamicRoute)   {
     const [job, setJob] = useState<IGetJob>()
@@ -78,6 +79,8 @@ export default function JobPage ({params}: DynamicRoute)   {
         await removeJob(token, jobId)
         
         router.push('/jobs')
+
+        setModal({message: 'Vaga removida com sucesso.', type: 'success'})
       }
 
       const handleApplyToJob = async () => {
@@ -88,6 +91,8 @@ export default function JobPage ({params}: DynamicRoute)   {
         await applyToJob(token, jobId)
 
         router.refresh()
+
+        setModal({message: 'Candidatura realizada com sucesso!', type: 'success'})
       }
 
       const handleRemoveApplication = async () => {
@@ -98,6 +103,8 @@ export default function JobPage ({params}: DynamicRoute)   {
         await removeApplication(token, jobId)
         
         router.refresh()
+
+        setModal({message: 'Candidatura removida com sucesso.', type: 'success'})
       }
 
     if (isJobLoading === true) {
@@ -181,6 +188,11 @@ export default function JobPage ({params}: DynamicRoute)   {
             null
           }
 
+          {
+            modal?.message !== '' && (
+              <Modal modal={modal} openCloseModal={openCloseModal} />
+            )
+          }
         </main>
       )
     }

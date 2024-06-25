@@ -93,7 +93,7 @@ export default function JobsScreen() {
             {
               jobs && jobs?.map((job) => {
                 return (
-                  <div onClick={()  =>  handleClickUnlogged(job.id_job)}>
+                  <div onClick={()  =>  handleClickUnlogged(job.id_job)} className={styles.job_card}>
                     <JobCard key={job.id_job} title={job.title} wage={job.wage} modality={job.modality}/>
                   </div>
                 )
