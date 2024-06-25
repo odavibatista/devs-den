@@ -14,6 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Select from '@/presentation/components/select';
 import Input from "@/presentation/components/input"
 import Button from '@/presentation/components/button';
+import { useModal } from '@/presentation/hooks/useModal';
 
 const createJobSchema = z.object({
   title: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -34,6 +35,8 @@ export default function NewJobScreen() {
     const [userRole, setUserRole] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState('')
     const [createJobData, setCreateJobData] = useState<CreateJobSchemaInterface>()
+
+    const { modal, setModal, openCloseModal } = useModal()
 
     const categoriesList = categories.map(category => {
       return {
@@ -108,7 +111,10 @@ export default function NewJobScreen() {
         const data = await getCategories()
   
         if ("status" in data) {
-            console.error(data)
+          setErrorMessage(data.message)
+
+          setModal({ message: errorMessage, type: 'error'})
+          return
         } 
         
         else {
@@ -139,15 +145,18 @@ export default function NewJobScreen() {
 
               if ("status" in newJobData) {
                 setError(newJobData.message)
-                alert(errorMessage)
+                setModal({ message: errorMessage, type: 'error'})
+                setCreateJobData(undefined)
+
                 return
               } else  {
-                alert("Vaga criada com sucesso!")
+                setModal({ message: 'Vaga criada com sucesso!', type: 'success'})
+
                 router.push(`/job/${newJobData.id_job}`)
               }
             } catch(error: any){
-              setError("Deu ruim")
-              alert(errorMessage)
+              setError(error.message)
+              setModal({ message: errorMessage, type: 'error'})
             }
           }
           setCreateJobData(undefined)
