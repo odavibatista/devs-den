@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import refreshPage from "@/server/utils/refresh.function";
 import { useModal } from "@/presentation/hooks/useModal";
+import Modal from "@/presentation/components/modal";
 
 const loginSchema = z.object({
   email: z.string().min(14, { message: 'Campo obrigatório.' }),
@@ -69,6 +70,7 @@ export default function LoginScreen() {
             await refreshPage()
           } catch(error: any){
             setError("Deu ruim")
+            setModal({ message: errorMessage, type: 'error'})
           }
         }
         setLoginData(undefined)
@@ -94,6 +96,12 @@ export default function LoginScreen() {
         <div className={styles.button_div}>
           <Button text="ENTRAR" type="submit" />
         </div>
+
+        {
+          modal?.message !== '' && (
+            <Modal modal={modal} openCloseModal={openCloseModal} />
+          )
+        }
       </form>
     </section>
   );

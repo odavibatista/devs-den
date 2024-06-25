@@ -149,16 +149,20 @@ export default function JobPage ({params}: DynamicRoute)   {
           </p>
 
           {
-            userRole === "candidate" && isApplied === false ? 
+            userRole && userRole === "candidate" && isApplied === false ? 
             <div className={styles.apply_button_div}>
               <Button text="CANDIDATAR-SE" onClick={handleApplyToJob} />
             </div> 
             
             : 
             
+            (userRole && userRole === "candidate" && isApplied === true) ?
+
             <div className={styles.apply_button_div}>
               <Button text="DESISTIR" onClick={handleRemoveApplication} />
-            </div> 
+            </div> :
+
+            null
           }
 
           {

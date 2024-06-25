@@ -22,16 +22,20 @@
 }
 
 .modal {
-    margin: auto;
-    margin-top: 50vh;
-    translate: 0 -50%;
-    margin-bottom: 5%;
-    width: 300px;
-    text-align: center;
-    font-size: 16px;
+    background-color: $dark-gray;
+    align-items: center;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    font-size: 16px;
+    gap: 10px;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 50vh;
+    padding: 10px 20px;
+    translate: 0 -50%;
+    text-align: center;
+    width: 320px;
 }
 
 .message {

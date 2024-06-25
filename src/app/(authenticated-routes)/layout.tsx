@@ -19,7 +19,7 @@ export default function RootLayout({
             router.push("/")
         }
       })()
-    }, [homeData])
+    })
 
 
   return (

@@ -12,6 +12,8 @@ import refreshPage from "@/server/utils/refresh.function";
 import companyRegister from "@/api/endpoints/companies/companyRegister.endpoint";
 import { useRouter } from "next/navigation";
 import Select from "../../select";
+import { useModal } from "@/presentation/hooks/useModal";
+import Modal from "../../modal";
 
 const registerCompanySchema = z.object({
   company_name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
@@ -34,6 +36,8 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
     const [registerCompanyData, setRegisterData] = useState<RegisterCompanySchemaInterface>()
 
     const router = useRouter()
+
+    const { modal, setModal, openCloseModal } = useModal()
 
     const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCompanySchemaInterface>({
         resolver: zodResolver(registerCompanySchema),
@@ -73,9 +77,12 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
 
                 if ("status" in registerCompany) {
                   setError(registerCompany.message)
-                  alert(errorMessage)
+                  setModal({ message: errorMessage, type: 'error'})
+
                   return
                 } else  {
+                  setModal({ message: "Empresa cadastrada com sucesso!", type: 'success'})
+
                   sessionStorage.setItem("session", registerCompany.token)
 
                   await refreshPage()
@@ -122,6 +129,12 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
         <div className={styles.button_div}>
           <Button text="REGISTRAR" type="submit" />
         </div>
+
+        {
+          modal?.message !== '' && (
+            <Modal modal={modal} openCloseModal={openCloseModal} />
+          )
+        }
       </form>
   );
 }

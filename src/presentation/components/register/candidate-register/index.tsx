@@ -53,7 +53,6 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
         setErrorMessage(message)
     }
 
-    
       useEffect(() => {
         (async () => {
             if (registerCandidateData !== undefined) {
