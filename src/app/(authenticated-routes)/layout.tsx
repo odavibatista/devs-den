@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useHome } from "@/providers/home-data-provider";
 import { useRouter } from "next/navigation";
@@ -9,22 +9,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const { homeData } = useHome();
+  const { homeData } = useHome();
 
-    const router = useRouter()
-    
-    useLayoutEffect(() => {
-      (async () => {
-        if (!homeData) {
-            router.push("/")
-        }
-      })()
-    }, [homeData])
+  const router = useRouter();
 
+  useLayoutEffect(() => {
+    (async () => {
+      if (!homeData) {
+        router.push("/");
+      }
+    })();
+  }, [homeData]);
 
-  return (
-    <>
-        {children}
-    </>
-  );
+  return <>{children}</>;
 }

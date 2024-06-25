@@ -1,14 +1,11 @@
 import api from "../api";
 
-const getCompany = async(id: number) => {
-    
-    const response = await api.get(`/company/${id}`).catch((err)  => {
-        return err.response
-    })
+const getCompany = async (id: number) => {
+  const response = await api.get(`/company/${id}`).catch((err) => {
+    return err.response;
+  });
 
-    return response.data
-}
+  return response.data;
+};
 
-export default getCompany
-
-
+export default getCompany;

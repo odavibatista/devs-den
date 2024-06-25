@@ -1,38 +1,42 @@
 @mixin blue_gradient {
-    background: rgb(0,41,44);
-    background: linear-gradient(145deg, rgba(0,41,44,1) 0%, rgba(2,64,68,1) 100%);
+  background: rgb(0, 41, 44);
+  background: linear-gradient(
+    145deg,
+    rgba(0, 41, 44, 1) 0%,
+    rgba(2, 64, 68, 1) 100%
+  );
 }
 
 @mixin green_gradient {
-    background: rgb(0,41,44);
-    background: linear-gradient(145deg, rgba(0,41,44,1) 0%, #024044 100%);
+  background: rgb(0, 41, 44);
+  background: linear-gradient(145deg, rgba(0, 41, 44, 1) 0%, #024044 100%);
 }
 
-@mixin dark_gradient    {
-    background: rgb(0,41,44);
-    background: linear-gradient(145deg, #1E232C 0%, #31363F 100%);
+@mixin dark_gradient {
+  background: rgb(0, 41, 44);
+  background: linear-gradient(145deg, #1e232c 0%, #31363f 100%);
 }
 
 @mixin spacing {
-    padding: 77px 142px;
+  padding: 77px 142px;
 
-    @media (max-width: 1440px)  {
-        padding: 77px 72px;
-    }
+  @media (max-width: 1440px) {
+    padding: 77px 72px;
+  }
 
-    @media (max-width: 768px) {
-        padding: 10px 36px;
-    }
+  @media (max-width: 768px) {
+    padding: 10px 36px;
+  }
 }
 
 @mixin margin_spacing {
-    margin: 33px 142px;
+  margin: 33px 142px;
 
-    @media (max-width: 1440px)  {
-        margin: 33px 72px;
-    }
+  @media (max-width: 1440px) {
+    margin: 33px 72px;
+  }
 
-    @media (max-width: 768px) {
-        margin: 10px 36px;
-    }
+  @media (max-width: 768px) {
+    margin: 10px 36px;
+  }
 }

@@ -1,9 +1,5 @@
-'use client'
+"use client";
 
-export default function ProfileScreen   ()  {
-
-    return  (
-        <>
-        </>
-    )
+export default function ProfileScreen() {
+  return <></>;
 }

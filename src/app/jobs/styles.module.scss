@@ -1,57 +1,57 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
-.error  {
-    color: $white-gray;
-    display: grid;
-    font-family: $m;
-    height: 90vh;
-    place-content: center;
-    text-align: center;
+.error {
+  color: $white-gray;
+  display: grid;
+  font-family: $m;
+  height: 90vh;
+  place-content: center;
+  text-align: center;
 }
 
-.main    {
-    @include green_gradient;
-    @include spacing;
+.main {
+  @include green_gradient;
+  @include spacing;
 
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 77px;
-    min-height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 77px;
+  min-height: 100vh;
 }
 
-.header_main    {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.header_main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .h1 {
-    color: $white-gray;
-    font-family: $m;
-    font-size: 48px;
-    font-weight: 800;
+  color: $white-gray;
+  font-family: $m;
+  font-size: 48px;
+  font-weight: 800;
 }
 
-.section    {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 72px;
-    justify-content: center;
+.section {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 72px;
+  justify-content: center;
 }
 
-.job_card   {
-    cursor: pointer;
+.job_card {
+  cursor: pointer;
 }
 
-.register_text  {
-    color: $aqua-green;
+.register_text {
+  color: $aqua-green;
 }
 
-.company_open_job   {
-    height: 40px;
-    margin-top: 50px;
-    width: 170px;
+.company_open_job {
+  height: 40px;
+  margin-top: 50px;
+  width: 170px;
 }

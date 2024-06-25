@@ -1,92 +1,98 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
 .header {
-    background: rgb(30,35,44);
-    background: linear-gradient(180deg, rgba(30,35,44,1) 47%, rgba(30,35,44,1) 70%, rgba(34,39,49,0.9220063025210083) 87%, rgba(50,58,72,0.742734593837535) 100%);    
-    width: 100%;
+  background: rgb(30, 35, 44);
+  background: linear-gradient(
+    180deg,
+    rgba(30, 35, 44, 1) 47%,
+    rgba(30, 35, 44, 1) 70%,
+    rgba(34, 39, 49, 0.9220063025210083) 87%,
+    rgba(50, 58, 72, 0.742734593837535) 100%
+  );
+  width: 100%;
 }
 
 #header {
-    height: 80px;
-    padding: 0px 142px;
+  height: 80px;
+  padding: 0px 142px;
 }
 
-.right_nav  {
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    padding-left: 20px;
+.right_nav {
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-left: 20px;
 }
 
-.nav_item   {
-    height: 35px;
-    margin: 0;
+.nav_item {
+  height: 35px;
+  margin: 0;
 }
 
-.nav_link   {
-    color: $white-gray;
-    display: grid;
-    font-family: $r;
-    font-size: 20px;
-    font-weight: bold;
-    place-content: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    height: 35px;
-    margin: 0;
-    transition: 0.3s;
+.nav_link {
+  color: $white-gray;
+  display: grid;
+  font-family: $r;
+  font-size: 20px;
+  font-weight: bold;
+  place-content: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 35px;
+  margin: 0;
+  transition: 0.3s;
 
-    &:hover {
-        color: $light-blue;
-    }
+  &:hover {
+    color: $light-blue;
+  }
 }
 
-.header_image   {
-    width: 300px;
+.header_image {
+  width: 300px;
 }
 
 .logout_div {
+  font-size: 16px;
+  height: 33px;
+  width: 100px;
+}
+
+.login_div {
+  font-size: 16px;
+  height: 33px;
+  width: 100px;
+}
+
+.register_div {
+  font-size: 16px;
+  height: 33px;
+  width: 140px;
+}
+
+@media (max-width: 1440px) {
+  #header {
+    height: 70px;
+
+    padding: 0px 72px;
+  }
+
+  .header_image {
+    width: 220px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav_link {
     font-size: 16px;
-    height: 33px;
-    width: 100px;
+  }
+
+  .header_image {
+    width: 150px;
+  }
 }
 
-.login_div  {
-    font-size: 16px;
-    height: 33px;
-    width: 100px;
-}
-
-.register_div   {
-    font-size: 16px;
-    height: 33px;
-    width: 140px;
-}
-
-@media (max-width: 1440px)  {
-    #header {
-        height: 70px;
-
-        padding: 0px 72px;
-    }
-
-    .header_image   {
-        width: 220px;
-    }
-}
-
-@media (max-width: 1000px)  {
-    .nav_link   {
-        font-size: 16px;
-    }
-
-    .header_image   {
-        width: 150px;
-    }
-}
-
-@media(max-width: 768px) {
-    #header {
-        padding: 0px 36px;
-    }
+@media (max-width: 768px) {
+  #header {
+    padding: 0px 36px;
+  }
 }

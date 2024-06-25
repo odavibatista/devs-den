@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write ./src",
     "docker:up": "docker compose up --build -d",
     "docker:down": "docker compose down --rmi 'all' --volumes",
     "docker:restart": "docker compose restart",
@@ -32,6 +33,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "prettier": "^3.3.2",
     "sass": "^1.75.0",
     "typescript": "^5"
   }

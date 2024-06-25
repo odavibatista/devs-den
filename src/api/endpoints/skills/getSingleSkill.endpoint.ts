@@ -1,4 +1,4 @@
 export interface IGetSkill {
-    id_skill: number;
-    name: string;
+  id_skill: number;
+  name: string;
 }

@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import Button from "@/presentation/components/button";
-import styles from './styles.module.scss'
-import Input from "@/presentation/components/input"
+import styles from "./styles.module.scss";
+import Input from "@/presentation/components/input";
 
 import userLogin from "@/api/endpoints/user/userLogin.endpoint";
 
@@ -16,92 +16,117 @@ import { useModal } from "@/presentation/hooks/useModal";
 import Modal from "@/presentation/components/modal";
 
 const loginSchema = z.object({
-  email: z.string().min(14, { message: 'Campo obrigatório.' }),
-  password: z.string().min(8, { message: 'Campo obrigatório.' })
-})
+  email: z.string().min(14, { message: "Campo obrigatório." }),
+  password: z.string().min(8, { message: "Campo obrigatório." }),
+});
 
-type LoginSchemaInterface = z.infer<typeof loginSchema>
+type LoginSchemaInterface = z.infer<typeof loginSchema>;
 
 export default function LoginScreen() {
-  const [errorMessage, setErrorMessage] = useState('')
-  const [loginData, setLoginData] = useState<LoginSchemaInterface>()
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loginData, setLoginData] = useState<LoginSchemaInterface>();
 
   /* Configurações do Zod */
-  const { register, handleSubmit, formState: { errors }, getValues } = useForm<LoginSchemaInterface>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm<LoginSchemaInterface>({
     resolver: zodResolver(loginSchema),
-    mode: 'all',
-  })
+    mode: "all",
+  });
 
   /* Chamamos o router para utilizá-lo para os redirects necessários */
-  const router = useRouter()
+  const router = useRouter();
 
-  const { modal, setModal, openCloseModal } = useModal()
-
+  const { modal, setModal, openCloseModal } = useModal();
 
   /* Vai ser chamado quando o formulário receber submit */
-  async function onSubmit (data: LoginSchemaInterface) {
-    setLoginData(data)
+  async function onSubmit(data: LoginSchemaInterface) {
+    setLoginData(data);
   }
 
   /* Vai ser chamado quando houver algum erro de formato */
   function setError(message: string) {
-    setErrorMessage(message)
+    setErrorMessage(message);
   }
-
 
   useEffect(() => {
     (async () => {
-        if (loginData !== undefined) {
-          try {
-            const login = await userLogin({
-              email: loginData.email,
-              inserted_password: loginData.password
-            })
+      if (loginData !== undefined) {
+        try {
+          const login = await userLogin({
+            email: loginData.email,
+            inserted_password: loginData.password,
+          });
 
-            if("status" in login){
-              setError(login.message)
-              setModal({ message: errorMessage, type: 'error'})
-              setLoginData(undefined)
-              return
-            }
-
-            sessionStorage.setItem("session", login.token)
-            router.push("/jobs")
-            
-            await refreshPage()
-          } catch(error: any){
-            setError("Ocorreu um erro inesperado. Tente novamente mais tarde.")
-            setModal({ message: errorMessage, type: 'error'})
+          if ("status" in login) {
+            setError(login.message);
+            setModal({ message: errorMessage, type: "error" });
+            setLoginData(undefined);
+            return;
           }
+
+          sessionStorage.setItem("session", login.token);
+          router.push("/jobs");
+
+          await refreshPage();
+        } catch (error: any) {
+          setError("Ocorreu um erro inesperado. Tente novamente mais tarde.");
+          setModal({ message: errorMessage, type: "error" });
         }
-    })()
-  })
+      }
+    })();
+  });
 
   return (
-    <section className={styles.mainLogin + ' .green_gradient'}>
+    <section className={styles.mainLogin + " .green_gradient"}>
       <div className={styles.leftLogin}>
-        <img src="/login/jeff-bezos.jpg" alt="jeff-bezos" className={styles.avatar} />
+        <img
+          src="/login/jeff-bezos.jpg"
+          alt="jeff-bezos"
+          className={styles.avatar}
+        />
         <h1 className={styles.ceoName}>JEFFREY BEZOS</h1>
         <p className={styles.ceoTestimony}>
-          “Graças ao Dev’s Den, minha equipe conseguiu achar os desenvolvedores certos em tempo recorde! As ferramentas do site ajudam que o candidato certo venha para a vaga certa. Não tem erro!”
+          “Graças ao Dev’s Den, minha equipe conseguiu achar os desenvolvedores
+          certos em tempo recorde! As ferramentas do site ajudam que o candidato
+          certo venha para a vaga certa. Não tem erro!”
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.rightLogin}>
         <div className={styles.textField}>
-          <Input forName="email" text="E-mail" uppercase type="email" placeholder="Digite seu e-mail." name="email" maxLength={50} register={register} />
+          <Input
+            forName="email"
+            text="E-mail"
+            uppercase
+            type="email"
+            placeholder="Digite seu e-mail."
+            name="email"
+            maxLength={50}
+            register={register}
+          />
         </div>
         <div className={styles.textField}>
-          <Input forName="password" text="Senha" uppercase type="password" placeholder="Digite sua senha." name="password" maxLength={40} register={register} />
+          <Input
+            forName="password"
+            text="Senha"
+            uppercase
+            type="password"
+            placeholder="Digite sua senha."
+            name="password"
+            maxLength={40}
+            register={register}
+          />
         </div>
         <div className={styles.button_div}>
           <Button text="ENTRAR" type="submit" />
         </div>
 
-        {
-          modal?.message !== '' && (
-            <Modal modal={modal} openCloseModal={openCloseModal} />
-          )
-        }
+        {modal?.message !== "" && (
+          <Modal modal={modal} openCloseModal={openCloseModal} />
+        )}
       </form>
     </section>
   );

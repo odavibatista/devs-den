@@ -1,79 +1,79 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
-.error  {
-    color: $white-gray;
-    display: grid;
-    font-family: $m;
-    height: 90vh;
-    place-content: center;
-    text-align: center;
+.error {
+  color: $white-gray;
+  display: grid;
+  font-family: $m;
+  height: 90vh;
+  place-content: center;
+  text-align: center;
 }
 
-.main   {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    @include spacing;
-    @include green_gradient;
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @include spacing;
+  @include green_gradient;
 }
 
-.form_section   {
-    align-items: center;
-    background-color: $dark;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 47px;
-    padding: 79px 72px;
-    width: 100%;
+.form_section {
+  align-items: center;
+  background-color: $dark;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+  padding: 79px 72px;
+  width: 100%;
 }
 
-.new_job_form  {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-    text-align: left;
+.new_job_form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  text-align: left;
 }
 
-.main    {
-    @include green_gradient;
-    @include spacing;
+.main {
+  @include green_gradient;
+  @include spacing;
 
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 77px;
-    height: 100vh;
-    text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 77px;
+  height: 100vh;
+  text-align: center;
 }
 
 .h1 {
-    color: $white-gray;
-    font-family: $m;
-    font-size: 48px;
-    font-weight: 800;
+  color: $white-gray;
+  font-family: $m;
+  font-size: 48px;
+  font-weight: 800;
 }
 
 .h4 {
-    color: $light-blue;
-    font-family: $m;
-    font-size: 20px;
+  color: $light-blue;
+  font-family: $m;
+  font-size: 20px;
 }
 
-.form_rows  {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 56px;
-    width: 100%;
+.form_rows {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 56px;
+  width: 100%;
 }
 
 .button_div {
-    font-size: 24px;
-    height: 54px;
-    margin-top: 40px;
-    width: 233px;
+  font-size: 24px;
+  height: 54px;
+  margin-top: 40px;
+  width: 233px;
 }
