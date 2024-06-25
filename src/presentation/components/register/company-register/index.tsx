@@ -78,7 +78,7 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
                 if ("status" in registerCompany) {
                   setError(registerCompany.message)
                   setModal({ message: errorMessage, type: 'error'})
-
+                  setRegisterData(undefined)
                   return
                 } else  {
                   setModal({ message: "Empresa cadastrada com sucesso!", type: 'success'})
@@ -92,7 +92,6 @@ export default function CompanyRegister({listOfUFs}: {listOfUFs: {name: string, 
                 setError("Deu ruim")
               }
             }
-            setRegisterData(undefined)
         })()
       })
 

@@ -78,6 +78,7 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                 if ("status" in registerUser) {
                   setError(registerUser.message)
                   setModal({ message: errorMessage, type: 'error'})
+                  setRegisterData(undefined)
                   return
                 } else  {
                   setModal({ message: "Usuário cadastrado com sucesso!", type: 'success'})
@@ -91,7 +92,6 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                 setError("Deu ruim")
               }
             }
-            setRegisterData(undefined)
         })()
       })
   return (

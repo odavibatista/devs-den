@@ -61,6 +61,7 @@ export default function LoginScreen() {
             if("status" in login){
               setError(login.message)
               setModal({ message: errorMessage, type: 'error'})
+              setLoginData(undefined)
               return
             }
 
@@ -73,7 +74,6 @@ export default function LoginScreen() {
             setModal({ message: errorMessage, type: 'error'})
           }
         }
-        setLoginData(undefined)
     })()
   })
 
