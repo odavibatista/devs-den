@@ -5,6 +5,7 @@ interface InputProps {
     type: 'submit' | 'password' | 'date' | 'email' | 'text'
     name: string
     maxLength?: number
+    errorMessage?: string
     register?: any
     text: string
     forName: string
@@ -12,7 +13,7 @@ interface InputProps {
     options?: any[]
 }
 
-const InputComponent = ({ placeholder, type, name, maxLength, register, forName, uppercase, text }: InputProps): JSX.Element => {
+const InputComponent = ({ placeholder, type, name, maxLength, register, forName, uppercase, text, errorMessage }: InputProps): JSX.Element => {
 
     return(
         <span className={styles.span}>
@@ -27,6 +28,8 @@ const InputComponent = ({ placeholder, type, name, maxLength, register, forName,
                 maxLength={maxLength}
                 {...(register && register(name))}
             />
+            
+            {errorMessage && <p className={styles.error_message}>{errorMessage}</p>}
         </span>
     )
 }
