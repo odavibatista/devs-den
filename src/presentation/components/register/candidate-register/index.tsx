@@ -12,6 +12,8 @@ import refreshPage from "@/server/utils/refresh.function";
 import Select from "../../select";
 import candidateRegister from "@/api/endpoints/candidates/candidateRegister.endpoint";
 import { useRouter } from "next/navigation";
+import { useModal } from "@/presentation/hooks/useModal";
+import Modal from "../../modal";
 
 const registerCandidateSchema = z.object({
   name: z.string().min(5).max(50, { message: 'Campo obrigatório.' }),
@@ -36,6 +38,8 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
 
     const router = useRouter()
     
+    const { modal, setModal, openCloseModal } = useModal()
+
     const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegisterCandidateSchemaInterface>({
         resolver: zodResolver(registerCandidateSchema),
         mode: 'all',
@@ -49,7 +53,6 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
         setErrorMessage(message)
     }
 
-    
       useEffect(() => {
         (async () => {
             if (registerCandidateData !== undefined) {
@@ -74,20 +77,22 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
                 })
                 if ("status" in registerUser) {
                   setError(registerUser.message)
-                  alert(errorMessage)
+                  setModal({ message: errorMessage, type: 'error'})
+                  setRegisterData(undefined)
                   return
                 } else  {
-                  sessionStorage.setItem("session", registerUser.token)
+                  setModal({ message: "Usuário cadastrado com sucesso!", type: 'success'})
 
+                  sessionStorage.setItem("session", registerUser.token)
 
                   await refreshPage()
                   router.push("/jobs")
                 }
               } catch(error: any){
-                setError("Deu ruim")
+                setError("Ocorreu um erro inesperado. Tente novamente mais tarde.")
+                setModal({ message: errorMessage, type: 'error'})
               }
             }
-            setRegisterData(undefined)
         })()
       })
   return (
@@ -136,6 +141,12 @@ export default function CandidateRegister({listOfUFs}: {listOfUFs: {name: string
         <div className={styles.button_div}>
           <Button text="REGISTRAR" type="submit" />
         </div>
+
+        {
+          modal?.message !== '' && (
+            <Modal modal={modal} openCloseModal={openCloseModal} />
+          )
+        }
       </form>
   );
 }

@@ -2,24 +2,24 @@
 
 import { useHome } from "@/providers/home-data-provider";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const { homeData, isHomeDataLoading } = useHome();
+    const { homeData } = useHome();
 
     const router = useRouter()
     
-    useEffect(() => {
+    useLayoutEffect(() => {
       (async () => {
-        if (!homeData && !isHomeDataLoading) {
+        if (!homeData) {
             router.push("/")
         }
       })()
-    })
+    }, [homeData])
 
 
   return (

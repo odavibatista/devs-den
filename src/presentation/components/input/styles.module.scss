@@ -29,6 +29,12 @@
     width: inherit;
 }
 
+.error_message {
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
 @media (max-width: 1440px)  {
     .label  {
         font-size: 18px;
