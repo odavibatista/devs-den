@@ -20,85 +20,86 @@ import removeApplication from "@/api/endpoints/candidates/removeApplication.endp
 import Modal from "@/presentation/components/modal";
 
 export default function JobPage({ params }: DynamicRoute) {
-  const [job, setJob] = useState<IGetJob>();
-  const [isJobLoading, setJobLoading] = useState<boolean>(true);
-  const [userRole, setUserRole] = useState<string | null>(null);
-  const [confirmMessage, setConfirmMessage] = useState<string>("");
-  const [isApplied, setIsApplied] = useState<boolean>();
+  const [job, setJob] = useState<IGetJob>()
+  const [isJobLoading, setJobLoading] = useState<boolean>(true)
+  const [userRole, setUserRole] = useState<string | null>(null)
+  const [confirmMessage, setConfirmMessage] = useState<string>("")
+  const [isApplied, setIsApplied] = useState<boolean>()
 
-  const { homeData, isHomeDataLoading } = useHome();
+  const { homeData, isHomeDataLoading } = useHome()
 
-  const jobId = Number(params.id);
+  const jobId = Number(params.id)
 
-  const { modal, setModal, openCloseModal } = useModal();
+  const { modal, setModal, openCloseModal } = useModal()
 
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     (async () => {
       if (homeData && !isHomeDataLoading) {
-        setUserRole(homeData?.role);
+        setUserRole(homeData?.role)
       }
-    })();
-  });
+    })()
+  })
 
   useEffect(() => {
     (async () => {
-      const data = await getSingleJob(jobId);
+      const data = await getSingleJob(jobId)
 
       if ("status" in data) {
-        setJobLoading(false);
+        setJobLoading(false)
+        setModal({ message: data.message, type: "error" })
       } else {
-        setJob(data);
-        setJobLoading(false);
+        setJob(data)
+        setJobLoading(false)
       }
-    })();
-  }, [jobId]);
+    })()
+  }, [jobId])
 
   useEffect(() => {
     (async () => {
       if (homeData && !isHomeDataLoading) {
-        const token = sessionStorage.getItem("session");
+        const token = sessionStorage.getItem("session")
 
-        if (!token) return;
+        if (!token) return
 
-        const data = await candidateGetJobStatus(token, jobId);
+        const data = await candidateGetJobStatus(token, jobId)
 
         if ("status" in data) {
-          console.error(data);
+          setModal({ message: data.message, type: "error" })
         } else {
-          setIsApplied(data.has_applied);
+          setIsApplied(data.has_applied)
         }
       }
-    })();
-  });
+    })()
+  })
 
   const handleRemoveJob = async () => {
-    const token = sessionStorage.getItem("session");
+    const token = sessionStorage.getItem("session")
 
-    if (!token) return;
+    if (!token) return
 
-    await removeJob(token, jobId);
+    await removeJob(token, jobId)
 
-    router.push("/jobs");
+    router.push("/jobs")
 
-    setModal({ message: "Vaga removida com sucesso.", type: "success" });
-  };
+    setModal({ message: "Vaga removida com sucesso.", type: "success" })
+  }
 
   const handleApplyToJob = async () => {
-    const token = sessionStorage.getItem("session");
+    const token = sessionStorage.getItem("session")
 
-    if (!token) return;
+    if (!token) return
 
     await applyToJob(token, jobId);
 
-    router.refresh();
+    router.refresh()
 
     setModal({
       message: "Candidatura realizada com sucesso!",
       type: "success",
-    });
-  };
+    })
+  }
 
   const handleRemoveApplication = async () => {
     const token = sessionStorage.getItem("session");
@@ -110,7 +111,7 @@ export default function JobPage({ params }: DynamicRoute) {
     router.refresh();
 
     setModal({ message: "Candidatura removida com sucesso.", type: "success" });
-  };
+  }
 
   if (isJobLoading === true) {
     return (
