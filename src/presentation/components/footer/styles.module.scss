@@ -1,70 +1,70 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
 .footer {
-    align-items: center;
-    background-color: transparent;
-    color: $white-gray;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: space-between;
-    padding: 40px 142px;
-    width: 100%;
+  align-items: center;
+  background-color: transparent;
+  color: $white-gray;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 40px 142px;
+  width: 100%;
 }
 
-.items  {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
+.items {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
 
-.nav_link   {
-    color: $white-gray;
-    display: grid;
-    font-family: $r;
-    font-size: 20px;
-    font-weight: bold;
-    place-content: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    height: 35px;
-    margin: 0;
+.nav_link {
+  color: $white-gray;
+  display: grid;
+  font-family: $r;
+  font-size: 20px;
+  font-weight: bold;
+  place-content: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 35px;
+  margin: 0;
 
-    transition: 0.3s;
+  transition: 0.3s;
 
-    &:hover {
-        color: $light-blue;
-    }
+  &:hover {
+    color: $light-blue;
+  }
 }
 
-.footer_image   {
-    width: 300px;
+.footer_image {
+  width: 300px;
 }
 
-@media (max-width: 1440px)  {
-    .footer {
-        height: 70px;
-        padding: 0px 72px;
-    }
+@media (max-width: 1440px) {
+  .footer {
+    height: 70px;
+    padding: 0px 72px;
+  }
 
-    .footer_image   {
-        width: 220px;
-    }
+  .footer_image {
+    width: 220px;
+  }
 }
 
-@media (max-width: 1000px)  {
-    .nav_link   {
-        font-size: 15px;
-    }
+@media (max-width: 1000px) {
+  .nav_link {
+    font-size: 15px;
+  }
 
-    .footer_image   {
-        width: 150px;
-    }
+  .footer_image {
+    width: 150px;
+  }
 }
 
-@media (max-width: 768px)  {
-    .footer {
-        flex-direction: column;
-        margin: 50px 0px;
-    }
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    margin: 50px 0px;
+  }
 }

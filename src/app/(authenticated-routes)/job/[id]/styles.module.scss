@@ -1,97 +1,97 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
-.error  {
-    display: grid;
-    place-content: center;
-    height: 90vh;
+.error {
+  display: grid;
+  place-content: center;
+  height: 90vh;
 
-    h1  {
-        color: $white-gray;
-        font-family: $m;
-    }
-}
-
-.main   {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  h1 {
+    color: $white-gray;
     font-family: $m;
-    gap: 21px;
-    height: 95vh;
-    place-content: center;
-
-    @include spacing;
-    @include green_gradient;
+  }
 }
 
-.job_title  {
-    color: $white-gray;
-    font-size: 48px;
-    font-weight: 800;
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: $m;
+  gap: 21px;
+  height: 95vh;
+  place-content: center;
+
+  @include spacing;
+  @include green_gradient;
 }
 
-.job_category   {
-    color: $white-gray;
-    font-size: 32px;
+.job_title {
+  color: $white-gray;
+  font-size: 48px;
+  font-weight: 800;
 }
 
-.job_modality   {
-    color: $white-gray;
-    font-size: 20px;
-    text-transform: uppercase;
+.job_category {
+  color: $white-gray;
+  font-size: 32px;
 }
 
-.splitter_small   {
-    background-color: $light-blue;
-    height: 5px;
-    width: 483px;
+.job_modality {
+  color: $white-gray;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
-.job_company    {
-    color: $white-gray;
-    font-size: 32px;
-    font-weight: 600;
+.splitter_small {
+  background-color: $light-blue;
+  height: 5px;
+  width: 483px;
 }
 
-.job_wage   {
-    color: $white-gray;
-    font-size: 24px;
-    font-weight: 600;
+.job_company {
+  color: $white-gray;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-.splitter_large   {
-    background-color: $light-blue;
-    height: 5px;
-    width: 576px;
+.job_wage {
+  color: $white-gray;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.job_desc   {
-    color: $white-gray;
-    font-size: 20px;
-    text-align: center;
-    width: 576px;
+.splitter_large {
+  background-color: $light-blue;
+  height: 5px;
+  width: 576px;
 }
 
-.apply_button_div   {
-    font-size: 20px;
-    height: 54px;
-    width: 233px;
+.job_desc {
+  color: $white-gray;
+  font-size: 20px;
+  text-align: center;
+  width: 576px;
 }
 
-.company_div    {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.apply_button_div {
+  font-size: 20px;
+  height: 54px;
+  width: 233px;
 }
 
-.edit_button_div    {
-    font-size: 20px;
-    height: 54px;
-    width: 233px;
+.company_div {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.remove_button_div    {
-    font-size: 20px;
-    height: 54px;
-    width: 233px;
+.edit_button_div {
+  font-size: 20px;
+  height: 54px;
+  width: 233px;
+}
+
+.remove_button_div {
+  font-size: 20px;
+  height: 54px;
+  width: 233px;
 }

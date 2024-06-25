@@ -1,26 +1,28 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
-.job_card   {
-    align-items: center;
-    background-color: $gray;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 19px;
-    min-height: 170px;
-    justify-content: center;
-    padding: 20px 0px;
-    width: 477px;
+.job_card {
+  align-items: center;
+  background-color: $gray;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  min-height: 170px;
+  justify-content: center;
+  padding: 20px 0px;
+  width: 477px;
 }
 
-.h4, .h6, .p  {
-    color: $white-gray;
-    font-family: $m;
-    font-size: 24px;
-    font-weight: bold;
+.h4,
+.h6,
+.p {
+  color: $white-gray;
+  font-family: $m;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .em {
-    color: $aqua-green;
-    font-style: normal;
+  color: $aqua-green;
+  font-style: normal;
 }

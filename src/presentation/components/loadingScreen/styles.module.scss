@@ -1,27 +1,27 @@
-@import '@/app/globals.scss';
+@import "@/app/globals.scss";
 
-#loading    {
-    display: grid;
-    place-content: center;
-    margin: 0;
-    height: 100vh;
-    width: 100%;
+#loading {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
 }
 
-#spinner    {
-    color: $teal;
-    height: 200px;
-    width: 200px;
+#spinner {
+  color: $teal;
+  height: 200px;
+  width: 200px;
 }
 
-.green  {
-    @include green_gradient;
+.green {
+  @include green_gradient;
 }
 
-.blue  {
-    @include blue_gradient;
+.blue {
+  @include blue_gradient;
 }
 
-.dark   {
-    @include dark_gradient;
+.dark {
+  @include dark_gradient;
 }

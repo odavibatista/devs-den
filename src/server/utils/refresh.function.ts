@@ -1,5 +1,5 @@
-const refreshPage = async ()  =>  {
-    window.location.reload()
-}
+const refreshPage = async () => {
+  window.location.reload();
+};
 
-export default refreshPage
+export default refreshPage;

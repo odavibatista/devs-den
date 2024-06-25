@@ -1,42 +1,42 @@
-@import './globals.scss';
+@import "./globals.scss";
 
-*   {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body   {
-    box-sizing: border-box;
-    padding-top: 80px;
-    @include dark_gradient;
+body {
+  box-sizing: border-box;
+  padding-top: 80px;
+  @include dark_gradient;
 }
 
-span    {
-    display: flex;
-    flex-direction: column
+span {
+  display: flex;
+  flex-direction: column;
 }
 
 #nav-button {
-    background-color: $teal;
-    color: $dark;
+  background-color: $teal;
+  color: $dark;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: $dark; 
+  background: $dark;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $teal;
-    transition: 0.3s;
+  background: $teal;
+  transition: 0.3s;
 }
 
-@media  (max-width: 1440px) {
-    body    {
-        padding-top: 70px;
-    }
+@media (max-width: 1440px) {
+  body {
+    padding-top: 70px;
+  }
 }

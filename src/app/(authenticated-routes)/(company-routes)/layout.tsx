@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useHome } from "@/providers/home-data-provider";
 import { useRouter } from "next/navigation";
@@ -11,17 +11,13 @@ export default function RootLayout({
 }>) {
   const { homeData, isHomeDataLoading } = useHome();
 
-  const router = useRouter()
+  const router = useRouter();
 
   useLayoutEffect(() => {
-    if(homeData?.role !== 'company') {
-      router.push("/")
+    if (homeData?.role !== "company") {
+      router.push("/");
     }
-  })
+  });
 
-  return (
-    <>
-        {children}
-    </>
-  );
+  return <>{children}</>;
 }
