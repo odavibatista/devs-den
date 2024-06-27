@@ -1,6 +1,9 @@
 name: Issues
 description: Issues de implementações e tarefas no projeto
 title: "`[TIPO]` - NOME"
+projects: "odavibatista/7"
+assignees:
+  - odavibatista
 
 body:
   - type: textarea
