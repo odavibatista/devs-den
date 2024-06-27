@@ -3,8 +3,10 @@ description: Template para registrar bugs no projeto
 title: "`[BUG]` - Título"
 labels:
   - "bug"
-# Validações do tipo 'required' apenas funcionam em repositórios públicos, talvez venham a funcionar futuramente em repositórios privados.
-
+projects: "odavibatista/7"
+assignees:
+  - odavibatista
+  
 body:
   - type: textarea
     id: showcase
